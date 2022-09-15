@@ -3,7 +3,7 @@
 Acabo de intentar (otra vez) hacerme el proyecto desde 0. El problema es el mismo que tenía con el sass y es en cuanto a la petición a esta página donde se almacenan los artifacts "https://artifacts.copyright.com". 
 ¿Qué es lo que está pasando? Pues voy a decirte exactamente lo que hago aqui.
 
-... Como quiero crearme esto desde 0 sigo los pasos de siempre que he hecho para crearme un proyecto en ember.
+... Como quiero crearme esto desde 0 sigo los pasos de **siempre** que he hecho para crearme un proyecto en ember.
 
 1. Opción (desde 0)
 
@@ -16,6 +16,6 @@ Acabo de intentar (otra vez) hacerme el proyecto desde 0. El problema es el mism
 ==> Err 403 FORBIDDEN. No tengo los permisos para poder hacer esa petición.
 
 
-2. Opción (desde un proyecto antiguo del super-rentals el más básico, elimino los 2 componentes que había y me vuelvo a instalar SASS) 
+2. Opción (desde un proyecto antiguo del super-rentals el más básico, elimino los 2 componentes que había y me vuelvo a instalar SASS, redefinir rutas y todo lo anterior) ¿Por qué utilizar esta opción? Porque no puedo solucionar el problema este de la API, no puedo crearme un proyecto desde 0 con ember si no puedo traerme esto con npm.
 
 
