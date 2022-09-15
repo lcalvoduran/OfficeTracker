@@ -9,4 +9,5 @@ export default class Router extends EmberRouter {
 Router.map(function () {
   this.route('bookings');
   this.route('my-previous-visits', { path: '/next-visits' });
+  this.route('login');
 });
