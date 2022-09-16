@@ -11,7 +11,6 @@ export default class navbarComponent extends Component {
   constructor() {
     super(...arguments);
     this.anySessionStored();
-
   }
 
   anySessionStored() {
