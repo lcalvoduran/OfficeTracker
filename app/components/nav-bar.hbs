@@ -28,13 +28,13 @@
         <button class="rup-btn rup-btn--error" type="button" {{on "click" this.logOut}}>Log Out </button>
       </div>
     {{else}}
-      <LinkTo @route="index" class="menu-index">
+      <LinkTo @route="login" class="menu-index">
         <h1>Office Tracker</h1>
       </LinkTo>
-      <LinkTo @route="bookings" class="menu-index">
+      <LinkTo @route="login" class="menu-index">
         Bookings
       </LinkTo>     
-      <LinkTo @route="my-previous-visits" class="menu-contact">
+      <LinkTo @route="login" class="menu-contact">
         My previous visits
       </LinkTo>    
 
