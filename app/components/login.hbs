@@ -1,7 +1,11 @@
 <div class="login">
 
     <div class="inputLogin">
-
+        <div id="verificator" class="verifier">
+        <span class="rup-lozenge rup-lozenge--sm"  aria-describedby="lozenge-desc-6">Verifier</span>
+        <p id="lozenge-desc-6" class="rup-visually-hidden">Verifier</p> 
+        </div>
+    <p></p>
     <Input 
         @value={{this.value}} 
         class="rup-input" 
@@ -13,7 +17,9 @@
     <p></p>
     <button 
         class="rup-btn rup-btn--lg " {{on "click" this.submitLogin}} 
-        type="button">Log In</button>    
+        type="button">Log In
+    </button>    
+   
 
     </div>
 </div>

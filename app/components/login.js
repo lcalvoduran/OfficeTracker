@@ -9,7 +9,10 @@ export default class loginComponent extends Component {
   @tracked userEmail = this.value;
 
   @action submitLogin() {    
-    
-    this.login.saveUser();
+    if(this.login.saveUser(this.userEmail)){
+      return this.router.transitionTo('index');
+    }else{
+      return this.router.transitionTo('login');
+    }
   }
 }
