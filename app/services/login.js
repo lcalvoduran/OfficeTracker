@@ -29,4 +29,24 @@ constructor(){
             return false;
         }
     }
+
+    retrieveSessionStorage() {
+        console.log('...Comprobando datos');
+        let varLocal = localStorage.getItem('currentUser');
+        if (varLocal == null) {
+          this.userArray = [];
+          console.log('No hay usuarios logeados');
+          return this.userArray;
+        } else {
+          this.userArray = [];
+          const arr = JSON.parse(localStorage.getItem('currentUser'));
+          this.userArray = [...this.userArray, ...arr];
+          return this.userArray[0].email;
+        }
+      }
+      
+    leaveSession(){
+        localStorage.clear();
+        location.reload();
+    }
 }
