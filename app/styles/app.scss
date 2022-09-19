@@ -222,6 +222,9 @@ p {
     align-items: center;
   }
 }
+.appointments{
+  width: 100%;
+}
 
 .appointments-header{
   color: white;
@@ -230,12 +233,21 @@ p {
   text-align: center;
 }
 
-.appointments{
-  width: 100%;
+#back {
+  float: left;
 }
+
+#next{
+  float: right;
+}
+
 
 table{
   width: 100%;
+}
+
+td:hover{
+  background-color: #c4c4c4;
 }
 
 .selecteddays{
