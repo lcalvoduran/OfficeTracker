@@ -207,6 +207,14 @@ p {
 /**
  * Similar to Jumbotron
  */
+.bookings {
+  padding: 50px 50px 260px;
+  background: #f6f6f6;
+}
+
+.bookings:hover {
+  background-color: #f3f3f3;
+}
 
 .jumbo {
   padding: 50px;
