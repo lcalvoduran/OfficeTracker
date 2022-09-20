@@ -5,16 +5,40 @@ import { action } from '@ember/object';
 
 export default class appointmentsComponent extends Component {
     
-    @tracked monthYear = cambiaAnyo();
+    @tracked monthYear;
+
     constructor() {
         super(...arguments);
-        cambiaAnyo();
-      }
-}
+        this.changeYear();
+      }    
 
 
-function cambiaAnyo(){
-    let today = new Date();
-    let currentYear = today.getFullYear();
-    return "2022";
+    changeYear(){    
+        let today = new Date();
+        let currentMonth = today.getMonth();
+        let currentYear = today.getFullYear();
+        let months = ["January", "Feb", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        console.log("CurrentMonth:" + months[currentMonth] + " currentYear" + currentYear);
+        this.monthYear = months[currentMonth] + " " + currentYear;
+        return this.monthYear;
+    }
+
+    nextMonth(){
+        let today = new Date();
+        let currentMonth = today.getMonth();
+        console.log(this.nextMonth+1);
+    }
+
+    nextYear(){
+
+    }
+
+    previousMonth(){
+
+    }
+    
+    previousYear(){
+
+    }
+
 }
