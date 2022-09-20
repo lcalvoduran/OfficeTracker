@@ -2,10 +2,10 @@
         <div class="appointments-header" id="monthYear">{{this.monthYear}}
         </div>
         <p></p>
-        <button class="rup-btn rup-btn--text" id="back"type="button">
+        <button class="rup-btn rup-btn--text" id="back"type="button" {{on "click" this.back}}>
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="icon-chevron-left"><path class="primary" fill-rule="evenodd" clip-rule="evenodd" d="M15.707 5.293a1 1 0 00-1.414 0l-6 6a1 1 0 000 1.414l6 6a1 1 0 001.414-1.414L10.414 12l5.293-5.293a1 1 0 000-1.414z"/></svg>
         </button>
-        <button class="rup-btn rup-btn--text" id="next" type="button">
+        <button class="rup-btn rup-btn--text" id="next" type="button" {{on "click" this.next}}>
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="icon-chevron-right"><path class="primary" fill-rule="evenodd" clip-rule="evenodd" d="M8.293 5.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L13.586 12 8.293 6.707a1 1 0 010-1.414z"/></svg>            
         </button>
         <p></p>
@@ -23,8 +23,8 @@
                 </tr>
             </thead>
     
-            <tbody>
-                <tr>
+            <tbody id="calendar-body"> 
+{{!--                 <tr>
                     <td>user1</td>
                     <td>user1</td>
                     <td>user8</td>
@@ -78,7 +78,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                </tr>
+                </tr> --}}
             </tbody>
         </table>
     </div>

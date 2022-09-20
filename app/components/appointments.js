@@ -9,9 +9,17 @@ export default class appointmentsComponent extends Component {
 
     constructor() {
         super(...arguments);
-        this.changeYear();
+        this.showMyCalendarYear();
       }    
 
+
+    showMyCalendarYear(){
+        let today = new Date();
+        let currentMonth = today.getMonth();
+        let currentYear = today.getFullYear();
+        let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; 
+        this.monthYear = months[currentMonth] + " " + currentYear;        
+    }
 
     changeYear(){    
         let today = new Date();
@@ -23,22 +31,18 @@ export default class appointmentsComponent extends Component {
         return this.monthYear;
     }
 
-    nextMonth(){
+    next(){
         let today = new Date();
-        let currentMonth = today.getMonth();
-        console.log(this.nextMonth+1);
+        let currentMonth = today.getMonth()
+        
+        console.log(this.monthYear);
     }
 
-    nextYear(){
-
+    back(){
+        let today = new Date();
+        let currentMonth = today.getMonth()-1;
+        console.log("back");
     }
 
-    previousMonth(){
-
-    }
-    
-    previousYear(){
-
-    }
 
 }
