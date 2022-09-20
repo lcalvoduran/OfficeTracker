@@ -17,7 +17,7 @@ export default class appointmentsComponent extends Component {
         let today = new Date();
         let currentMonth = today.getMonth();
         let currentYear = today.getFullYear();
-        let months = ["January", "Feb", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         console.log("CurrentMonth:" + months[currentMonth] + " currentYear" + currentYear);
         this.monthYear = months[currentMonth] + " " + currentYear;
         return this.monthYear;
