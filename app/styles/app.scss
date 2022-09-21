@@ -262,26 +262,26 @@ td:hover{
 
 
 
-.jumbo {
+.container {
   padding: 30px;
   background: #f6f6f6;
 }
 
-.jumbo:hover {
+.container:hover {
   background-color: #f3f3f3;
 }
 
-.jumbo h2 {
+.container h2 {
   font-size: 3.2em;
   margin-top: -25px;
 }
 
-.jumbo p,
-.jumbo address {
+.container p,
+.container address {
   margin-bottom: 25px;
 }
 
-.jumbo img {
+.container img {
   height: 200px;
   position: relative;
   top: -25px;
@@ -534,7 +534,7 @@ td:hover{
 }
 
 
-.tomster {
+.container2 {
   background: url(../assets/logos/CCC-1-6-7.svg);
   background-size: contain;
   background-repeat: no-repeat;
