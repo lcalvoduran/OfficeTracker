@@ -2,47 +2,58 @@ import Component from '@glimmer/component';
 import { service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-
+let today = new Date();
+let currentMonth = today.getMonth();
+let currentYear = today.getFullYear();
+let months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
+];
 export default class appointmentsComponent extends Component {
-    
-    @tracked monthYear;
+  @tracked monthYear;
 
-    constructor() {
-        super(...arguments);
-        this.showMyCalendarYear();
-      }    
+  constructor() {
+    super(...arguments);
+    this.showMyCalendarYear(currentMonth, currentYear);
+  }
 
+  showMyCalendarYear(month, year) {
+    console.log('currentMonth: ' + currentMonth + ' currentYear: ' + currentYear);
+    this.monthYear = months[currentMonth] + ' ' + currentYear;
+  }
 
-    showMyCalendarYear(){
-        let today = new Date();
-        let currentMonth = today.getMonth();
-        let currentYear = today.getFullYear();
-        let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]; 
-        this.monthYear = months[currentMonth] + " " + currentYear;        
+  next() {
+    if (currentMonth === 12) {
+      currentYear = currentYear + 1;
+    } else {
+      currentYear;
     }
+    currentMonth = (currentMonth + 1) % 13;
+    console.log(
+      'currentMonth: ' + currentMonth + ' currentYear: ' + currentYear
+    );
+  }
 
-    changeYear(){    
-        let today = new Date();
-        let currentMonth = today.getMonth();
-        let currentYear = today.getFullYear();
-        let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        console.log("CurrentMonth:" + months[currentMonth] + " currentYear" + currentYear);
-        this.monthYear = months[currentMonth] + " " + currentYear;
-        return this.monthYear;
+  back() {
+    if (currentMonth === 0) {
+      currentYear = currentYear - 1;
+      currentMonth = 11;
+    } else {
+      currentYear;
+      currentMonth = currentMonth - 1;
     }
-
-    next(){
-        let today = new Date();
-        let currentMonth = today.getMonth()
-        
-        console.log(this.monthYear);
-    }
-
-    back(){
-        let today = new Date();
-        let currentMonth = today.getMonth()-1;
-        console.log("back");
-    }
-
-
+    console.log(
+      'currentMonth: ' + currentMonth + ' currentYear: ' + currentYear
+    );
+  }
 }
