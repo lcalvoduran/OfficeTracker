@@ -5,7 +5,7 @@
     <a href="" class="rup-global-header__application-logo" aria-label="Logo">
       <img src = "../assets/logos/CCC-1-6-7.svg" class="rup-global-header__application-logo" width="96" height="40"> 
     </a>   
-    {{#if this.currentUser}}
+{{#if this.currentUser}}
       <LinkTo @route="index" class="menu-index">
         <h1>Office Tracker</h1>
       </LinkTo>
@@ -27,28 +27,28 @@
         </button>
         <button class="rup-btn rup-btn--error" type="button" {{on "click" this.logOut}}>Log Out</button>
       </div>
-    {{else}}
-      <LinkTo @route="login" class="menu-index">
+{{else}}
+      <LinkTo @route="index" class="menu-index">
         <h1>Office Tracker</h1>
       </LinkTo>
-      <LinkTo @route="login" class="menu-index">
+      <LinkTo @route="bookings" class="menu-index">
         Bookings
       </LinkTo>     
-      <LinkTo @route="login" class="menu-contact">
+      <LinkTo @route="my-previous-visits" class="menu-contact">
         My previous visits
       </LinkTo>    
 
       <div class="rup-global-header__controls" tabindex="0" role="navigation"
         aria-label="The application's global header controls">
-        <button class="rup-btn rup-btn--secondary" {{action "toggleBody"}} type="button" aria-label="Sign in/Register" onClick = "window.location.href='/login';">
+        <button class="rup-btn rup-btn--secondary" type="button" aria-label="Sign in/Register" onClick = "window.location.href='/login';">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="icon-user" role="img" aria-hidden="true">
             <path class="primary" fill-rule="evenodd" clip-rule="evenodd"
               d="M15.998 8.12a4 4 0 11-7.996-.241 4 4 0 017.996.242zm1.463 5.726a9 9 0 00-1.818-1.078 6.034 6.034 0 001.415-1.538 6 6 0 10-8.7 1.538c-.651.288-1.261.651-1.82 1.078A8.985 8.985 0 003 21a1 1 0 102 0 7.002 7.002 0 0114 0 1 1 0 102 0 8.985 8.985 0 00-3.539-7.154z" />
           </svg>
-          Sign in / register
+          Sign In / Register
         </button>
-        <button class="rup-btn rup-btn--error" type="button" >Log Out </button>
-      </div>    
+        <button class="rup-btn rup-btn--error" type="button" {{on "click" this.logOut}}>Log Out</button>
+      </div>
       {{/if}}
   </div>
 </header>

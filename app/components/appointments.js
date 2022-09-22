@@ -28,7 +28,9 @@ export default class appointmentsComponent extends Component {
   }
 
   showMyCalendarYear(month, year) {
-    console.log('currentMonth: ' + currentMonth + ' currentYear: ' + currentYear);
+    console.log(
+      'currentMonth: ' + currentMonth + ' currentYear: ' + currentYear
+    );
     this.monthYear = months[currentMonth] + ' ' + currentYear;
   }
 
