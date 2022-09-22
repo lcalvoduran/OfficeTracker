@@ -12,12 +12,12 @@ export default class loginComponent extends Component {
 
   @action submitLogin() {
     if (this.login.saveUser(this.userEmail)) {
-      this.validationUser = false;
-      later(() => {
-        return this.router.transitionTo('index');
-      }, 2000);
-    } else {
-      return this.router.transitionTo('login');
+        this.validationUser = false;
+        later(() => {
+          return this.router.transitionTo('index');
+        }, 2000);
+    }else{
+        return this.router.transitionTo('login');
     }
   }
 }
