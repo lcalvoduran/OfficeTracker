@@ -39,31 +39,38 @@ export default class appointmentsComponent extends Component {
   @action next() {
     this.currentWeek = this.currentWeek +1;
     if(this.currentWeek>=6){
-      this.currentWeek=0;
+      this.currentWeek=1;
     }    
-    if(this.currentWeek==0){
-    if (currentMonth === 11) {
-        currentYear = currentYear + 1;
-    } else {
-        currentYear;
-    }
-      currentMonth = (currentMonth + 1) % 12;
-      console.log('currentMonth: ' + currentMonth + ' currentYear: ' + currentYear);
-      this.monthYear = months[currentMonth] + ' ' + currentYear; 
-      
+    if(this.currentWeek==1){
+      if (currentMonth === 11) {
+          currentYear = currentYear + 1;
+      } else {
+          currentYear;
+      }
+        currentMonth = (currentMonth + 1) % 12;
+        console.log('currentMonth: ' + currentMonth + ' currentYear: ' + currentYear);
+        this.monthYear = months[currentMonth] + ' ' + currentYear; 
+        
     }
   }
 
-  @action back() {          
-    if (currentMonth === 0) {
-      currentYear = currentYear - 1;
-      currentMonth = 11;
-    } else {
-      currentYear;
-      currentMonth = currentMonth - 1;
+  @action back() {  
+    this.currentWeek = this.currentWeek - 1;
+    console.log(this.currentWeek);
+    if(this.currentWeek <= 0){
+      this.currentWeek = 5;
+    }        
+    if(this.currentWeek==5){
+    
+      if (currentMonth === 0) {
+        currentYear = currentYear - 1;
+        currentMonth = 11;
+      } else {
+        currentYear;
+        currentMonth = currentMonth - 1;
+      }
+      console.log('currentMonth: ' + currentMonth + ' currentYear: ' + currentYear);
+      this.monthYear = this.monthYear = months[currentMonth] + ' ' + currentYear;
     }
-    console.log('currentMonth: ' + currentMonth + ' currentYear: ' + currentYear);
-    this.monthYear = this.monthYear = months[currentMonth] + ' ' + currentYear;
-    }
-     
+  }
 }
