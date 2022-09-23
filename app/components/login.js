@@ -11,13 +11,20 @@ export default class loginComponent extends Component {
   @tracked validationUser = true;
 
   @action submitLogin() {
-    if (this.login.saveUser(this.userEmail)) {
-        this.validationUser = false;
-        later(() => {
-          return this.router.transitionTo('index');
-        }, 2000);
+    let pattern = /^[a-zA-Z0-9._-]+@(copyright.com)$/;
+    let validationPattern = pattern.test(this.userEmail);
+    console.log("Validation " + valicacionPattern);
+    if (validationPattern){
+      if (this.login.saveUser(this.userEmail)) {
+          this.validationUser = false;
+          later(() => {
+            return this.router.transitionTo('index');
+          }, 2000);
+      }else{
+            return this.router.transitionTo('login');
+      }
     }else{
-        return this.router.transitionTo('login');
+        window.alert("El email no cumple las condiciones necesarias");
     }
   }
 }
