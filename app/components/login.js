@@ -13,7 +13,7 @@ export default class loginComponent extends Component {
   @action submitLogin() {
     let pattern = /^[a-zA-Z0-9._-]+@(copyright.com)$/;
     let validationPattern = pattern.test(this.userEmail);
-    console.log("Validation " + valicacionPattern);
+    console.log("Validation " + validationPattern);
     if (validationPattern){
       if (this.login.saveUser(this.userEmail)) {
           this.validationUser = false;
