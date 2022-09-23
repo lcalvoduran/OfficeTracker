@@ -21,11 +21,13 @@ let months = [
 ];
 export default class appointmentsComponent extends Component {
   @tracked monthYear;
+  @tracked currentWeek = 1 ;
 
   constructor() {
     super(...arguments);
     this.showMyCalendarYear(currentMonth, currentYear);
   }
+
 
   showMyCalendarYear(month, year) {
     console.log(
@@ -34,19 +36,25 @@ export default class appointmentsComponent extends Component {
     this.monthYear = months[currentMonth] + ' ' + currentYear;
   }
 
-  next() {
-    if (currentMonth === 12) {
-      currentYear = currentYear + 1;
+  @action next() {
+    this.currentWeek = this.currentWeek +1;
+    if(this.currentWeek>=6){
+      this.currentWeek=0;
+    }    
+    if(this.currentWeek==0){
+    if (currentMonth === 11) {
+        currentYear = currentYear + 1;
     } else {
-      currentYear;
+        currentYear;
     }
-    currentMonth = (currentMonth + 1) % 13;
-    console.log(
-      'currentMonth: ' + currentMonth + ' currentYear: ' + currentYear
-    );
+      currentMonth = (currentMonth + 1) % 12;
+      console.log('currentMonth: ' + currentMonth + ' currentYear: ' + currentYear);
+      this.monthYear = months[currentMonth] + ' ' + currentYear; 
+      
+    }
   }
 
-  back() {
+  @action back() {          
     if (currentMonth === 0) {
       currentYear = currentYear - 1;
       currentMonth = 11;
@@ -54,8 +62,8 @@ export default class appointmentsComponent extends Component {
       currentYear;
       currentMonth = currentMonth - 1;
     }
-    console.log(
-      'currentMonth: ' + currentMonth + ' currentYear: ' + currentYear
-    );
-  }
+    console.log('currentMonth: ' + currentMonth + ' currentYear: ' + currentYear);
+    this.monthYear = this.monthYear = months[currentMonth] + ' ' + currentYear;
+    }
+     
 }
