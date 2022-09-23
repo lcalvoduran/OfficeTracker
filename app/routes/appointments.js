@@ -1,6 +1,6 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
-export default class BookingsRoute extends Route {
+export default class AppointmentsRoute extends Route {
   @service router;
   @service login;
   beforeModel(transition) {
