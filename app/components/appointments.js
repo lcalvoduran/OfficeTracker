@@ -30,9 +30,6 @@ export default class appointmentsComponent extends Component {
 
 
   showMyCalendarYear(month, year) {
-    console.log(
-      'currentMonth: ' + currentMonth + ' currentYear: ' + currentYear
-    );
     this.monthYear = months[currentMonth] + ' ' + currentYear;
   }
 
@@ -48,7 +45,6 @@ export default class appointmentsComponent extends Component {
           currentYear;
       }
         currentMonth = (currentMonth + 1) % 12;
-        console.log('currentMonth: ' + currentMonth + ' currentYear: ' + currentYear);
         this.monthYear = months[currentMonth] + ' ' + currentYear; 
         
     }
@@ -56,7 +52,6 @@ export default class appointmentsComponent extends Component {
 
   @action back() {  
     this.currentWeek = this.currentWeek - 1;
-    console.log(this.currentWeek);
     if(this.currentWeek <= 0){
       this.currentWeek = 5;
     }        
@@ -69,8 +64,35 @@ export default class appointmentsComponent extends Component {
         currentYear;
         currentMonth = currentMonth - 1;
       }
-      console.log('currentMonth: ' + currentMonth + ' currentYear: ' + currentYear);
       this.monthYear = this.monthYear = months[currentMonth] + ' ' + currentYear;
     }
   }
+
+  @action thisDayIs(){
+    let weekOfMonth = this.currentWeek;     // Semana seleccionada
+    let monthOfYear = currentMonth;         // Mes seleccionado
+    let year = currentYear;                 // Año seleccionado
+    //Cheatsheet: Date (year, month, day, hour, min, sec, mili)
+    let dateSelected = new Date(year, monthOfYear, 1);
+    console.log(getNextMonday(new Date()));
+    /*
+    const today = new Date();
+    const first = today.getDate() - today.getDay() + 1;
+    const monday = new Date(today.setDate(first));
+    console.log(monday); 
+    */
+
+  }
+}
+
+function getNextMonday(date = new Date()){
+  const dateCopy = new Date(date.getTime());
+
+  const nextMonday = new Date(
+    dateCopy.setDate(
+      dateCopy.getDate() + ((7 - dateCopy.getDay() + 1) % 7 || 7),
+    ),
+  );
+  return nextMonday;
+
 }
