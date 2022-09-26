@@ -22,6 +22,7 @@ let months = [
 export default class appointmentsComponent extends Component {
   @tracked monthYear;
   @tracked currentWeek = 1 ;
+ 
 
   constructor() {
     super(...arguments);
@@ -149,20 +150,20 @@ export default class appointmentsComponent extends Component {
     let today = new Date(year, monthOfYear);
     let first = today.getDate() - today.getDay() + 4;
     if(weekOfMonth == 1){
-      let tuesday = new Date(today.setDate(first));
-      console.log(tuesday);
+      let thursday = new Date(today.setDate(first));
+      console.log(thursday);
     }else if (weekOfMonth == 2){
-      let tuesday = new Date(today.setDate(first+7));
-      console.log(tuesday);
+      let thursday = new Date(today.setDate(first+7));
+      console.log(thursday);
     }else if (weekOfMonth == 3){
-      let tuesday = new Date(today.setDate(first+14));
-      console.log(tuesday);
+      let thursday = new Date(today.setDate(first+14));
+      console.log(thursday);
     }else if (weekOfMonth == 4){
-      let tuesday = new Date(today.setDate(first+21));
-      console.log(tuesday);
+      let thursday = new Date(today.setDate(first+21));
+      console.log(thursday);
     }else{
-      let tuesday = new Date(today.setDate(first+28));
-      console.log(tuesday);      
+      let thursday = new Date(today.setDate(first+28));
+      console.log(thursday);      
     }    
   } 
   
