@@ -68,31 +68,126 @@ export default class appointmentsComponent extends Component {
     }
   }
 
-  @action thisDayIs(){
+  @action getMonday(){
     let weekOfMonth = this.currentWeek;     // Semana seleccionada
     let monthOfYear = currentMonth;         // Mes seleccionado
     let year = currentYear;                 // Año seleccionado
     //Cheatsheet: Date (year, month, day, hour, min, sec, mili)
-    let dateSelected = new Date(year, monthOfYear, 1);
-    console.log(getNextMonday(new Date()));
-    /*
-    const today = new Date();
-    const first = today.getDate() - today.getDay() + 1;
-    const monday = new Date(today.setDate(first));
-    console.log(monday); 
-    */
-
+    let today = new Date(year, monthOfYear);
+    let first = today.getDate() - today.getDay() + 1;
+    if(weekOfMonth == 1){
+      let monday = new Date(today.setDate(first));
+      console.log(monday);
+    }else if (weekOfMonth == 2){
+      let monday = new Date(today.setDate(first+7));
+      console.log(monday);
+    }else if (weekOfMonth == 3){
+      let monday = new Date(today.setDate(first+14));
+      console.log(monday);
+    }else if (weekOfMonth == 4){
+      let monday = new Date(today.setDate(first+21));
+      console.log(monday);
+    }else{
+      let monday = new Date(today.setDate(first+28));
+      console.log(monday);      
+    }    
   }
-}
+  @action getTuesday(){
+    let weekOfMonth = this.currentWeek;     // Semana seleccionada
+    let monthOfYear = currentMonth;         // Mes seleccionado
+    let year = currentYear;                 // Año seleccionado
+    //Cheatsheet: Date (year, month, day, hour, min, sec, mili)
+    let today = new Date(year, monthOfYear);
+    let first = today.getDate() - today.getDay() + 2;
+    if(weekOfMonth == 1){
+      let tuesday = new Date(today.setDate(first));
+      console.log(tuesday);
+    }else if (weekOfMonth == 2){
+      let tuesday = new Date(today.setDate(first+7));
+      console.log(tuesday);
+    }else if (weekOfMonth == 3){
+      let tuesday = new Date(today.setDate(first+14));
+      console.log(tuesday);
+    }else if (weekOfMonth == 4){
+      let tuesday = new Date(today.setDate(first+21));
+      console.log(tuesday);
+    }else{
+      let tuesday = new Date(today.setDate(first+28));
+      console.log(tuesday);      
+    }    
+  }  
+  @action getWednesday(){
+    let weekOfMonth = this.currentWeek;     // Semana seleccionada
+    let monthOfYear = currentMonth;         // Mes seleccionado
+    let year = currentYear;                 // Año seleccionado
+    //Cheatsheet: Date (year, month, day, hour, min, sec, mili)
+    let today = new Date(year, monthOfYear);
+    let first = today.getDate() - today.getDay() + 3;
+    if(weekOfMonth == 1){
+      let wednesday = new Date(today.setDate(first));
+      console.log(wednesday);
+    }else if (weekOfMonth == 2){
+      let wednesday = new Date(today.setDate(first+7));
+      console.log(wednesday);
+    }else if (weekOfMonth == 3){
+      let wednesday = new Date(today.setDate(first+14));
+      console.log(wednesday);
+    }else if (weekOfMonth == 4){
+      let wednesday = new Date(today.setDate(first+21));
+      console.log(wednesday);
+    }else{
+      let wednesday = new Date(today.setDate(first+28));
+      console.log(wednesday);      
+    }    
+  }   
 
-function getNextMonday(date = new Date()){
-  const dateCopy = new Date(date.getTime());
-
-  const nextMonday = new Date(
-    dateCopy.setDate(
-      dateCopy.getDate() + ((7 - dateCopy.getDay() + 1) % 7 || 7),
-    ),
-  );
-  return nextMonday;
-
+  @action getThursday(){
+    let weekOfMonth = this.currentWeek;     // Semana seleccionada
+    let monthOfYear = currentMonth;         // Mes seleccionado
+    let year = currentYear;                 // Año seleccionado
+    //Cheatsheet: Date (year, month, day, hour, min, sec, mili)
+    let today = new Date(year, monthOfYear);
+    let first = today.getDate() - today.getDay() + 4;
+    if(weekOfMonth == 1){
+      let tuesday = new Date(today.setDate(first));
+      console.log(tuesday);
+    }else if (weekOfMonth == 2){
+      let tuesday = new Date(today.setDate(first+7));
+      console.log(tuesday);
+    }else if (weekOfMonth == 3){
+      let tuesday = new Date(today.setDate(first+14));
+      console.log(tuesday);
+    }else if (weekOfMonth == 4){
+      let tuesday = new Date(today.setDate(first+21));
+      console.log(tuesday);
+    }else{
+      let tuesday = new Date(today.setDate(first+28));
+      console.log(tuesday);      
+    }    
+  } 
+  
+  @action getFriday(){
+    let weekOfMonth = this.currentWeek;     // Semana seleccionada
+    let monthOfYear = currentMonth;         // Mes seleccionado
+    let year = currentYear;                 // Año seleccionado
+    //Cheatsheet: Date (year, month, day, hour, min, sec, mili)
+    let today = new Date(year, monthOfYear);
+    let first = today.getDate() - today.getDay() + 5;
+    if(weekOfMonth == 1){
+      let friday = new Date(today.setDate(first));
+      console.log(friday);
+    }else if (weekOfMonth == 2){
+      let friday = new Date(today.setDate(first+7));
+      console.log(friday);
+    }else if (weekOfMonth == 3){
+      let friday = new Date(today.setDate(first+14));
+      console.log(friday);
+    }else if (weekOfMonth == 4){
+      let friday = new Date(today.setDate(first+21));
+      console.log(friday);
+    }else{
+      let friday = new Date(today.setDate(first+28));
+      console.log(friday);      
+    }    
+  }   
 }
