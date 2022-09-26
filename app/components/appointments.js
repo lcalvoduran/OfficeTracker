@@ -22,7 +22,8 @@ let months = [
 export default class appointmentsComponent extends Component {
   @tracked monthYear;
   @tracked currentWeek = 1 ;
- 
+  @tracked numberDay;
+  @tracked selected = ' 🖱️ Click on a day 🖱️ ';
 
   constructor() {
     super(...arguments);
@@ -78,19 +79,24 @@ export default class appointmentsComponent extends Component {
     let first = today.getDate() - today.getDay() + 1;
     if(weekOfMonth == 1){
       let monday = new Date(today.setDate(first));
-      console.log(monday);
+      let dateformatted = "Mon " + monday.getDate() + " "+ months[monday.getMonth()];
+      this.selected=dateformatted;
     }else if (weekOfMonth == 2){
       let monday = new Date(today.setDate(first+7));
-      console.log(monday);
+      let dateformatted = "Mon " + monday.getDate() + " "+ months[monday.getMonth()];
+      this.selected=dateformatted;      
     }else if (weekOfMonth == 3){
       let monday = new Date(today.setDate(first+14));
-      console.log(monday);
+      let dateformatted = "Mon " + monday.getDate() + " "+ months[monday.getMonth()];
+      this.selected=dateformatted;       
     }else if (weekOfMonth == 4){
       let monday = new Date(today.setDate(first+21));
-      console.log(monday);
+      let dateformatted = "Mon " + monday.getDate() + " "+ months[monday.getMonth()];
+      this.selected=dateformatted;       
     }else{
-      let monday = new Date(today.setDate(first+28));
-      console.log(monday);      
+      let monday = new Date(today.setDate(first+28));    
+      let dateformatted = "Mon " + monday.getDate() + " "+ months[monday.getMonth()];
+      this.selected=dateformatted;          
     }    
   }
   @action getTuesday(){
@@ -102,19 +108,24 @@ export default class appointmentsComponent extends Component {
     let first = today.getDate() - today.getDay() + 2;
     if(weekOfMonth == 1){
       let tuesday = new Date(today.setDate(first));
-      console.log(tuesday);
+      let dateformatted = "Tue " + tuesday.getDate() + " "+ months[tuesday.getMonth()];
+      this.selected=dateformatted;
     }else if (weekOfMonth == 2){
       let tuesday = new Date(today.setDate(first+7));
-      console.log(tuesday);
+      let dateformatted = "Tue " + tuesday.getDate() + " "+ months[tuesday.getMonth()];
+      this.selected=dateformatted;      
     }else if (weekOfMonth == 3){
       let tuesday = new Date(today.setDate(first+14));
-      console.log(tuesday);
+      let dateformatted = "Tue " + tuesday.getDate() + " "+ months[tuesday.getMonth()];
+      this.selected=dateformatted;      
     }else if (weekOfMonth == 4){
       let tuesday = new Date(today.setDate(first+21));
-      console.log(tuesday);
+      let dateformatted = "Tue " + tuesday.getDate() + " "+ months[tuesday.getMonth()];
+      this.selected=dateformatted;      
     }else{
-      let tuesday = new Date(today.setDate(first+28));
-      console.log(tuesday);      
+      let tuesday = new Date(today.setDate(first+28));   
+      let dateformatted = "Tue " + tuesday.getDate() + " "+ months[tuesday.getMonth()];
+      this.selected=dateformatted;      
     }    
   }  
   @action getWednesday(){
@@ -126,19 +137,24 @@ export default class appointmentsComponent extends Component {
     let first = today.getDate() - today.getDay() + 3;
     if(weekOfMonth == 1){
       let wednesday = new Date(today.setDate(first));
-      console.log(wednesday);
+      let dateformatted = "Wed " + wednesday.getDate() + " "+ months[wednesday.getMonth()];
+      this.selected=dateformatted;      
     }else if (weekOfMonth == 2){
       let wednesday = new Date(today.setDate(first+7));
-      console.log(wednesday);
+      let dateformatted = "Wed " + wednesday.getDate() + " "+ months[wednesday.getMonth()];
+      this.selected=dateformatted;   
     }else if (weekOfMonth == 3){
       let wednesday = new Date(today.setDate(first+14));
-      console.log(wednesday);
+      let dateformatted = "Wed " + wednesday.getDate() + " "+ months[wednesday.getMonth()];
+      this.selected=dateformatted;   
     }else if (weekOfMonth == 4){
       let wednesday = new Date(today.setDate(first+21));
-      console.log(wednesday);
+      let dateformatted = "Wed " + wednesday.getDate() + " "+ months[wednesday.getMonth()];
+      this.selected=dateformatted;   
     }else{
-      let wednesday = new Date(today.setDate(first+28));
-      console.log(wednesday);      
+      let wednesday = new Date(today.setDate(first+28)); 
+      let dateformatted = "Wed " + wednesday.getDate() + " "+ months[wednesday.getMonth()];
+      this.selected=dateformatted;        
     }    
   }   
 
@@ -151,19 +167,24 @@ export default class appointmentsComponent extends Component {
     let first = today.getDate() - today.getDay() + 4;
     if(weekOfMonth == 1){
       let thursday = new Date(today.setDate(first));
-      console.log(thursday);
+      let dateformatted = "Thu " + thursday.getDate() + " "+ months[thursday.getMonth()];
+      this.selected=dateformatted;   
     }else if (weekOfMonth == 2){
       let thursday = new Date(today.setDate(first+7));
-      console.log(thursday);
+      let dateformatted = "Thu " + thursday.getDate() + " "+ months[thursday.getMonth()];
+      this.selected=dateformatted;      
     }else if (weekOfMonth == 3){
       let thursday = new Date(today.setDate(first+14));
-      console.log(thursday);
+      let dateformatted = "Thu " + thursday.getDate() + " "+ months[thursday.getMonth()];
+      this.selected=dateformatted;      
     }else if (weekOfMonth == 4){
       let thursday = new Date(today.setDate(first+21));
-      console.log(thursday);
+      let dateformatted = "Thu " + thursday.getDate() + " "+ months[thursday.getMonth()];
+      this.selected=dateformatted;      
     }else{
       let thursday = new Date(today.setDate(first+28));
-      console.log(thursday);      
+      let dateformatted = "Thu " + thursday.getDate() + " "+ months[thursday.getMonth()];
+      this.selected=dateformatted;           
     }    
   } 
   
@@ -176,19 +197,24 @@ export default class appointmentsComponent extends Component {
     let first = today.getDate() - today.getDay() + 5;
     if(weekOfMonth == 1){
       let friday = new Date(today.setDate(first));
-      console.log(friday);
+      let dateformatted = "Fri " + friday.getDate() + " "+ months[friday.getMonth()];
+      this.selected=dateformatted;
     }else if (weekOfMonth == 2){
       let friday = new Date(today.setDate(first+7));
-      console.log(friday);
+      let dateformatted = "Fri " + friday.getDate() + " "+ months[friday.getMonth()];
+      this.selected=dateformatted;      
     }else if (weekOfMonth == 3){
       let friday = new Date(today.setDate(first+14));
-      console.log(friday);
+      let dateformatted = "Fri " + friday.getDate() + " "+ months[friday.getMonth()];
+      this.selected=dateformatted;      
     }else if (weekOfMonth == 4){
       let friday = new Date(today.setDate(first+21));
-      console.log(friday);
+      let dateformatted = "Fri " + friday.getDate() + " "+ months[friday.getMonth()];
+      this.selected=dateformatted;      
     }else{
-      let friday = new Date(today.setDate(first+28));
-      console.log(friday);      
+      let friday = new Date(today.setDate(first+28)); 
+      let dateformatted = "Fri " + friday.getDate() + " "+ months[friday.getMonth()];
+      this.selected=dateformatted;          
     }    
   }   
 }

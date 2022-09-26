@@ -1,5 +1,6 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
+
 export default class AppointmentsRoute extends Route {
   @service router;
   @service login;
@@ -10,5 +11,8 @@ export default class AppointmentsRoute extends Route {
     } else {
       this.router.transitionTo('login'); //Abort
     }
+  }
+  model(){
+    return this.get('store').findAll('selected');
   }
 }
