@@ -12,7 +12,7 @@ export default class AppointmentsRoute extends Route {
       this.router.transitionTo('login'); //Abort
     }
   }
-  model(){
-    return this.get('store').findAll('selected');
+  model() {
+    return this.store.findAll('selected');
   }
 }

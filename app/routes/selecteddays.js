@@ -11,5 +11,4 @@ export default class SelecteddaysRoute extends Route {
       this.router.transitionTo('login'); //Abort
     }
   }
-
 }
