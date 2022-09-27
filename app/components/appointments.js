@@ -41,7 +41,7 @@ export default class appointmentsComponent extends Component {
   }
 
   @action double(){
-    this.multiple = this.multiple *2;
+    this.multiple = this.multiple * 2;
   }
   @action change(amount){
     this.count = this.count + amount;
