@@ -4,10 +4,12 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
 export default class bookingsComponent extends Component {
-    actionpassed;
-
-    @action getDay() {
-        console.log("Hola soy la accion padre");
+    constructor() {
+        super(...arguments);
       }
+
+    @action showAction(){
+      console.log("Hola");
+    }
     
 }

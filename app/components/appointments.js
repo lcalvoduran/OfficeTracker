@@ -34,6 +34,10 @@ export default class appointmentsComponent extends Component {
     this.monthYear = months[currentMonth] + ' ' + currentYear;
   }
 
+  @action getSelected(){
+    console.log(this.selected);
+  }
+
   @action next() {
     this.currentWeek = this.currentWeek + 1;
     if (this.currentWeek >= 6) {
