@@ -36,6 +36,13 @@ export default class appointmentsComponent extends Component {
     this.monthYear = months[currentMonth] + ' ' + currentYear;
   }
 
+  @action arrays(){
+    this.arrayDays = ['Hey Simeon'];
+    console.log(this.arrayDays);
+  }
+
+
+
   get total(){
     return this.count * this.args.multiple;
   }
@@ -43,6 +50,7 @@ export default class appointmentsComponent extends Component {
   @action double(){
     this.multiple = this.multiple * 2;
   }
+
   @action change(amount){
     this.count = this.count + amount;
   }
