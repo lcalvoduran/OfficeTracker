@@ -4,12 +4,12 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
 export default class bookingsComponent extends Component {
-    constructor() {
-        super(...arguments);
-      }
 
-    @action showAction(){
-      console.log("Hola");
-    }
-    
+  @tracked multiple = 6;
+
+  @action double(){
+    this.multiple = this.multiple *2;
+  }
+
+
 }

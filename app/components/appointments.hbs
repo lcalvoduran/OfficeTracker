@@ -1,8 +1,9 @@
     <div class="appointments">
         <div class="appointments-header" id="monthYear">{{this.monthYear}}  | Week: {{this.currentWeek}}
         </div>
-        <p></p>
-        <span>{{this.selected}}</span>
+        <p>{{this.count}}</p>
+        <p>{{@multiple}}</p>
+        <p>= {{this.total}}</p>
         <button class="rup-btn rup-btn--text" id="back"type="button" {{on "click" this.back}}>
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="icon-chevron-left"><path class="primary" fill-rule="evenodd" clip-rule="evenodd" d="M15.707 5.293a1 1 0 00-1.414 0l-6 6a1 1 0 000 1.414l6 6a1 1 0 001.414-1.414L10.414 12l5.293-5.293a1 1 0 000-1.414z"/></svg>
         </button>
@@ -14,11 +15,11 @@
         
             <thead>
                 <tr>
-                    <th><button class="rup-btn rup-btn--sm " type="button" {{on "click"  this.getMonday}}>      Mon         </button></th>
-                    <th><button class="rup-btn rup-btn--sm " type="button" {{on "click"  this.getTuesday}}>     Tue         </button></th>
-                    <th><button class="rup-btn rup-btn--sm " type="button" {{on "click"  this.getWednesday}}>   Wed         </button></th>
-                    <th><button class="rup-btn rup-btn--sm " type="button" {{on "click"  this.getThursday}}>    Thu         </button></th>
-                    <th><button class="rup-btn rup-btn--sm " type="button" {{on "click"  this.getFriday}}>      Fri         </button></th>
+                    <th><button class="rup-btn rup-btn--sm " type="button" {{on "click" this.double}}>       Mon         </button></th>
+                    <th><button class="rup-btn rup-btn--sm " type="button">       Tue         </button></th>
+                    <th><button class="rup-btn rup-btn--sm " type="button">       Wed         </button></th>
+                    <th><button class="rup-btn rup-btn--sm " type="button">       Thu         </button></th>
+                    <th><button class="rup-btn rup-btn--sm " type="button">       Fri         </button></th>
                     <th><button class="rup-btn rup-btn--text" type="button" disabled>                           Sat         </button></th>
                     <th><button class="rup-btn rup-btn--text" type="button" disabled>                           Sun         </button></th>
                 </tr>
