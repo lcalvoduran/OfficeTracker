@@ -5,11 +5,9 @@ import { action } from '@ember/object';
 
 export default class bookingsComponent extends Component {
 
-  @tracked multiple = 2;
-  @tracked arrayDays = ['heeeeey'];
+  @tracked arrayDays = ['💬​'];
 
-  
-  @action updateMultiple(newMultiple) {
-    this.multiple = newMultiple;
+  @action updateArray(newArray) {
+    this.arrayDays = newArray;
   }
 }

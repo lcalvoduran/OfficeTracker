@@ -22,9 +22,7 @@ let months = [
 export default class appointmentsComponent extends Component {
   @tracked monthYear;
   @tracked currentWeek = 1;
-  @tracked numberDay;
-  @tracked selected = ' 🖱️ Click on a day 🖱️ ';
-  
+  @tracked numberDay;  
   @tracked count = 0;
 
   constructor() {
@@ -36,16 +34,12 @@ export default class appointmentsComponent extends Component {
     this.monthYear = months[currentMonth] + ' ' + currentYear;
   }
 
-  get total(){
-    return this.count * this.args.multiple;
-  }
 
-  @action double(){
-    this.args.updateMultiple(this.args.multiple * 2);
-  }
-
-  @action change(amount){
-    this.count = this.count + amount;
+  @action changeArray(day){
+    console.log(this.args.arrayDays);
+    console.log("Day selected: " + day);
+    let newArray = ["Juan"];
+    this.args.updateArray(newArray);
   }
 
   @action getSelected(){
