@@ -27,28 +27,28 @@ export default class appointmentsComponent extends Component {
     let totalDaysMonth  = new Date (currentYear, currentMonth + 1, 0).getDate();
     console.log(totalDaysMonth);
     console.log(( new Date( currentYear, currentMonth ) ).getDate());
-    var week;
-    
-
-
-    function days(current) {
-      var week = new Array();
-      // Starting Monday not Sunday 
-      var first = ((current.getDate() - current.getDay()) + 1);
-      for (var i = 0; i < 7; i++) {
-        week.push(
-          new Date(current.setDate(first++))
-        );
+    var date = new Date(currentYear, currentMonth, 1);
+    var savedDays;
+    let diaString = date.getDay();
+    while (date.getMonth() === currentMonth) {
+      savedDays = new Date(date);
+      if(diaString == 1){
+        this.numberOfDay1 = date.getDate();
+      }else if(diaString == 2){
+        this.numberOfDay2 = date.getDate();
+      }else if(diaString == 3){
+        this.numberOfDay3 = date.getDate();  
+      }else if(diaString == 4){
+        this.numberOfDay4 = date.getDate();                    
+      }else{
+        
       }
-      return week;
+      date.setDate(date.getDate() + 1); 
+      
+      console.log(savedDays);
+   
     }
-    
-    var input = new Date(2022, 8, 1);
-    console.log('input: %s', input);
-    
-    var result = days(input);
-    console.log(result.map(d => d.toString()));
-    
+      
   }
 
 
