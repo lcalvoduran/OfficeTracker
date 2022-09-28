@@ -8,4 +8,8 @@ export default class bookingsComponent extends Component {
   @tracked multiple = 2;
   @tracked arrayDays = ['heeeeey'];
 
+  
+  @action updateMultiple(newMultiple) {
+    this.multiple = newMultiple;
+  }
 }
