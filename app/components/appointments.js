@@ -5,45 +5,60 @@ import { action } from '@ember/object';
 let today = new Date();
 let currentMonth = today.getMonth();
 let currentYear = today.getFullYear();
-let months = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December',
-];
+let months = [  'January',  'February',  'March',  'April',  'May',  'June',  'July',  'August',  'September',  'October',  'November',  'December'];
 export default class appointmentsComponent extends Component {
   @tracked monthYear;
   @tracked currentWeek = 1;
-  @tracked numberDay;  
   @tracked count = 0;
+  @tracked numberOfDay1;
+  @tracked numberOfDay2;
+  @tracked numberOfDay3;
+  @tracked numberOfDay4;
+  @tracked numberOfDay5;
 
   constructor() {
     super(...arguments);
-    this.showMyCalendarYear(currentMonth, currentYear);
+    this.showMyCalendar(currentMonth, currentYear);
   }
 
-  showMyCalendarYear(month, year) {
+  showMyCalendar(month, year) {
     this.monthYear = months[currentMonth] + ' ' + currentYear;
+    //Cheatsheet: Date (year, month, day, hour, min, sec, mili)
+    let totalDaysMonth  = new Date (currentYear, currentMonth + 1, 0).getDate();
+    console.log(totalDaysMonth);
+    console.log(( new Date( currentYear, currentMonth ) ).getDate());
+    var week;
+    
+
+
+    function days(current) {
+      var week = new Array();
+      // Starting Monday not Sunday 
+      var first = ((current.getDate() - current.getDay()) + 1);
+      for (var i = 0; i < 7; i++) {
+        week.push(
+          new Date(current.setDate(first++))
+        );
+      }
+      return week;
+    }
+    
+    var input = new Date(2022, 8, 1);
+    console.log('input: %s', input);
+    
+    var result = days(input);
+    console.log(result.map(d => d.toString()));
+    
   }
+
 
 
   @action changeArray(day){
-    console.log(this.args.arrayDays);
     console.log("Day selected: " + day);
-    let newArray = ["Juan"];
+    let dateFormatted = day + " " + today.getDate() + " " + months[currentMonth];
+    let newArray = [dateFormatted];
+    console.log(newArray);
     this.args.updateArray(newArray);
-  }
-
-  @action getSelected(){
-    console.log(this.selected);
   }
 
   @action next() {
@@ -79,4 +94,5 @@ export default class appointmentsComponent extends Component {
         months[currentMonth] + ' ' + currentYear;
     }
   }
+  
 }
