@@ -15,3 +15,9 @@ actions = events
 isMarked deberia ser un metodo que te mire si el array que te dio el padre contiene ese dia
 
 2- lo de pintar los dias y su calculo son 2 cosas diferentes, para pintar un dia pues hazte un get y lo usas en la template. Para calcular el dia y darle formato puedes usar el Date.format o el toString, que te devolverán una cadena con el formato que le digas
+
+
+
+DOCS 29/09/2022 ---> Item indexes
+
+https://guides.emberjs.com/release/components/looping-through-lists/
