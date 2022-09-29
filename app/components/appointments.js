@@ -9,7 +9,6 @@ let months = [  'January',  'February',  'March',  'April',  'May',  'June',  'J
 export default class appointmentsComponent extends Component {
   @tracked monthYear;
   @tracked currentWeek = 1;
-  @tracked count = 0;
   @tracked numberOfDay1;
   @tracked numberOfDay2;
   @tracked numberOfDay3;
@@ -19,6 +18,7 @@ export default class appointmentsComponent extends Component {
   constructor() {
     super(...arguments);
     this.showMyCalendar(currentMonth, currentYear);
+    this.isMarked();
   }
 
   showMyCalendar(month, year) {
@@ -27,37 +27,23 @@ export default class appointmentsComponent extends Component {
     let totalDaysMonth  = new Date (currentYear, currentMonth + 1, 0).getDate();
     //console.log(totalDaysMonth);
     //console.log(( new Date( currentYear, currentMonth ) ).getDate());
-    var date = new Date(currentYear, currentMonth, 1);
-/*     var savedDays;
-    let diaString = date.getDay();
-    while (date.getMonth() === currentMonth) {
-      savedDays = new Date(date);
-      if(diaString == 1){
-        this.numberOfDay1 = date.getDate();
-      }else if(diaString == 2){
-        this.numberOfDay2 = date.getDate();
-      }else if(diaString == 3){
-        this.numberOfDay3 = date.getDate();  
-      }else if(diaString == 4){
-        this.numberOfDay4 = date.getDate();                    
-      }else{
-        
-      }
-      date.setDate(date.getDate() + 1); 
-      
-      console.log(savedDays);
-   
-    } */
-      
+    var date = new Date(currentYear, currentMonth, 1);      
+  }
+
+  isMarked(arrayDays){
+    console.log(this.arrayDays);
   }
 
 
 
-  @action changeArray(day){
-    console.log("Day selected: " + day);
+  @action changeArray(day, boolean){
     let dateFormatted = day + " " + today.getDate() + " " + months[currentMonth];
-    let newArray = [dateFormatted];
-    console.log(newArray);
+    let newArray = 
+            [{
+              date: dateFormatted,
+              marked: boolean
+            }];
+    console.log("Datos: " + newArray[0].date);
     this.args.updateArray(newArray);
   }
 
