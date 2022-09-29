@@ -18,7 +18,6 @@ export default class appointmentsComponent extends Component {
   constructor() {
     super(...arguments);
     this.showMyCalendar(currentMonth, currentYear);
-    this.isMarked();
   }
 
   showMyCalendar(month, year) {
@@ -30,8 +29,15 @@ export default class appointmentsComponent extends Component {
     var date = new Date(currentYear, currentMonth, 1);      
   }
 
-  isMarked(arrayDays){
-    console.log(this.arrayDays);
+  isMarked(newArray){
+
+    //let finder = varLocal.find(estado => estado.marked == true);
+    let find = newArray.find(estado=> estado.marked == true);
+    if(find){
+      return true;
+    }else{
+      return false;
+    }
   }
 
 
@@ -43,8 +49,9 @@ export default class appointmentsComponent extends Component {
               date: dateFormatted,
               marked: boolean
             }];
-    console.log("Datos: " + newArray[0].date);
+    //console.log("Datos: " + newArray[0].date);
     this.args.updateArray(newArray);
+    this.isMarked(newArray);
   }
 
   @action next() {
