@@ -1,12 +1,18 @@
     <div class="selecteddays">
       <div class="selecteddays-header">Selected Days</div>
       <p></p>
-      <input 
+{{!--       <input 
             type="text" 
             value="" 
             class="rup-input"
             placeholder={{@arrayDays}}
-            >
+            > --}}
+      <div class="rup-select">
+        <select>
+          <option value="">Check your mark days</option>  
+          <option value={{@arrayDays}}>{{@arrayDays}}</option>
+        </select>          
+      </div>            
       <p></p>
       <button class="rup-btn rup-btn--contained" type="button">Save</button>
     </div>
