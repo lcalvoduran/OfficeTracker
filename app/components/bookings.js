@@ -12,7 +12,6 @@ export default class bookingsComponent extends Component {
   @action updateArray(newArray) {
     this.arrayDays.push(newArray);  
     //this.selectedDay = this.arrayDays.at(-1)[0].date; //Nuevo hace poco en JS permite obtener el último elemento
-    localStorage.setItem("miLista", JSON.stringify(this.arrayDays));
     this.selectedDay = this.arrayDays.filter(estado=> estado.marked == true);   
   }
 

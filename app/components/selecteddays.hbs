@@ -4,12 +4,12 @@
 
       <div class="rup-select">
         <select>
-          <option value="">Check your mark days</option> 
+          <option value="">Check your days</option> 
         {{#each @selectedDay as |day index|}}
           <option value={{day.date}}>{{day.date}}</option>
         {{/each}}          
         </select>          
       </div>            
       <p></p>
-      <button class="rup-btn rup-btn--contained" type="button">Save</button>
+      <button {{on "click" this.saveDates}} class="rup-btn rup-btn--contained" type="button">Save</button>
     </div>

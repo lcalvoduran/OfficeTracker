@@ -8,6 +8,8 @@ export default class selecteddaysComponent extends Component {
         super(...arguments);
     }
 
-
+    @action saveDates(){
+        localStorage.setItem("myDates", JSON.stringify(this.args.selectedDay));  
+    }    
 }
 
