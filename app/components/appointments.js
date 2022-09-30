@@ -42,7 +42,6 @@ export default class appointmentsComponent extends Component {
       //console.log("Datos: " + newArray[0].date);
       this.args.updateArray(newArray);   
       this.isMarked = isMarked;  
-      console.log(newArray);
   }
 
   @action next() {
