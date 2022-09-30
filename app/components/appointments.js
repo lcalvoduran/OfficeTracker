@@ -29,29 +29,18 @@ export default class appointmentsComponent extends Component {
     var date = new Date(currentYear, currentMonth, 1);      
   }
 
-  isMarked(newArray){
-
-    //let finder = varLocal.find(estado => estado.marked == true);
-    let find = newArray.find(estado=> estado.marked == true);
-    if(find){
-      return true;
-    }else{
-      return false;
-    }
-  }
-
-
 
   @action changeArray(day, boolean){
+    
     let dateFormatted = day + " " + today.getDate() + " " + months[currentMonth];
     let newArray = 
-            [{
+            {
               date: dateFormatted,
               marked: boolean
-            }];
+            };
     //console.log("Datos: " + newArray[0].date);
     this.args.updateArray(newArray);
-    this.isMarked(newArray);
+    
   }
 
   @action next() {

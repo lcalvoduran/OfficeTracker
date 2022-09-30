@@ -4,8 +4,10 @@
 
       <div class="rup-select">
         <select>
-          <option value="">Check your mark days</option>  
-            <option value={{@selectedDay}}>{{@selectedDay}}</option>
+          <option value="">Check your mark days</option> 
+        {{#each @selectedDay as |day index|}}
+          <option value={{day.date}}>{{day.date}}</option>
+        {{/each}}          
         </select>          
       </div>            
       <p></p>
