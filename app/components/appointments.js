@@ -9,8 +9,7 @@ let months = [  'January',  'February',  'March',  'April',  'May',  'June',  'J
 export default class appointmentsComponent extends Component {
   @tracked monthYear;
   @tracked currentWeek = 1;
-/*   @tracked isMarkedMonday = false;
-  @tracked isMarkedTuesday = false; */
+  @tracked isMarked = false;
   queue = [
     { day: 'Mon'},
     { day: 'Tue'},
@@ -29,33 +28,21 @@ export default class appointmentsComponent extends Component {
     this.monthYear = months[currentMonth] + ' ' + currentYear;
     //Cheatsheet: Date (year, month, day, hour, min, sec, mili)
     let totalDaysMonth  = new Date (currentYear, currentMonth + 1, 0).getDate();
-    //console.log(totalDaysMonth);
-    //console.log(( new Date( currentYear, currentMonth ) ).getDate());
     var date = new Date(currentYear, currentMonth, 1);      
   }
 
 
-  @action changeArray(day, boolean){    
-    if (boolean == true) {
+  @action changeArray(day, isMarked){    
       let dateFormatted = day + " " + today.getDate() + " " + months[currentMonth];
       let newArray = 
               {
                 date: dateFormatted,
-                marked: boolean
+                marked: isMarked
               };
       //console.log("Datos: " + newArray[0].date);
-      this.args.updateArray(newArray);     
-      if (day == "Mon") {
-        this.isMarkedMonday = true;
-      } else if(day == "Tue") {
-        this.isMarkedTuesday = true;
-      }
-      
-    } else {
-      console.log("Día ya marcado");
-    }
-
-    
+      this.args.updateArray(newArray);   
+      this.isMarked = isMarked;  
+      console.log(newArray);
   }
 
   @action next() {
