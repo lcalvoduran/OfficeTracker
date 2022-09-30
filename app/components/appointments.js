@@ -9,11 +9,8 @@ let months = [  'January',  'February',  'March',  'April',  'May',  'June',  'J
 export default class appointmentsComponent extends Component {
   @tracked monthYear;
   @tracked currentWeek = 1;
-  @tracked numberOfDay1;
-  @tracked numberOfDay2;
-  @tracked numberOfDay3;
-  @tracked numberOfDay4;
-  @tracked numberOfDay5;
+  @tracked isMarkedMonday = false;
+  @tracked isMarkedTuesday = false;
 
   constructor() {
     super(...arguments);
@@ -30,16 +27,26 @@ export default class appointmentsComponent extends Component {
   }
 
 
-  @action changeArray(day, boolean){
-    
-    let dateFormatted = day + " " + today.getDate() + " " + months[currentMonth];
-    let newArray = 
-            {
-              date: dateFormatted,
-              marked: boolean
-            };
-    //console.log("Datos: " + newArray[0].date);
-    this.args.updateArray(newArray);
+  @action changeArray(day, boolean){    
+    if (boolean == true) {
+      let dateFormatted = day + " " + today.getDate() + " " + months[currentMonth];
+      let newArray = 
+              {
+                date: dateFormatted,
+                marked: boolean
+              };
+      //console.log("Datos: " + newArray[0].date);
+      this.args.updateArray(newArray);     
+      if (day == "Mon") {
+        this.isMarkedMonday = true;
+      } else if(day == "Tue") {
+        this.isMarkedTuesday = true;
+      }
+      
+    } else {
+      console.log("Día ya marcado");
+    }
+
     
   }
 
@@ -78,3 +85,4 @@ export default class appointmentsComponent extends Component {
   }
   
 }
+
