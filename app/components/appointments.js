@@ -39,7 +39,6 @@ export default class appointmentsComponent extends Component {
                 date: dateFormatted,
                 marked: isMarked
               };
-      //console.log("Datos: " + newArray[0].date);
       this.args.updateArray(newArray);   
       this.isMarked = isMarked;  
   }
