@@ -9,8 +9,16 @@ let months = [  'January',  'February',  'March',  'April',  'May',  'June',  'J
 export default class appointmentsComponent extends Component {
   @tracked monthYear;
   @tracked currentWeek = 1;
-  @tracked isMarkedMonday = false;
-  @tracked isMarkedTuesday = false;
+/*   @tracked isMarkedMonday = false;
+  @tracked isMarkedTuesday = false; */
+  queue = [
+    { day: 'Mon'},
+    { day: 'Tue'},
+    { day: 'Wed'},
+    { day: 'Thu'},
+    { day: 'Fri'},
+
+  ]
 
   constructor() {
     super(...arguments);
