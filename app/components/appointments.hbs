@@ -15,24 +15,34 @@
         
             <thead>
                 <tr>
-                {{#each this.queue as | dayOfWeek index|}}
-                    {{#if this.isMarked}}
-                        <th><button id="Mon" class="rup-btn rup-btn--sm rup-btn--contained" type="button" {{on "click" (fn this.changeArray dayOfWeek.day false)}}>{{dayOfWeek.day}}</button></th>                        
-                    {{else}}                
-                        <th><button id={{dayOfWeek.day}} class="rup-btn rup-btn--sm" type="button" {{on "click" (fn this.changeArray dayOfWeek.day true)}}>{{dayOfWeek.day}}</button></th>
+                    {{#if this.isMarkedMon}}   
+                        <th><button id="Mon" class="rup-btn rup-btn--sm rup-btn--contained" type="button" {{on "click" (fn this.changeArray "Mon" false)}}>Mon</button></th>
+                    {{else}}
+                        <th><button id="Mon" class="rup-btn rup-btn--sm" type="button" {{on "click" (fn this.changeArray "Mon" true)}}>Mon</button></th>
                     {{/if}}
-                {{/each}}
+                    {{#if this.isMarkedTue}}
+                        <th><button id="Tue" class="rup-btn rup-btn--sm rup-btn--contained" type="button" {{on "click" (fn this.changeArray "Tue" false)}}>Tue</button></th> 
+                    {{else}}                   
+                        <th><button id="Tue" class="rup-btn rup-btn--sm" type="button" {{on "click" (fn this.changeArray "Tue" true)}}>Tue</button></th>
+                    {{/if}} 
+                    {{#if this.isMarkedWed}}
+                        <th><button id="Wed" class="rup-btn rup-btn--sm rup-btn--contained" type="button" {{on "click" (fn this.changeArray "Wed" false)}}>Wed</button></th> 
+                    {{else}}                   
+                        <th><button id="Wed" class="rup-btn rup-btn--sm" type="button" {{on "click" (fn this.changeArray "Wed" true)}}>Wed</button></th>
+                    {{/if}}
+                    {{#if this.isMarkedThu}}
+                        <th><button id="Thu" class="rup-btn rup-btn--sm rup-btn--contained" type="button" {{on "click" (fn this.changeArray "Thu" false)}}>Thu</button></th> 
+                    {{else}}                   
+                        <th><button id="Thu" class="rup-btn rup-btn--sm" type="button" {{on "click" (fn this.changeArray "Thu" true)}}>Thu</button></th>
+                    {{/if}}
+                    {{#if this.isMarkedFri}}
+                        <th><button id="Fri" class="rup-btn rup-btn--sm rup-btn--contained" type="button" {{on "click" (fn this.changeArray "Fri" false)}}>Fri</button></th> 
+                    {{else}}                   
+                        <th><button id="Fri" class="rup-btn rup-btn--sm" type="button" {{on "click" (fn this.changeArray "Fri" true)}}>Fri</button></th>
+                    {{/if}}                                                            
                     <th><button class="rup-btn rup-btn--text" type="button" disabled>Sat</button></th>
                     <th><button class="rup-btn rup-btn--text" type="button" disabled>Sun</button></th>                   
-{{!--           {{#each this.queue as | dayOfWeek index|}}
-                    {{#if this.isMarked}}
-                        <th><button id={{dayOfWeek.day}} class="rup-btn rup-btn--sm rup-btn--contained" type="button" {{on "click" (fn this.changeArray dayOfWeek.day false)}}>{{dayOfWeek.day}}</button></th>
-                    {{else}}
-                        <th><button id={{dayOfWeek.day}} class="rup-btn rup-btn--sm" type="button" {{on "click" (fn this.changeArray dayOfWeek.day true)}}>{{dayOfWeek.day}}</button></th>
-                    {{/if}}
-                {{/each}}
-                    <th><button class="rup-btn rup-btn--text" type="button" disabled>Sat</button></th>
-                    <th><button class="rup-btn rup-btn--text" type="button" disabled>Sun</button></th> --}}
+
                 </tr>
             </thead>
     

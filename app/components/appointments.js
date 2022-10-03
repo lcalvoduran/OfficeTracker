@@ -10,14 +10,18 @@ export default class appointmentsComponent extends Component {
   @tracked monthYear;
   @tracked currentWeek = 1;
   @tracked isMarked = false;
-  queue = [
+  @tracked isMarkedMon = false;
+  @tracked isMarkedTue = false;
+  @tracked isMarkedWed = false;
+  @tracked isMarkedThu = false;
+  @tracked isMarkedFri = false;
+/*   queue = [
     { day: 'Mon'},
     { day: 'Tue'},
     { day: 'Wed'},
     { day: 'Thu'},
     { day: 'Fri'},
-
-  ]
+  ] */
 
   constructor() {
     super(...arguments);
@@ -39,8 +43,18 @@ export default class appointmentsComponent extends Component {
                 date: dateFormatted,
                 marked: isMarked
               };
-      this.args.updateArray(newArray);   
-      this.isMarked = isMarked;  
+      if (day=="Mon"){
+      this.isMarkedMon = isMarked;  
+      }else if (day=="Tue"){
+        this.isMarkedTue = isMarked; 
+      }else if (day=="Wed"){
+        this.isMarkedWed = isMarked;
+      }else if (day=="Thu"){
+        this.isMarkedThu = isMarked;
+      }else if (day=="Fri"){
+        this.isMarkedFri = isMarked;
+      }
+      this.args.updateArray(newArray, dateFormatted, isMarked);
   }
 
   @action next() {

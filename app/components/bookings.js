@@ -9,10 +9,16 @@ export default class bookingsComponent extends Component {
 
   @tracked selectedDay ="";
 
-  @action updateArray(newArray) {
-    this.arrayDays.push(newArray);  
-    //this.selectedDay = this.arrayDays.at(-1)[0].date; //Nuevo hace poco en JS permite obtener el último elemento
-    this.selectedDay = this.arrayDays.filter(estado=> estado.marked == true);   
+  @action updateArray(newArray, dateFormatted, isMarked) {
+    var foundPair = this.arrayDays.find(diaNombre => diaNombre.date == dateFormatted);
+    if(foundPair){
+      console.log("Elemento ya añadido");
+      foundPair.marked = isMarked;
+    }else{
+      console.log("Añadiendo elemento");
+      this.arrayDays.push(newArray);
+    }
+    this.selectedDay = this.arrayDays.filter(estado=> estado.marked == true);  
   }
 
 }
