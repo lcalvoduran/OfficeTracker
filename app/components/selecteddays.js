@@ -9,7 +9,9 @@ export default class selecteddaysComponent extends Component {
     }
 
     @action saveDates(){
-        localStorage.setItem("myDates", JSON.stringify(this.args.selectedDay));  
+        localStorage.setItem("myDates", JSON.stringify(this.args.selectedDay)); 
+        window.alert("The changes will be stored in the local Database"); 
+        window.location.reload();
     }    
 }
 

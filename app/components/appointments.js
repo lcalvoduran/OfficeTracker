@@ -36,7 +36,7 @@ export default class appointmentsComponent extends Component {
   }
 
 
-  @action changeArray(day, isMarked){    
+  @action changeArray(day, isMarked){
       let dateFormatted = day + " " + today.getDate() + " " + months[currentMonth];
       let newArray = 
               {
