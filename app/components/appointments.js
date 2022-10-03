@@ -38,7 +38,20 @@ export default class appointmentsComponent extends Component {
       let user = this.login.retrieveSessionStorage();
       this.Usuario = user.replace('@copyright.com', '');
 
+/* 
+UPDATE ....
+//////////////////////////////////////////////////////////////////////////
+var current = new Date(2022, 9, 19);
+var firstDay = current.getDate()+2 - current.getDay();
+var lastDay = firstDay + 4;
+console.log(firstDay);
+console.log(lastDay);
+var firstdayWeek = new Date(current.setDate(firstDay)).toUTCString();
+console.log("Firstdayweek: " + firstdayWeek);
+var lastdayWeek = new Date(current.setDate(lastDay)).toUTCString();
+console.log("lastdayWeek: " + lastdayWeek);
 
+*/
       
       if (day=="Mon"){
         this.isMarkedMon = isMarked;   
