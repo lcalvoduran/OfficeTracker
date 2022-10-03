@@ -7,21 +7,17 @@ let currentMonth = today.getMonth();
 let currentYear = today.getFullYear();
 let months = [  'January',  'February',  'March',  'April',  'May',  'June',  'July',  'August',  'September',  'October',  'November',  'December'];
 export default class appointmentsComponent extends Component {
+  @service login;
   @tracked monthYear;
-  @tracked currentWeek = 1;
+  @tracked currentWeek;
   @tracked isMarked = false;
   @tracked isMarkedMon = false;
   @tracked isMarkedTue = false;
   @tracked isMarkedWed = false;
   @tracked isMarkedThu = false;
   @tracked isMarkedFri = false;
-/*   queue = [
-    { day: 'Mon'},
-    { day: 'Tue'},
-    { day: 'Wed'},
-    { day: 'Thu'},
-    { day: 'Fri'},
-  ] */
+  @tracked Usuario;
+
 
   constructor() {
     super(...arguments);
@@ -31,20 +27,21 @@ export default class appointmentsComponent extends Component {
   showMyCalendar(month, year) {
     this.monthYear = months[currentMonth] + ' ' + currentYear;
     //Cheatsheet: Date (year, month, day, hour, min, sec, mili)
-    let totalDaysMonth  = new Date (currentYear, currentMonth + 1, 0).getDate();
-    var date = new Date(currentYear, currentMonth, 1);      
+    let startDate = new Date(today.getFullYear(), currentMonth, 1);
+    var myDays = Math.floor((today - startDate)/(24 * 60 * 60 * 1000));
+    this.currentWeek = Math.ceil(myDays/7) + 1;
   }
 
 
   @action changeArray(day, isMarked){
-      let dateFormatted = day + " " + today.getDate() + " " + months[currentMonth];
-      let newArray = 
-              {
-                date: dateFormatted,
-                marked: isMarked
-              };
+      
+      let user = this.login.retrieveSessionStorage();
+      this.Usuario = user.replace('@copyright.com', '');
+
+
+      
       if (day=="Mon"){
-      this.isMarkedMon = isMarked;  
+        this.isMarkedMon = isMarked;   
       }else if (day=="Tue"){
         this.isMarkedTue = isMarked; 
       }else if (day=="Wed"){
@@ -52,13 +49,20 @@ export default class appointmentsComponent extends Component {
       }else if (day=="Thu"){
         this.isMarkedThu = isMarked;
       }else if (day=="Fri"){
-        this.isMarkedFri = isMarked;
+        this.isMarkedFri = isMarked;  
       }
-      this.args.updateArray(newArray, dateFormatted, isMarked);
+      let dateFormatted = day + " " + today.getDate() + " " + months[currentMonth];
+      let newArray = 
+              {
+                date: dateFormatted,
+                marked: isMarked
+              };   
+      this.args.updateArray(newArray, dateFormatted, isMarked);        
   }
 
   @action next() {
     this.currentWeek = this.currentWeek + 1;
+
     if (this.currentWeek >= 6) {
       this.currentWeek = 1;
     }
