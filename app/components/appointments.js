@@ -35,7 +35,26 @@ export default class appointmentsComponent extends Component {
   showMyCalendar(month, year) {
     this.monthYear = months[currentMonth] + ' ' + currentYear;
     this.currentWeek = this.myCurrentWeek();
-    console.log(this.myFirstMonday());    
+    this.displayNumberWithDays();
+  }
+
+  displayNumberWithDays(){
+    if(this.currentWeek == 1){
+      let trackeada = 1;
+      this.numberOfDay1 = this.myFirstMonday(trackeada);
+    }else if (this.currentWeek == 2){
+      let trackeada = 1+7;
+      this.numberOfDay1 = this.myFirstMonday(trackeada);
+    }else if (this.currentWeek == 3){
+      let trackeada = 1+14;
+      this.numberOfDay1 = this.myFirstMonday(trackeada);
+    }else if (this.currentWeek == 4){
+      let trackeada = 1+21;
+      this.numberOfDay1 = this.myFirstMonday(trackeada);
+    }else if (this.currentWeek == 5){
+      let trackeada = 1+28;
+      this.numberOfDay1 = this.myFirstMonday(trackeada);
+    }    
   }
 
   myCurrentWeek(){
@@ -44,13 +63,20 @@ export default class appointmentsComponent extends Component {
     return Math.ceil(myDays/7) + 1;  
   }
 
-  myFirstMonday(){
-    let startDate2 = new Date(today.getFullYear(), currentMonth, 1);
+  myFirstMonday(trackeada){
+    let startDate2 = new Date(today.getFullYear(), currentMonth, trackeada);
     let first2 = startDate2.getDate()-startDate2.getDay()+1;
     let firstMonday = new Date(today.setDate(first2));
-    return firstMonday; 
+    return firstMonday.getDate(); 
   }
 
+  putAllToFalse(){
+    this.isMarkedMon=false;
+    this.isMarkedTue=false;
+    this.isMarkedWed=false;
+    this.isMarkedThu=false;
+    this.isMarkedFri=false;
+  }
 
   @action changeArray(day, isMarked){
       //Usuario
@@ -78,8 +104,8 @@ export default class appointmentsComponent extends Component {
   }
 
   @action next() {
+    this.putAllToFalse();
     this.currentWeek = this.currentWeek + 1;
-
     if (this.currentWeek >= 6) {
       this.currentWeek = 1;
     }
@@ -92,9 +118,26 @@ export default class appointmentsComponent extends Component {
       currentMonth = (currentMonth + 1) % 12;
       this.monthYear = months[currentMonth] + ' ' + currentYear;
     }
+    if(this.currentWeek == 1){
+      let trackeada = 1;
+      this.numberOfDay1 = this.myFirstMonday(trackeada);
+    }else if (this.currentWeek == 2){
+      let trackeada = 1+7;
+      this.numberOfDay1 = this.myFirstMonday(trackeada);
+    }else if (this.currentWeek == 3){
+      let trackeada = 1+14;
+      this.numberOfDay1 = this.myFirstMonday(trackeada);      
+    }else if (this.currentWeek == 4){
+      let trackeada = 1+21;
+      this.numberOfDay1 = this.myFirstMonday(trackeada);  
+    }else if (this.currentWeek == 5){
+      let trackeada = 1+28;
+      this.numberOfDay1 = this.myFirstMonday(trackeada);            
+    }       
   }
 
   @action back() {
+    this.putAllToFalse();
     this.currentWeek = this.currentWeek - 1;
     if (this.currentWeek <= 0) {
       this.currentWeek = 5;
@@ -110,6 +153,22 @@ export default class appointmentsComponent extends Component {
       this.monthYear = this.monthYear =
         months[currentMonth] + ' ' + currentYear;
     }
+    if(this.currentWeek == 1){
+      let trackeada = 1;
+      this.numberOfDay1 = this.myFirstMonday(trackeada);
+    }else if (this.currentWeek == 2){
+      let trackeada = 1+7;
+      this.numberOfDay1 = this.myFirstMonday(trackeada);
+    }else if (this.currentWeek == 3){
+      let trackeada = 1+14;
+      this.numberOfDay1 = this.myFirstMonday(trackeada);      
+    }else if (this.currentWeek == 4){
+      let trackeada = 1+21;
+      this.numberOfDay1 = this.myFirstMonday(trackeada);  
+    }else if (this.currentWeek == 5){
+      let trackeada = 1+28;
+      this.numberOfDay1 = this.myFirstMonday(trackeada);            
+    }     
   }
   
 }
