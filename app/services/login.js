@@ -18,7 +18,6 @@ export default class LoginService extends Service {
   }
 
   retrieveSessionStorage() {
-    console.log('...Comprobando datos');
     let varLocal = localStorage.getItem('currentUser');
     if (varLocal == null) {
       this.userArray = [];
