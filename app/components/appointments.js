@@ -119,13 +119,17 @@ export default class appointmentsComponent extends Component {
         this.isMarkedFri = isMarked;  
         numberOfDaySelected = this.numberOfDay5;
       }
+      
       let dateFormatted = day + " " + numberOfDaySelected + " " + months[currentMonth];
       let newArray = 
               {
                 date: dateFormatted,
                 marked: isMarked
               };   
-      this.args.updateArray(newArray, dateFormatted, isMarked);        
+
+      this.args.updateArray(newArray, dateFormatted, isMarked);   
+
+
   }
 
   @action next() {
