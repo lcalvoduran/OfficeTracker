@@ -42,18 +42,38 @@ export default class appointmentsComponent extends Component {
     if(this.currentWeek == 1){
       let trackeada = 1;
       this.numberOfDay1 = this.myFirstMonday(trackeada);
+      this.numberOfDay2 = this.numberOfDay1+1;
+      this.numberOfDay3 = this.numberOfDay1+2;
+      this.numberOfDay4 = this.numberOfDay1+3;
+      this.numberOfDay5 = this.numberOfDay1+4;
     }else if (this.currentWeek == 2){
       let trackeada = 1+7;
       this.numberOfDay1 = this.myFirstMonday(trackeada);
+      this.numberOfDay2 = this.numberOfDay1+1;
+      this.numberOfDay3 = this.numberOfDay1+2;
+      this.numberOfDay4 = this.numberOfDay1+3;
+      this.numberOfDay5 = this.numberOfDay1+4;
     }else if (this.currentWeek == 3){
       let trackeada = 1+14;
       this.numberOfDay1 = this.myFirstMonday(trackeada);
+      this.numberOfDay2 = this.numberOfDay1+1;
+      this.numberOfDay3 = this.numberOfDay1+2;
+      this.numberOfDay4 = this.numberOfDay1+3;
+      this.numberOfDay5 = this.numberOfDay1+4;      
     }else if (this.currentWeek == 4){
       let trackeada = 1+21;
       this.numberOfDay1 = this.myFirstMonday(trackeada);
+      this.numberOfDay2 = this.numberOfDay1+1;
+      this.numberOfDay3 = this.numberOfDay1+2;
+      this.numberOfDay4 = this.numberOfDay1+3;
+      this.numberOfDay5 = this.numberOfDay1+4;      
     }else if (this.currentWeek == 5){
       let trackeada = 1+28;
       this.numberOfDay1 = this.myFirstMonday(trackeada);
+      this.numberOfDay2 = this.numberOfDay1+1;
+      this.numberOfDay3 = this.numberOfDay1+2;
+      this.numberOfDay4 = this.numberOfDay1+3;
+      this.numberOfDay5 = this.numberOfDay1+4;      
     }    
   }
 
@@ -82,19 +102,24 @@ export default class appointmentsComponent extends Component {
       //Usuario
       let user = this.login.retrieveSessionStorage();
       this.Usuario = user.replace('@copyright.com', '');
-      
+      let numberOfDaySelected;
       if (day=="Mon"){
         this.isMarkedMon = isMarked;
+        numberOfDaySelected = this.numberOfDay1;
       }else if (day=="Tue"){
         this.isMarkedTue = isMarked; 
+        numberOfDaySelected = this.numberOfDay2;
       }else if (day=="Wed"){
         this.isMarkedWed = isMarked;
+        numberOfDaySelected = this.numberOfDay3;
       }else if (day=="Thu"){
         this.isMarkedThu = isMarked;
+        numberOfDaySelected = this.numberOfDay4;
       }else if (day=="Fri"){
         this.isMarkedFri = isMarked;  
+        numberOfDaySelected = this.numberOfDay5;
       }
-      let dateFormatted = day + " " + today.getDate() + " " + months[currentMonth];
+      let dateFormatted = day + " " + numberOfDaySelected + " " + months[currentMonth];
       let newArray = 
               {
                 date: dateFormatted,
@@ -121,18 +146,38 @@ export default class appointmentsComponent extends Component {
     if(this.currentWeek == 1){
       let trackeada = 1;
       this.numberOfDay1 = this.myFirstMonday(trackeada);
+      this.numberOfDay2 = this.numberOfDay1+1;
+      this.numberOfDay3 = this.numberOfDay1+2;
+      this.numberOfDay4 = this.numberOfDay1+3;
+      this.numberOfDay5 = this.numberOfDay1+4;
     }else if (this.currentWeek == 2){
       let trackeada = 1+7;
       this.numberOfDay1 = this.myFirstMonday(trackeada);
+      this.numberOfDay2 = this.numberOfDay1+1;
+      this.numberOfDay3 = this.numberOfDay1+2;
+      this.numberOfDay4 = this.numberOfDay1+3;
+      this.numberOfDay5 = this.numberOfDay1+4;
     }else if (this.currentWeek == 3){
       let trackeada = 1+14;
-      this.numberOfDay1 = this.myFirstMonday(trackeada);      
+      this.numberOfDay1 = this.myFirstMonday(trackeada);  
+      this.numberOfDay2 = this.numberOfDay1+1;
+      this.numberOfDay3 = this.numberOfDay1+2;
+      this.numberOfDay4 = this.numberOfDay1+3;
+      this.numberOfDay5 = this.numberOfDay1+4;    
     }else if (this.currentWeek == 4){
       let trackeada = 1+21;
       this.numberOfDay1 = this.myFirstMonday(trackeada);  
+      this.numberOfDay2 = this.numberOfDay1+1;
+      this.numberOfDay3 = this.numberOfDay1+2;
+      this.numberOfDay4 = this.numberOfDay1+3;
+      this.numberOfDay5 = this.numberOfDay1+4;
     }else if (this.currentWeek == 5){
       let trackeada = 1+28;
-      this.numberOfDay1 = this.myFirstMonday(trackeada);            
+      this.numberOfDay1 = this.myFirstMonday(trackeada);  
+      this.numberOfDay2 = this.numberOfDay1+1;
+      this.numberOfDay3 = this.numberOfDay1+2;
+      this.numberOfDay4 = this.numberOfDay1+3;
+      this.numberOfDay5 = this.numberOfDay1+4;          
     }       
   }
 
@@ -156,18 +201,38 @@ export default class appointmentsComponent extends Component {
     if(this.currentWeek == 1){
       let trackeada = 1;
       this.numberOfDay1 = this.myFirstMonday(trackeada);
+      this.numberOfDay2 = this.numberOfDay1+1;
+      this.numberOfDay3 = this.numberOfDay1+2;
+      this.numberOfDay4 = this.numberOfDay1+3;
+      this.numberOfDay5 = this.numberOfDay1+4;
     }else if (this.currentWeek == 2){
       let trackeada = 1+7;
       this.numberOfDay1 = this.myFirstMonday(trackeada);
+      this.numberOfDay2 = this.numberOfDay1+1;
+      this.numberOfDay3 = this.numberOfDay1+2;
+      this.numberOfDay4 = this.numberOfDay1+3;
+      this.numberOfDay5 = this.numberOfDay1+4;
     }else if (this.currentWeek == 3){
       let trackeada = 1+14;
-      this.numberOfDay1 = this.myFirstMonday(trackeada);      
+      this.numberOfDay1 = this.myFirstMonday(trackeada);     
+      this.numberOfDay2 = this.numberOfDay1+1;
+      this.numberOfDay3 = this.numberOfDay1+2;
+      this.numberOfDay4 = this.numberOfDay1+3;
+      this.numberOfDay5 = this.numberOfDay1+4; 
     }else if (this.currentWeek == 4){
       let trackeada = 1+21;
       this.numberOfDay1 = this.myFirstMonday(trackeada);  
+      this.numberOfDay2 = this.numberOfDay1+1;
+      this.numberOfDay3 = this.numberOfDay1+2;
+      this.numberOfDay4 = this.numberOfDay1+3;
+      this.numberOfDay5 = this.numberOfDay1+4;
     }else if (this.currentWeek == 5){
       let trackeada = 1+28;
-      this.numberOfDay1 = this.myFirstMonday(trackeada);            
+      this.numberOfDay1 = this.myFirstMonday(trackeada); 
+      this.numberOfDay2 = this.numberOfDay1+1;
+      this.numberOfDay3 = this.numberOfDay1+2;
+      this.numberOfDay4 = this.numberOfDay1+3;
+      this.numberOfDay5 = this.numberOfDay1+4;           
     }     
   }
   
