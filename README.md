@@ -21,3 +21,12 @@ isMarked deberia ser un metodo que te mire si el array que te dio el padre conti
 DOCS 29/09/2022 ---> Item indexes
 
 https://guides.emberjs.com/release/components/looping-through-lists/
+
+
+
+
+/////////////////////////////////////////////////////////////
+
+1. Generar un día y que a partir de ese día me de los demás días de esa semana
+2. Generar la siguiente semana cambiando con el date.format 
+3. Generar la anterior semana cambiando con el date.format

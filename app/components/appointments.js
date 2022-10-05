@@ -12,20 +12,15 @@ export default class appointmentsComponent extends Component {
   @tracked monthYear;
   @tracked currentWeek;
   @tracked isMarked = false;
-  @tracked isMarkedMon = false;
-  @tracked isMarkedTue = false;
-  @tracked isMarkedWed = false;
-  @tracked isMarkedThu = false;
-  @tracked isMarkedFri = false;
-  
-  @tracked numberOfDay1;
-  @tracked numberOfDay2;
-  @tracked numberOfDay3;
-  @tracked numberOfDay4;
-  @tracked numberOfDay5;
-
   @tracked Usuario;
+  queue = [
+    { day: 'Mon'},
+    { day: 'Tue'},
+    { day: 'Wed'},
+    { day: 'Thu'},
+    { day: 'Fri'},
 
+  ]
 
   constructor() {
     super(...arguments);
@@ -35,90 +30,36 @@ export default class appointmentsComponent extends Component {
   showMyCalendar(month, year) {
     this.monthYear = months[currentMonth] + ' ' + currentYear;
     this.currentWeek = this.myCurrentWeek();
-    this.displayNumberWithDays();
   }
-
-  displayNumberWithDays(){
-    if(this.currentWeek == 1){
-      let contador = 1;
-      this.numberOfDay1 = this.myFirstMonday(contador);
-      this.numberOfDay2 = this.numberOfDay1+1;
-      this.numberOfDay3 = this.numberOfDay1+2;
-      this.numberOfDay4 = this.numberOfDay1+3;
-      this.numberOfDay5 = this.numberOfDay1+4;
-    }else if (this.currentWeek == 2){
-      let contador = 1+7;
-      this.numberOfDay1 = this.myFirstMonday(contador);           
-      this.numberOfDay2 = this.numberOfDay1+1;
-      this.numberOfDay3 = this.numberOfDay1+2;
-      this.numberOfDay4 = this.numberOfDay1+3;
-      this.numberOfDay5 = this.numberOfDay1+4;
-    }else if (this.currentWeek == 3){
-      let contador = 1+14;
-      this.numberOfDay1 = this.myFirstMonday(contador);
-      this.numberOfDay2 = this.numberOfDay1+1;
-      this.numberOfDay3 = this.numberOfDay1+2;
-      this.numberOfDay4 = this.numberOfDay1+3;
-      this.numberOfDay5 = this.numberOfDay1+4;      
-    }else if (this.currentWeek == 4){
-      let contador = 1+21;
-      this.numberOfDay1 = this.myFirstMonday(contador);
-      this.numberOfDay2 = this.numberOfDay1+1;
-      this.numberOfDay3 = this.numberOfDay1+2;
-      this.numberOfDay4 = this.numberOfDay1+3;
-      this.numberOfDay5 = this.numberOfDay1+4;      
-    }else if (this.currentWeek == 5){
-      let contador = 1+28;
-      this.numberOfDay1 = this.myFirstMonday(contador);
-      this.numberOfDay2 = this.numberOfDay1+1;
-      this.numberOfDay3 = this.numberOfDay1+2;
-      this.numberOfDay4 = this.numberOfDay1+3;
-      this.numberOfDay5 = this.numberOfDay1+4;      
-    }    
-  }
-
  
-  myCurrentWeek(){
+  myCurrentWeek(){ // Método para ver en qué semana estamos actualmente
     let startDate = new Date(today.getFullYear(), currentMonth, 1);
     let myDays = Math.floor((today - startDate)/(24 * 60 * 60 * 1000));      
     return Math.ceil(myDays/7) + 1;  
   }
 
-  myFirstMonday(contador){
+  myFirstMonday(contador){ //Método para comprobar en qué Date() empieza el primer lunes de cada mes
     let startDate2 = new Date(today.getFullYear(), currentMonth, contador);
     let first2 = startDate2.getDate()-startDate2.getDay()+1;
     let firstMonday = new Date(today.setDate(first2));
     return firstMonday.getDate(); 
   }
 
-  putAllToFalse(){
-    this.isMarkedMon=false;
-    this.isMarkedTue=false;
-    this.isMarkedWed=false;
-    this.isMarkedThu=false;
-    this.isMarkedFri=false;
-  }
 
   @action changeArray(day, isMarked){
       //Usuario
       let user = this.login.retrieveSessionStorage();
       this.Usuario = user.replace('@copyright.com', '');
-      let numberOfDaySelected;
       if (day=="Mon"){
-        this.isMarkedMon = isMarked;
-        numberOfDaySelected = this.numberOfDay1;
+        this.isMarked = isMarked;        
       }else if (day=="Tue"){
-        this.isMarkedTue = isMarked; 
-        numberOfDaySelected = this.numberOfDay2;
+        this.isMarked = isMarked;
       }else if (day=="Wed"){
-        this.isMarkedWed = isMarked;
-        numberOfDaySelected = this.numberOfDay3;
+        this.isMarked = isMarked;
       }else if (day=="Thu"){
-        this.isMarkedThu = isMarked;
-        numberOfDaySelected = this.numberOfDay4;
+        this.isMarked = isMarked;
       }else if (day=="Fri"){
-        this.isMarkedFri = isMarked;  
-        numberOfDaySelected = this.numberOfDay5;
+        this.isMarked = isMarked;
       }
       
       let dateFormatted = day + " " + numberOfDaySelected + " " + months[currentMonth];
@@ -134,7 +75,6 @@ export default class appointmentsComponent extends Component {
   }
 
   @action next() {
-    this.putAllToFalse();
     this.currentWeek = this.currentWeek + 1;
     if (this.currentWeek >= 6) {
       this.currentWeek = 1;
@@ -145,61 +85,13 @@ export default class appointmentsComponent extends Component {
       } else {
         currentYear;
       }
-      
       currentMonth = (currentMonth + 1) % 12;
       this.monthYear = months[currentMonth] + ' ' + currentYear;
     }
-    if(this.currentWeek == 1){      
-      let contador = 1;
-      this.numberOfDay1 = this.myFirstMonday(contador);
-      this.comparisonDays(this.numberOfDay1);
-    }else if (this.currentWeek == 2){
-      let contador = 1+7;
-      this.numberOfDay1 = this.myFirstMonday(contador);  
-      this.comparisonDays(this.numberOfDay1);        
-    }else if (this.currentWeek == 3){
-      let contador = 1+14;
-      this.numberOfDay1 = this.myFirstMonday(contador);
-      this.comparisonDays(this.numberOfDay1);
-    }else if (this.currentWeek == 4){
-      let contador = 1+21;
-      this.numberOfDay1 = this.myFirstMonday(contador);
-      this.comparisonDays(this.numberOfDay1);
-    }else if (this.currentWeek == 5){
-      let contador = 1+28;
-      this.numberOfDay1 = this.myFirstMonday(contador);
-      this.comparisonDays(this.numberOfDay1);    
-    }             
   }
 
-  comparisonDays(numberOfDay1){
-    let totalDaysMonth  = new Date (currentYear, currentMonth, 0).getDate();
-    console.log("totaldaysmonth: "+ totalDaysMonth);
-    console.log("numberofday1: " + this.numberOfDay1);
-    if (numberOfDay1 >= totalDaysMonth) {
-      this.numberOfDay2 = 1;
-    }else{
-      this.numberOfDay2 = numberOfDay1 + 1;
-    }
-    if(this.numberOfDay2 >= totalDaysMonth){
-      this.numberOfDay3 = 1;
-    }else{
-      this.numberOfDay3 = this.numberOfDay2 + 1;
-    }
-    if(this.numberOfDay3 >= totalDaysMonth){
-      this.numberOfDay4 = 1;
-    }else{
-      this.numberOfDay4 = this.numberOfDay3 + 1;
-    }
-    if(this.numberOfDay4 >= totalDaysMonth){
-      this.numberOfDay5 = 1;
-    }else{
-      this.numberOfDay5 = this.numberOfDay4 +1;
-    }
-  }  
 
   @action back() {
-    this.putAllToFalse();
     this.currentWeek = this.currentWeek - 1;
     if (this.currentWeek <= 0) {
       this.currentWeek = 5;
@@ -215,28 +107,6 @@ export default class appointmentsComponent extends Component {
       this.monthYear = this.monthYear =
         months[currentMonth] + ' ' + currentYear;
     }
-    if(this.currentWeek == 1){      
-      let contador = 1;
-      this.numberOfDay1 = this.myFirstMonday(contador);
-      this.comparisonDays(this.numberOfDay1);
-    }else if (this.currentWeek == 2){
-      let contador = 1+7;
-      this.numberOfDay1 = this.myFirstMonday(contador);  
-      this.comparisonDays(this.numberOfDay1);        
-    }else if (this.currentWeek == 3){
-      let contador = 1+14;
-      this.numberOfDay1 = this.myFirstMonday(contador);
-      this.comparisonDays(this.numberOfDay1);
-    }else if (this.currentWeek == 4){
-      let contador = 1+21;
-      this.numberOfDay1 = this.myFirstMonday(contador);
-      this.comparisonDays(this.numberOfDay1);
-    }else if (this.currentWeek == 5){
-      let contador = 1+28;
-      this.numberOfDay1 = this.myFirstMonday(contador);
-      this.comparisonDays(this.numberOfDay1);    
-    }     
-  }
-  
+  }  
 }
 
