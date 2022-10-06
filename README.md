@@ -27,6 +27,6 @@ https://guides.emberjs.com/release/components/looping-through-lists/
 
 /////////////////////////////////////////////////////////////
 
-1. Generar un día y que a partir de ese día me de los demás días de esa semana
+1. Generar un día y que a partir de ese día me de los demás días de esa semana --> Done
 2. Generar la siguiente semana cambiando con el date.format 
 3. Generar la anterior semana cambiando con el date.format

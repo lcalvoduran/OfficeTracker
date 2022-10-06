@@ -65,7 +65,6 @@ export default class appointmentsComponent extends Component {
     }
   }  
 
-
   @action changeArray(day, isMarked){
       //Usuario
       let user = this.login.retrieveSessionStorage();
@@ -95,7 +94,7 @@ export default class appointmentsComponent extends Component {
   }
 
   @action next() {
-    this.currentWeek = this.currentWeek + 1;
+    this.currentWeek = this.currentWeek + 1;    
     if (this.currentWeek >= 6) {
       this.currentWeek = 1;
     }
