@@ -14,22 +14,36 @@ export default class appointmentsComponent extends Component {
   @tracked isMarked = false;
   @tracked Usuario;
   queue = [
-    { day: 'Mon'},
-    { day: 'Tue'},
-    { day: 'Wed'},
-    { day: 'Thu'},
-    { day: 'Fri'},
+    { dayOfWeek: 'Mon',
+      number: 0,
+    },
+    { dayOfWeek: 'Tue',
+      number: 0,
+    },
+    { dayOfWeek: 'Wed',
+      number: 0,
+    },
+    { dayOfWeek: 'Thu',
+      number: 0,
+    },
+    { dayOfWeek: 'Fri',
+      number: 0,
+    },
+  ];
 
-  ]
 
   constructor() {
     super(...arguments);
     this.showMyCalendar(currentMonth, currentYear);
+    
   }
+
+  
 
   showMyCalendar(month, year) {
     this.monthYear = months[currentMonth] + ' ' + currentYear;
-    this.currentWeek = this.myCurrentWeek();
+    this.currentWeek = this.myCurrentWeek();  //Establece la week en la que me encuentro
+    this.currentWeekDays();                   //Hace un display de los días semanales
   }
  
   myCurrentWeek(){ // Método para ver en qué semana estamos actualmente
@@ -38,12 +52,18 @@ export default class appointmentsComponent extends Component {
     return Math.ceil(myDays/7) + 1;  
   }
 
-  myFirstMonday(contador){ //Método para comprobar en qué Date() empieza el primer lunes de cada mes
-    let startDate2 = new Date(today.getFullYear(), currentMonth, contador);
-    let first2 = startDate2.getDate()-startDate2.getDay()+1;
-    let firstMonday = new Date(today.setDate(first2));
-    return firstMonday.getDate(); 
-  }
+  currentWeekDays(){ // getDay() 0-6 >> 1 Monday , 2 Tuesday, 3 Wednesday, 4 Thursday, 5 Friday |||||||||| queue >> 0 Monday, 1 Tuesday, 2 Wednesday, 3 Thursday, 4 Friday
+    let startDate = new Date(today.getFullYear(), currentMonth, today.getDate());
+    let first = startDate.getDate()-startDate.getDay()+1;
+    let firstMonday = new Date(today.setDate(first));
+      //Tomamos MONDAY como punto de partida
+      this.queue[0].number = firstMonday.setMilliseconds(firstMonday.getMilliseconds());
+      this.queue[0].number = firstMonday.getDate();      
+    for (let i = 1; i < this.queue.length; i++) {
+      this.queue[i].number = firstMonday.setMilliseconds(firstMonday.getMilliseconds() + 8.64e+7);
+      this.queue[i].number = firstMonday.getDate();
+    }
+  }  
 
 
   @action changeArray(day, isMarked){
@@ -62,7 +82,7 @@ export default class appointmentsComponent extends Component {
         this.isMarked = isMarked;
       }
       
-      let dateFormatted = day + " " + numberOfDaySelected + " " + months[currentMonth];
+      let dateFormatted = day + " " + this.numberPerDay + " " + months[currentMonth];
       let newArray = 
               {
                 date: dateFormatted,

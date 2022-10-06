@@ -15,9 +15,10 @@
                 <tr>
                 {{#each this.queue as | dayOfWeek index|}}
                     {{#if this.isMarked}}
-                        <th><button id={{dayOfWeek.day}} class="rup-btn rup-btn--sm rup-btn--contained" type="button" {{on "click" (fn this.changeArray dayOfWeek.day false)}}>{{dayOfWeek.day}}</button></th>
+                        <th><button id={{dayOfWeek.dayOfWeek}} class="rup-btn rup-btn--sm rup-btn--contained" type="button" {{on "click" (fn this.changeArray dayOfWeek.dayOfWeek false)}}>{{dayOfWeek.dayOfWeek}}{{dayOfWeek.number}}</button></th>
                     {{else}}
-                        <th><button id={{dayOfWeek.day}} class="rup-btn rup-btn--sm" type="button" {{on "click" (fn this.changeArray dayOfWeek.day true)}}>{{dayOfWeek.day}}</button></th>
+                    {{!-- {{log dayOfWeek.number}} --}}
+                        <th><button id={{dayOfWeek.dayOfWeek}} class="rup-btn rup-btn--sm" type="button" {{on "click" (fn this.changeArray dayOfWeek.dayOfWeek true)}}>{{dayOfWeek.dayOfWeek}} {{dayOfWeek.number}}</button></th>
                     {{/if}}
                 {{/each}}                                                          
                     <th><button class="rup-btn rup-btn--text" type="button" disabled>Sat</button></th>
