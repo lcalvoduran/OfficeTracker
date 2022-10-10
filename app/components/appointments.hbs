@@ -20,7 +20,8 @@
                             id={{dayOfWeek.dayOfWeek}} 
                             class="rup-btn rup-btn--sm rup-btn--contained" 
                             type="button" 
-                                {{on "click" (fn this.changeArray dayOfWeek.dayOfWeek false)}}>{{dayOfWeek.dayOfWeek}}{{dayOfWeek.number}}
+                                {{on "click" (fn this.changeArray dayOfWeek.dayOfWeek false)}}>{{dayOfWeek.dayOfWeek}}
+                                {{this.count}}
                         </button>
                     </th>
                     {{else}}
@@ -30,7 +31,8 @@
                             id={{dayOfWeek.dayOfWeek}} 
                             class="rup-btn rup-btn--sm" 
                             type="button" 
-                                {{on "click" (fn this.changeArray dayOfWeek.dayOfWeek true)}}>{{dayOfWeek.dayOfWeek}} {{dayOfWeek.number}}
+                                {{on "click" (fn this.changeArray dayOfWeek.dayOfWeek true)}}>{{dayOfWeek.dayOfWeek}}
+                                {{dayOfWeek.number}}
                         </button>
                     </th>
                     {{/if}}
