@@ -93,7 +93,26 @@ export default class appointmentsComponent extends Component {
 
   }
 
+/* 
+
+    let startDate = new Date(today.getFullYear(), currentMonth, today.getDate());
+    let first = startDate.getDate()-startDate.getDay()+1;
+    let firstMonday = new Date(today.setDate(first));
+      //Tomamos MONDAY como punto de partida
+      this.queue[0].number = firstMonday.setMilliseconds(firstMonday.getMilliseconds());
+      this.queue[0].number = firstMonday.getDate();      
+    for (let i = 1; i < this.queue.length; i++) {
+      this.queue[i].number = firstMonday.setMilliseconds(firstMonday.getMilliseconds() + 8.64e+7);
+      this.queue[i].number = firstMonday.getDate();
+    }
+*/
+
   @action next() {
+    let startDate = new Date(today.getFullYear(), currentMonth, today.getDate()+7);
+    let first = startDate.getDate()-startDate.getDay()+1;
+    let firstMonday = new Date(today.setDate(first));
+    this.queue[0].number = firstMonday.setMilliseconds(firstMonday.getMilliseconds());
+    this.queue[0].number = firstMonday.getDate();     
     this.currentWeek = this.currentWeek + 1;    
     if (this.currentWeek >= 6) {
       this.currentWeek = 1;
@@ -107,10 +126,20 @@ export default class appointmentsComponent extends Component {
       currentMonth = (currentMonth + 1) % 12;
       this.monthYear = months[currentMonth] + ' ' + currentYear;
     }
+    for (let i = 1; i < this.queue.length; i++) {
+      this.queue[i].number = firstMonday.setMilliseconds(firstMonday.getMilliseconds() + 8.64e+7);
+      this.queue[i].number = firstMonday.getDate();
+    }    
+    console.log(this.queue);
   }
 
 
   @action back() {
+    let startDate = new Date(today.getFullYear(), currentMonth, today.getDate()-7);
+    let first = startDate.getDate()-startDate.getDay()+1;
+    let firstMonday = new Date(today.setDate(first));
+    this.queue[0].number = firstMonday.setMilliseconds(firstMonday.getMilliseconds());
+    this.queue[0].number = firstMonday.getDate();     
     this.currentWeek = this.currentWeek - 1;
     if (this.currentWeek <= 0) {
       this.currentWeek = 5;
@@ -126,6 +155,11 @@ export default class appointmentsComponent extends Component {
       this.monthYear = this.monthYear =
         months[currentMonth] + ' ' + currentYear;
     }
+    for (let i = 1; i < this.queue.length; i++) {
+      this.queue[i].number = firstMonday.setMilliseconds(firstMonday.getMilliseconds() + 8.64e+7);
+      this.queue[i].number = firstMonday.getDate();
+    }    
+    console.log(this.queue);    
   }  
 }
 
