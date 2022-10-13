@@ -53,7 +53,6 @@ export default class appointmentsComponent extends Component {
   }
 
   currentWeekDays(){ // getDay() 0-6 >> 1 Monday , 2 Tuesday, 3 Wednesday, 4 Thursday, 5 Friday |||||||||| queue >> 0 Monday, 1 Tuesday, 2 Wednesday, 3 Thursday, 4 Friday
-    console.log("El dia de la semana es: " + today.getDay() + " \nLa fecha es: " + today);
     if (today.getDay() == 0) {
       console.log("Domingo");
       for (let i = 0; i < this.queue.length; i++) {
@@ -112,9 +111,6 @@ export default class appointmentsComponent extends Component {
         this.queue[i].number = today.getDate();
       }      
     }
-
-    console.log(this.queue);
-
   }  
 
   @action changeArray(day, isMarked){
@@ -145,21 +141,31 @@ export default class appointmentsComponent extends Component {
 
   }
 
-/* 
-
-    let startDate = new Date(today.getFullYear(), currentMonth, today.getDate());
-    let first = startDate.getDate()-startDate.getDay()+1;
-    let firstMonday = new Date(today.setDate(first));
-      //Tomamos MONDAY como punto de partida
-      this.queue[0].number = firstMonday.setMilliseconds(firstMonday.getMilliseconds());
-      this.queue[0].number = firstMonday.getDate();      
-    for (let i = 1; i < this.queue.length; i++) {
-      this.queue[i].number = firstMonday.setMilliseconds(firstMonday.getMilliseconds() + 8.64e+7);
-      this.queue[i].number = firstMonday.getDate();
-    }
-*/
 
   @action next() {
+    let lastDay = this.queue[0].number;
+    let lastDate = new Date(currentYear, currentMonth, lastDay);
+    console.log("El último lunes fue el: " + lastDate);
+
+
+    this.queue = [
+      { dayOfWeek: 'Mon',
+      number: 0,
+    },
+    { dayOfWeek: 'Tue',
+      number: 0,
+    },
+    { dayOfWeek: 'Wed',
+      number: 0,
+    },
+    { dayOfWeek: 'Thu',
+      number: 0,
+    },
+    { dayOfWeek: 'Fri',
+      number: 0,
+    },      
+    ];
+
 
     this.currentWeek = this.currentWeek + 1;    
     if (this.currentWeek >= 6) {
