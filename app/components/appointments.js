@@ -53,81 +53,68 @@ export default class appointmentsComponent extends Component {
   }
 
   currentWeekDays(){ // getDay() 0-6 >> 1 Monday , 2 Tuesday, 3 Wednesday, 4 Thursday, 5 Friday |||||||||| queue >> 0 Monday, 1 Tuesday, 2 Wednesday, 3 Thursday, 4 Friday
-    let prueba = new Date(2022, 8, 2);
-    console.log("El dia de la semana es: " + prueba.getDay() + " \nLa fecha es: " + prueba);
-    if (prueba.getDay() == 0) {
+    console.log("El dia de la semana es: " + today.getDay() + " \nLa fecha es: " + today);
+    if (today.getDay() == 0) {
       console.log("Domingo");
       for (let i = 0; i < this.queue.length; i++) {
-        this.queue[i].number = prueba.setMilliseconds(prueba.getMilliseconds()+8.64e+7);
-        this.queue[i].number = prueba.getDate();
+        this.queue[i].number = today.setMilliseconds(today.getMilliseconds()+8.64e+7);
+        this.queue[i].number = today.getDate();
       }
 
-    }else if(prueba.getDay() == 1) {
+    }else if(today.getDay() == 1) {
       console.log("Lunes");
-      this.queue[0].number = prueba.getDate();
+      this.queue[0].number = today.getDate();
       for (let i = 1; i < this.queue.length; i++) {
-        this.queue[i].number = prueba.setMilliseconds(prueba.getMilliseconds()+8.64e+7);
-        this.queue[i].number = prueba.getDate();
+        this.queue[i].number = today.setMilliseconds(today.getMilliseconds()+8.64e+7);
+        this.queue[i].number = today.getDate();
       }    
 
-    }else if(prueba.getDay() == 2) {
+    }else if(today.getDay() == 2) {
       console.log("Martes");
-      this.queue[0].number = prueba.setMilliseconds(prueba.getMilliseconds()-8.64e+7);
-      this.queue[0].number = prueba.getDate();      
+      this.queue[0].number = today.setMilliseconds(today.getMilliseconds()-8.64e+7);
+      this.queue[0].number = today.getDate();      
       for (let i = 1; i < this.queue.length; i++) {
-        this.queue[i].number = prueba.setMilliseconds(prueba.getMilliseconds()+8.64e+7);
-        this.queue[i].number = prueba.getDate();
+        this.queue[i].number = today.setMilliseconds(today.getMilliseconds()+8.64e+7);
+        this.queue[i].number = today.getDate();
       }       
-    }else if(prueba.getDay() == 3) {
+    }else if(today.getDay() == 3) {
       console.log("Miércoles");
-      this.queue[0].number = prueba.setMilliseconds(prueba.getMilliseconds()-8.64e+7*2);
-      this.queue[0].number = prueba.getDate();     
+      this.queue[0].number = today.setMilliseconds(today.getMilliseconds()-8.64e+7*2);
+      this.queue[0].number = today.getDate();     
       for (let i = 1; i < this.queue.length; i++) {
-        this.queue[i].number = prueba.setMilliseconds(prueba.getMilliseconds()+8.64e+7);
-        this.queue[i].number = prueba.getDate();
+        this.queue[i].number = today.setMilliseconds(today.getMilliseconds()+8.64e+7);
+        this.queue[i].number = today.getDate();
       }   
-    }else if(prueba.getDay() == 4) {
+    }else if(today.getDay() == 4) {
       console.log("Jueves");
-      this.queue[0].number = prueba.setMilliseconds(prueba.getMilliseconds()-8.64e+7*3);
-      this.queue[0].number = prueba.getDate();     
+      this.queue[0].number = today.setMilliseconds(today.getMilliseconds()-8.64e+7*3);
+      this.queue[0].number = today.getDate();     
       for (let i = 1; i < this.queue.length; i++) {
-        this.queue[i].number = prueba.setMilliseconds(prueba.getMilliseconds()+8.64e+7);
-        this.queue[i].number = prueba.getDate();
+        this.queue[i].number = today.setMilliseconds(today.getMilliseconds()+8.64e+7);
+        this.queue[i].number = today.getDate();
       } 
 
-    }else if(prueba.getDay() == 5) {
+    }else if(today.getDay() == 5) {
       console.log("Viernes");
-      this.queue[0].number = prueba.setMilliseconds(prueba.getMilliseconds()-8.64e+7*4);
-      this.queue[0].number = prueba.getDate();    
+      this.queue[0].number = today.setMilliseconds(today.getMilliseconds()-8.64e+7*4);
+      this.queue[0].number = today.getDate();    
       for (let i = 1; i < this.queue.length; i++) {
-        this.queue[i].number = prueba.setMilliseconds(prueba.getMilliseconds()+8.64e+7);
-        this.queue[i].number = prueba.getDate();
+        this.queue[i].number = today.setMilliseconds(today.getMilliseconds()+8.64e+7);
+        this.queue[i].number = today.getDate();
       }     
 
-    }else if(prueba.getDay() == 6) {
+    }else if(today.getDay() == 6) {
       console.log("Sábado");
-      this.queue[0].number = prueba.setMilliseconds(prueba.getMilliseconds()-8.64e+7*5);
-      this.queue[0].number = prueba.getDate();    
+      this.queue[0].number = today.setMilliseconds(today.getMilliseconds()-8.64e+7*5);
+      this.queue[0].number = today.getDate();    
       for (let i = 1; i < this.queue.length; i++) {
-        this.queue[i].number = prueba.setMilliseconds(prueba.getMilliseconds()+8.64e+7);
-        this.queue[i].number = prueba.getDate();
+        this.queue[i].number = today.setMilliseconds(today.getMilliseconds()+8.64e+7);
+        this.queue[i].number = today.getDate();
       }      
     }
 
     console.log(this.queue);
 
-
-/*     let startDate = new Date(today.getFullYear(), currentMonth, today.getDate());
-    let first = startDate.getDate()-startDate.getDay()+1;
-    let firstMonday = new Date(today.setDate(first));
-      //Tomamos MONDAY como punto de partida
-      this.queue[0].number = firstMonday.setMilliseconds(firstMonday.getMilliseconds());
-      this.queue[0].number = firstMonday.getDate();      
-      
-    for (let i = 1; i < this.queue.length; i++) {
-      this.queue[i].number = firstMonday.setMilliseconds(firstMonday.getMilliseconds() + 8.64e+7);
-      this.queue[i].number = firstMonday.getDate();
-    } */
   }  
 
   @action changeArray(day, isMarked){
