@@ -162,7 +162,6 @@ export default class appointmentsComponent extends Component {
       currentMonth = (currentMonth + 1) % 12;
       this.monthYear = months[currentMonth] + ' ' + currentYear;
     }
-
     console.log(months[currentMonth]);
   }
 
@@ -171,25 +170,29 @@ export default class appointmentsComponent extends Component {
     let lastDay = this.queue[0].number;
     let lastDate = new Date(currentYear, currentMonth - varMonth, lastDay);
     lastDate.setDate(lastDate.getDate() + (((1 + 7 - lastDate.getDay()) % 7) || 7));
-    let nextMonday = lastDate.getDate();
-
-    this.queue = [
-    { dayOfWeek: 'Mon',
-      number: nextMonday,
-    },
-    { dayOfWeek: 'Tue',
-      number: 0,
-    },
-    { dayOfWeek: 'Wed',
-      number: 0,
-    },
-    { dayOfWeek: 'Thu',
-      number: 0,
-    },
-    { dayOfWeek: 'Fri',
-      number: 0,
-    },      
-    ];    
+    let nextMonday = lastDate.getDate();  
+    let otherDays = []; 
+    for (let i = 0; i < this.queue.length-1; i++) {
+      lastDate.setMilliseconds(lastDate.getMilliseconds() + 8.64e+7);
+      otherDays.push(lastDate.getDate());
+      this.queue = [
+        { dayOfWeek: 'Mon',
+          number: nextMonday,
+        },
+        { dayOfWeek: 'Tue',
+          number: otherDays[0],
+        },
+        { dayOfWeek: 'Wed',
+          number: otherDays[1],
+        },
+        { dayOfWeek: 'Thu',
+          number: otherDays[2],
+        },
+        { dayOfWeek: 'Fri',
+          number: otherDays[3],
+        },      
+        ];       
+    }  
   }
 
 
@@ -199,23 +202,28 @@ export default class appointmentsComponent extends Component {
     lastDate.setDate(lastDate.getDate() - (((1 + 7 - lastDate.getDay()) % 7) || 7));
     let nextMonday = lastDate.getDate();
 
-    this.queue = [
-    { dayOfWeek: 'Mon',
-      number: nextMonday,
-    },
-    { dayOfWeek: 'Tue',
-      number: 0,
-    },
-    { dayOfWeek: 'Wed',
-      number: 0,
-    },
-    { dayOfWeek: 'Thu',
-      number: 0,
-    },
-    { dayOfWeek: 'Fri',
-      number: 0,
-    },      
-    ];    
+    let otherDays = []; 
+    for (let i = 0; i < this.queue.length-1; i++) {
+      lastDate.setMilliseconds(lastDate.getMilliseconds() + 8.64e+7);
+      otherDays.push(lastDate.getDate());
+      this.queue = [
+        { dayOfWeek: 'Mon',
+          number: nextMonday,
+        },
+        { dayOfWeek: 'Tue',
+          number: otherDays[0],
+        },
+        { dayOfWeek: 'Wed',
+          number: otherDays[1],
+        },
+        { dayOfWeek: 'Thu',
+          number: otherDays[2],
+        },
+        { dayOfWeek: 'Fri',
+          number: otherDays[3],
+        },      
+        ];       
+    } 
 
   }
 
