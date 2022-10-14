@@ -142,31 +142,13 @@ export default class appointmentsComponent extends Component {
   }
 
 
+
   @action next() {
-    let lastDay = this.queue[0].number;
-    let lastDate = new Date(currentYear, currentMonth, lastDay);
-    console.log("El último lunes fue el: " + lastDate);
-
-
-    this.queue = [
-      { dayOfWeek: 'Mon',
-      number: 0,
-    },
-    { dayOfWeek: 'Tue',
-      number: 0,
-    },
-    { dayOfWeek: 'Wed',
-      number: 0,
-    },
-    { dayOfWeek: 'Thu',
-      number: 0,
-    },
-    { dayOfWeek: 'Fri',
-      number: 0,
-    },      
-    ];
-
-
+    if (this.currentWeek == 1) {
+      this.getNextMonday(1);
+    }else{
+      this.getNextMonday(0);
+    }
     this.currentWeek = this.currentWeek + 1;    
     if (this.currentWeek >= 6) {
       this.currentWeek = 1;
@@ -180,10 +162,70 @@ export default class appointmentsComponent extends Component {
       currentMonth = (currentMonth + 1) % 12;
       this.monthYear = months[currentMonth] + ' ' + currentYear;
     }
+
+    console.log(months[currentMonth]);
   }
 
 
+  getNextMonday(varMonth){
+    let lastDay = this.queue[0].number;
+    let lastDate = new Date(currentYear, currentMonth - varMonth, lastDay);
+    lastDate.setDate(lastDate.getDate() + (((1 + 7 - lastDate.getDay()) % 7) || 7));
+    let nextMonday = lastDate.getDate();
+
+    this.queue = [
+    { dayOfWeek: 'Mon',
+      number: nextMonday,
+    },
+    { dayOfWeek: 'Tue',
+      number: 0,
+    },
+    { dayOfWeek: 'Wed',
+      number: 0,
+    },
+    { dayOfWeek: 'Thu',
+      number: 0,
+    },
+    { dayOfWeek: 'Fri',
+      number: 0,
+    },      
+    ];    
+  }
+
+
+  getPreviousMonday(varMonth){
+    let lastDay = this.queue[0].number;
+    let lastDate = new Date(currentYear, currentMonth - varMonth, lastDay);
+    lastDate.setDate(lastDate.getDate() - (((1 + 7 - lastDate.getDay()) % 7) || 7));
+    let nextMonday = lastDate.getDate();
+
+    this.queue = [
+    { dayOfWeek: 'Mon',
+      number: nextMonday,
+    },
+    { dayOfWeek: 'Tue',
+      number: 0,
+    },
+    { dayOfWeek: 'Wed',
+      number: 0,
+    },
+    { dayOfWeek: 'Thu',
+      number: 0,
+    },
+    { dayOfWeek: 'Fri',
+      number: 0,
+    },      
+    ];    
+
+  }
+
   @action back() {
+    if (this.currentWeek == 1) {
+      this.getPreviousMonday(1);
+    }else{
+      this.getPreviousMonday(0);
+    }
+
     this.currentWeek = this.currentWeek - 1;
     if (this.currentWeek <= 0) {
       this.currentWeek = 5;
@@ -199,27 +241,7 @@ export default class appointmentsComponent extends Component {
       this.monthYear = this.monthYear =
         months[currentMonth] + ' ' + currentYear;
     }
-    let primerLunes = this.queue[0].number;
-    let datePrimerLunes = new Date(currentYear, currentMonth, primerLunes); //Recogemos la fecha del lunes pasado
-    datePrimerLunes.setMilliseconds(datePrimerLunes.getMilliseconds() - 8.64e+7*7);
-    let numeroPrimerLunes = datePrimerLunes.getDate()
-    this.queue = [
-      { dayOfWeek: 'Mon',
-        number: numeroPrimerLunes,
-      },
-      { dayOfWeek: 'Tue',
-        number: numeroPrimerLunes + 1,
-      },
-      { dayOfWeek: 'Wed',
-        number: numeroPrimerLunes + 2,
-      },
-      { dayOfWeek: 'Thu',
-        number: numeroPrimerLunes + 3,
-      },
-      { dayOfWeek: 'Fri',
-        number: numeroPrimerLunes + 4,
-      },
-    ];
+
   }  
 }
 
