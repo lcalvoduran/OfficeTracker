@@ -8,7 +8,7 @@ export default class LoginService extends Service {
 
   saveUser(email) {
     if (email.includes('@copyright.com')) {
-      this.userArray.push({ email, password: 123456 });
+      this.userArray.push({ email, password: 123456, estado: true });
       localStorage.setItem('currentUser', JSON.stringify(this.userArray));
       return true;
     } else {
@@ -26,12 +26,21 @@ export default class LoginService extends Service {
     } else {
       this.userArray = [];
       const arr = JSON.parse(localStorage.getItem('currentUser'));
-      this.userArray = [...this.userArray, ...arr];
-      return this.userArray[0].email;
+      console.log(arr);
+      var foundState = arr.find(estado => estado.estado == true)
+      if (foundState) {
+        this.userArray = [...this.userArray, ...arr];
+        return this.userArray[0].email;        
+      }
+      console.log("Ningún usuario activo");
+
     }
   }
 
   leaveSession() {
+/*     this.userArray[0].estado = false;
+    console.log("Hola");
+    console.log(this.userArray); */
     localStorage.clear();
     location.reload();
   }

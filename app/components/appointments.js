@@ -113,10 +113,11 @@ export default class appointmentsComponent extends Component {
     }
   }  
 
-  @action changeArray(day, isMarked){
+  @action changeArray(day, number, isMarked){
       //Usuario
       let user = this.login.retrieveSessionStorage();
       this.Usuario = user.replace('@copyright.com', '');
+      console.log(day);
       if (day=="Mon"){
         this.isMarked = isMarked;        
       }else if (day=="Tue"){
@@ -129,7 +130,7 @@ export default class appointmentsComponent extends Component {
         this.isMarked = isMarked;
       }
       
-      let dateFormatted = day + " " + this.numberPerDay + " " + months[currentMonth];
+      let dateFormatted = day + " " + number + " " + months[currentMonth];
       let newArray = 
               {
                 date: dateFormatted,
