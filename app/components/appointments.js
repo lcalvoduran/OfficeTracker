@@ -42,11 +42,11 @@ export default class appointmentsComponent extends Component {
 
   showMyCalendar(month, year) {
     this.monthYear = months[currentMonth] + ' ' + currentYear;
-    this.currentWeek = this.myCurrentWeek();  //Establece la week en la que me encuentro
-    this.currentWeekDays();                   //Hace un display de los días semanales
+    this.currentWeek = this.myCurrentWeek(); 
+    this.currentWeekDays();
   }
  
-  myCurrentWeek(){ // Método para ver en qué semana estamos actualmente
+  myCurrentWeek(){
     let startDate = new Date(today.getFullYear(), currentMonth, 1);
     let myDays = Math.floor((today - startDate)/(24 * 60 * 60 * 1000));      
     return Math.ceil(myDays/7) + 1;  
@@ -113,6 +113,7 @@ export default class appointmentsComponent extends Component {
     }
   }  
 
+  
   @action changeArray(day, number, isMarked){
       //Usuario
       let user = this.login.retrieveSessionStorage();
