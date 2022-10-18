@@ -132,12 +132,11 @@ export default class appointmentsComponent extends Component {
   }  
 
 
-@action changeArray(day, number){
-  this.isMarked = !this.isMarked;
+@action changeArray(day, number, marked){
+  marked = !this.isMarked;
   let positionObject = this.queue.findIndex(x=> x.number == number)
   this.queue.splice(positionObject, //Posicion del objeto
                     1,              //Número de items a borrar
-                                    //Reemplazamiento
                     {
                     "dayOfWeek": day,
                     "number": number,                                      
