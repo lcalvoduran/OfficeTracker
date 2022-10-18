@@ -132,8 +132,8 @@ export default class appointmentsComponent extends Component {
   }  
 
 
-@action changeArray(day, number, marked){
-  marked = !this.isMarked;
+@action changeArray(day, number){
+  this.isMarked = !this.isMarked;
   let positionObject = this.queue.findIndex(x=> x.number == number)
   this.queue.splice(positionObject, //Posicion del objeto
                     1,              //Número de items a borrar
@@ -141,14 +141,14 @@ export default class appointmentsComponent extends Component {
                     "dayOfWeek": day,
                     "number": number,                                      
                     "weekend": true,
-                    "marked": true
+                    "marked": this.isMarked
                     }
                     );
+  let newArray = this.queue
+  this.queue = newArray;
   console.log(this.queue);
-  //this.queue = [];
-  //this.queue.push({dayOfWeek: day, number: number, marked: this.isMarked, weekend: false});
-
-
+  let dateFormatted = new Date(currentYear, currentMonth, number);                
+  this.args.updateArray(newArray, dateFormatted.toDateString(), !this.isMarked);
 }
 
 /*   @action changeArray(day, number, isMarked){

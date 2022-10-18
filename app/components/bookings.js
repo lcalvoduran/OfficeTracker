@@ -10,6 +10,7 @@ export default class bookingsComponent extends Component {
   @tracked selectedDay ="";
 
   @action updateArray(newArray, dateFormatted, isMarked) {
+
     var foundPair = this.arrayDays.find(diaNombre => diaNombre.date == dateFormatted);
     if(foundPair){
       foundPair.marked = isMarked;
@@ -17,6 +18,7 @@ export default class bookingsComponent extends Component {
       this.arrayDays.push(newArray);
     }
     this.selectedDay = this.arrayDays.filter(estado=> estado.marked == true);  
+
   }
 
 }
