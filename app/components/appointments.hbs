@@ -13,32 +13,19 @@
         
             <thead>
                 <tr>
-                {{#each this.queue as | dayOfWeek index|}}
-                    {{#if this.isMarked}}
+                {{#each this.queue as | buttonDay index|}}
                     <th>
                         <button 
-                            id={{dayOfWeek.dayOfWeek}} 
-                            class="rup-btn rup-btn--sm rup-btn--contained" 
+                            {{!-- type="button" {{on "click" (fn this.changeArray buttonDay.dayOfWeek buttonDay.number true)}}    --}}                                               
                             type="button" 
-                                {{on "click" (fn this.changeArray dayOfWeek.dayOfWeek dayOfWeek.number false)}}>{{dayOfWeek.dayOfWeek}}
-                                {{dayOfWeek.number}}
+                            class={{if buttonDay.marked "rup-btn rup-btn--sm rup-btn--contained" "rup-btn rup-btn--sm"}}
+                                {{on "click" (fn this.changeArray buttonDay.dayOfWeek buttonDay.number)}}
+                            >
+                            {{buttonDay.dayOfWeek}}
+                            {{buttonDay.number}}
                         </button>
-                    </th>
-                    {{else}}
-                    {{!-- {{log dayOfWeek.number}} --}}
-                    <th>
-                        <button 
-                            id={{dayOfWeek.dayOfWeek}} 
-                            class="rup-btn rup-btn--sm" 
-                            type="button" 
-                                {{on "click" (fn this.changeArray dayOfWeek.dayOfWeek dayOfWeek.number  true)}}>{{dayOfWeek.dayOfWeek}}
-                                {{dayOfWeek.number}}
-                        </button>
-                    </th>
-                    {{/if}}
+                    </th>                    
                 {{/each}}                                                          
-                    <th><button class="rup-btn rup-btn--text" type="button" disabled>Sat</button></th>
-                    <th><button class="rup-btn rup-btn--text" type="button" disabled>Sun</button></th>                   
 
                 </tr>
             </thead>

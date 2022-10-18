@@ -26,7 +26,7 @@ export default class LoginService extends Service {
     } else {
       this.userArray = [];
       const arr = JSON.parse(localStorage.getItem('currentUser'));
-      console.log(arr);
+      //console.log(arr);
       var foundState = arr.find(estado => estado.estado == true)
       if (foundState) {
         this.userArray = [...this.userArray, ...arr];

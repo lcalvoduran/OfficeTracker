@@ -16,19 +16,37 @@ export default class appointmentsComponent extends Component {
   @tracked  queue = [
     { dayOfWeek: 'Mon',
       number: 0,
+      weekend: false,
+      marked: false,
     },
     { dayOfWeek: 'Tue',
       number: 0,
+      weekend: false,
+      marked: false,
     },
     { dayOfWeek: 'Wed',
       number: 0,
+      weekend: false,
+      marked: false,
     },
     { dayOfWeek: 'Thu',
       number: 0,
+      weekend: false,
+      marked: false,
     },
     { dayOfWeek: 'Fri',
       number: 0,
+      weekend: false,
+      marked: false,
     },
+/*     { dayOfWeek: 'Sat',
+      number: 0,
+      weekend: true,
+    },
+    { dayOfWeek: 'Sun',
+      number: 0,
+      weekend: true,
+    },   */      
   ];
 
 
@@ -113,8 +131,28 @@ export default class appointmentsComponent extends Component {
     }
   }  
 
-  
-  @action changeArray(day, number, isMarked){
+
+@action changeArray(day, number){
+  this.isMarked = !this.isMarked;
+  let positionObject = this.queue.findIndex(x=> x.number == number)
+  this.queue.splice(positionObject, //Posicion del objeto
+                    1,              //Número de items a borrar
+                                    //Reemplazamiento
+                    {
+                    "dayOfWeek": day,
+                    "number": number,                                      
+                    "weekend": true,
+                    "marked": true
+                    }
+                    );
+  console.log(this.queue);
+  //this.queue = [];
+  //this.queue.push({dayOfWeek: day, number: number, marked: this.isMarked, weekend: false});
+
+
+}
+
+/*   @action changeArray(day, number, isMarked){
       //Usuario
       let user = this.login.retrieveSessionStorage();
       this.Usuario = user.replace('@copyright.com', '');
@@ -139,9 +177,7 @@ export default class appointmentsComponent extends Component {
               };   
 
       this.args.updateArray(newArray, dateFormatted, isMarked);   
-
-
-  }
+  } */
 
 
 
