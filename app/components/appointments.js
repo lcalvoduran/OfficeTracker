@@ -39,14 +39,14 @@ export default class appointmentsComponent extends Component {
       weekend: false,
       marked: false,
     },
-/*     { dayOfWeek: 'Sat',
+    { dayOfWeek: 'Sat',
       number: 0,
       weekend: true,
     },
     { dayOfWeek: 'Sun',
       number: 0,
       weekend: true,
-    },   */      
+    },     
   ];
 
 
@@ -151,34 +151,6 @@ export default class appointmentsComponent extends Component {
   this.args.updateArray(newArray, dateFormatted.toDateString(), !this.isMarked);
 }
 
-/*   @action changeArray(day, number, isMarked){
-      //Usuario
-      let user = this.login.retrieveSessionStorage();
-      this.Usuario = user.replace('@copyright.com', '');
-      console.log(day);
-      if (day=="Mon"){
-        this.isMarked = isMarked;        
-      }else if (day=="Tue"){
-        this.isMarked = isMarked;
-      }else if (day=="Wed"){
-        this.isMarked = isMarked;
-      }else if (day=="Thu"){
-        this.isMarked = isMarked;
-      }else if (day=="Fri"){
-        this.isMarked = isMarked;
-      }
-      
-      let dateFormatted = day + " " + number + " " + months[currentMonth];
-      let newArray = 
-              {
-                date: dateFormatted,
-                marked: isMarked
-              };   
-
-      this.args.updateArray(newArray, dateFormatted, isMarked);   
-  } */
-
-
 
   @action next() {
     if (this.currentWeek == 1) {
@@ -215,19 +187,32 @@ export default class appointmentsComponent extends Component {
       this.queue = [
         { dayOfWeek: 'Mon',
           number: nextMonday,
+          weekend: false,
         },
         { dayOfWeek: 'Tue',
           number: otherDays[0],
+          weekend: false,
         },
         { dayOfWeek: 'Wed',
           number: otherDays[1],
+          weekend: false,
         },
         { dayOfWeek: 'Thu',
           number: otherDays[2],
+          weekend: false,
         },
         { dayOfWeek: 'Fri',
           number: otherDays[3],
-        },      
+          weekend: false,
+        },    
+        { dayOfWeek: 'Sat',
+          number: otherDays[4],
+          weekend: true,
+        },       
+        { dayOfWeek: 'Sun',
+          number: otherDays[5],
+          weekend: true,
+        },           
         ];       
     }  
   }
@@ -258,7 +243,15 @@ export default class appointmentsComponent extends Component {
         },
         { dayOfWeek: 'Fri',
           number: otherDays[3],
-        },      
+        },
+        { dayOfWeek: 'Sat',
+          number: otherDays[4],
+          weekend: true,
+        },       
+        { dayOfWeek: 'Sun',
+          number: otherDays[5],
+          weekend: true,
+        },         
         ];       
     } 
 

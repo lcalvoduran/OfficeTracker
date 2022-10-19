@@ -15,16 +15,17 @@
                 <tr>
                 {{#each this.queue as | buttonDay index|}}
                     <th>
-                        <button 
-                            {{!-- type="button" {{on "click" (fn this.changeArray buttonDay.dayOfWeek buttonDay.number true)}}    --}}                                               
+                        <button                                             
                             type="button" 
-                            class={{if buttonDay.marked "rup-btn rup-btn--sm rup-btn--contained" "rup-btn rup-btn--sm"}}
+                            class=                                               
+                                {{if buttonDay.marked "rup-btn rup-btn--sm rup-btn--contained" "rup-btn rup-btn--sm"}}
                                 {{on "click" (fn this.changeArray buttonDay.dayOfWeek buttonDay.number)}}
                             >
                             {{buttonDay.dayOfWeek}}
                             {{buttonDay.number}}
-                        </button>
-                    </th>                    
+                        </button>                       
+                    </th> 
+                
                 {{/each}}                                                          
 
                 </tr>
