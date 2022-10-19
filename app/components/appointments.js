@@ -13,7 +13,7 @@ export default class appointmentsComponent extends Component {
   @tracked currentWeek;
   @tracked isMarked = false;
   @tracked Usuario;
-  @tracked  queue = [
+  @tracked queue = [
     { dayOfWeek: 'Mon',
       number: 0,
       weekend: false,
@@ -56,7 +56,11 @@ export default class appointmentsComponent extends Component {
     
   }
 
-  
+  currentMonday(d){
+    var day = d.getDay(), diff = d.getDate() - day + (day == 0 ? -6:1);
+    let variable = new Date(d.setDate(diff));
+    return variable;
+  }
 
   showMyCalendar(month, year) {
     this.monthYear = months[currentMonth] + ' ' + currentYear;
@@ -71,6 +75,17 @@ export default class appointmentsComponent extends Component {
   }
 
   currentWeekDays(){ // getDay() 0-6 >> 1 Monday , 2 Tuesday, 3 Wednesday, 4 Thursday, 5 Friday |||||||||| queue >> 0 Monday, 1 Tuesday, 2 Wednesday, 3 Thursday, 4 Friday
+
+    let hoy = this.currentMonday(today);
+    this.queue[0].number = hoy.getDate();
+    for (let i = 1; i < this.queue.length; i++) {
+      this.queue[i].number = hoy.setMilliseconds(hoy.getMilliseconds()+8.64e+7);
+      this.queue[i].number = hoy.getDate();
+      }
+  }  
+
+
+/*   currentWeekDays(){ // getDay() 0-6 >> 1 Monday , 2 Tuesday, 3 Wednesday, 4 Thursday, 5 Friday |||||||||| queue >> 0 Monday, 1 Tuesday, 2 Wednesday, 3 Thursday, 4 Friday
     if (today.getDay() == 0) {
       console.log("Domingo");
       for (let i = 0; i < this.queue.length; i++) {
@@ -130,7 +145,7 @@ export default class appointmentsComponent extends Component {
       }      
     }
   }  
-
+ */
 
 @action changeArray(day, number){
   this.isMarked = !this.isMarked;
