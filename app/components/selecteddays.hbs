@@ -5,8 +5,8 @@
       <div class="rup-select">
         <select>
           <option value="">Check your days</option> 
-        {{#each @selectedDay as |day index|}}
-          <option value={{day.date}}>{{day.date}}</option>
+        {{#each @selectedDay as | day index|}}
+          <option value={{day.dayOfWeek}}>{{day.dayOfWeek}} {{day.number}} {{day.month}}</option>
         {{/each}}          
         </select>          
       </div>            

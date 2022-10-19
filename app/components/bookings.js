@@ -5,20 +5,13 @@ import { action } from '@ember/object';
 
 export default class bookingsComponent extends Component {
 
-  @tracked arrayDays = [];
+  @tracked arrayDays;
 
   @tracked selectedDay ="";
 
-  @action updateArray(newArray, dateFormatted, isMarked) {
+  @action updateArray(newArray, dateFormatted, month, marked) {
 
-    var foundPair = this.arrayDays.find(diaNombre => diaNombre.date == dateFormatted);
-    if(foundPair){
-      foundPair.marked = isMarked;
-    }else{
-      this.arrayDays.push(newArray);
-    }
-    this.selectedDay = this.arrayDays.filter(estado=> estado.marked == true);  
-
+  this.arrayDays = newArray;
+  this.selectedDay = this.arrayDays.filter(estado => estado.marked == true);
   }
-
 }

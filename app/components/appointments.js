@@ -7,6 +7,7 @@ let today = new Date();
 let currentMonth = today.getMonth();
 let currentYear = today.getFullYear(); 
 let months = [  'January',  'February',  'March',  'April',  'May',  'June',  'July',  'August',  'September',  'October',  'November',  'December'];
+let newArray;
 export default class appointmentsComponent extends Component {
   @service login;
   @tracked monthYear;
@@ -16,36 +17,45 @@ export default class appointmentsComponent extends Component {
   @tracked queue = [
     { dayOfWeek: 'Mon',
       number: 0,
+      month: currentMonth,
       weekend: false,
       marked: false,
     },
     { dayOfWeek: 'Tue',
       number: 0,
+      month: currentMonth,
       weekend: false,
       marked: false,
     },
     { dayOfWeek: 'Wed',
       number: 0,
+      month: currentMonth,
       weekend: false,
       marked: false,
     },
     { dayOfWeek: 'Thu',
       number: 0,
+      month: currentMonth,
       weekend: false,
       marked: false,
     },
     { dayOfWeek: 'Fri',
       number: 0,
+      month: currentMonth,
       weekend: false,
       marked: false,
     },
     { dayOfWeek: 'Sat',
       number: 0,
+      month: currentMonth,
       weekend: true,
+      marked: false,
     },
     { dayOfWeek: 'Sun',
       number: 0,
+      month: currentMonth,
       weekend: true,
+      marked: false,
     },     
   ];
 
@@ -75,7 +85,6 @@ export default class appointmentsComponent extends Component {
   }
 
   currentWeekDays(){ // getDay() 0-6 >> 1 Monday , 2 Tuesday, 3 Wednesday, 4 Thursday, 5 Friday |||||||||| queue >> 0 Monday, 1 Tuesday, 2 Wednesday, 3 Thursday, 4 Friday
-
     let hoy = this.currentMonday(today);
     this.queue[0].number = hoy.getDate();
     for (let i = 1; i < this.queue.length; i++) {
@@ -84,87 +93,26 @@ export default class appointmentsComponent extends Component {
       }
   }  
 
-
-/*   currentWeekDays(){ // getDay() 0-6 >> 1 Monday , 2 Tuesday, 3 Wednesday, 4 Thursday, 5 Friday |||||||||| queue >> 0 Monday, 1 Tuesday, 2 Wednesday, 3 Thursday, 4 Friday
-    if (today.getDay() == 0) {
-      console.log("Domingo");
-      for (let i = 0; i < this.queue.length; i++) {
-        this.queue[i].number = today.setMilliseconds(today.getMilliseconds()+8.64e+7);
-        this.queue[i].number = today.getDate();
-      }
-
-    }else if(today.getDay() == 1) {
-      console.log("Lunes");
-      this.queue[0].number = today.getDate();
-      for (let i = 1; i < this.queue.length; i++) {
-        this.queue[i].number = today.setMilliseconds(today.getMilliseconds()+8.64e+7);
-        this.queue[i].number = today.getDate();
-      }    
-
-    }else if(today.getDay() == 2) {
-      console.log("Martes");
-      this.queue[0].number = today.setMilliseconds(today.getMilliseconds()-8.64e+7);
-      this.queue[0].number = today.getDate();      
-      for (let i = 1; i < this.queue.length; i++) {
-        this.queue[i].number = today.setMilliseconds(today.getMilliseconds()+8.64e+7);
-        this.queue[i].number = today.getDate();
-      }       
-    }else if(today.getDay() == 3) {
-      console.log("Miércoles");
-      this.queue[0].number = today.setMilliseconds(today.getMilliseconds()-8.64e+7*2);
-      this.queue[0].number = today.getDate();     
-      for (let i = 1; i < this.queue.length; i++) {
-        this.queue[i].number = today.setMilliseconds(today.getMilliseconds()+8.64e+7);
-        this.queue[i].number = today.getDate();
-      }   
-    }else if(today.getDay() == 4) {
-      console.log("Jueves");
-      this.queue[0].number = today.setMilliseconds(today.getMilliseconds()-8.64e+7*3);
-      this.queue[0].number = today.getDate();     
-      for (let i = 1; i < this.queue.length; i++) {
-        this.queue[i].number = today.setMilliseconds(today.getMilliseconds()+8.64e+7);
-        this.queue[i].number = today.getDate();
-      } 
-
-    }else if(today.getDay() == 5) {
-      console.log("Viernes");
-      this.queue[0].number = today.setMilliseconds(today.getMilliseconds()-8.64e+7*4);
-      this.queue[0].number = today.getDate();    
-      for (let i = 1; i < this.queue.length; i++) {
-        this.queue[i].number = today.setMilliseconds(today.getMilliseconds()+8.64e+7);
-        this.queue[i].number = today.getDate();
-      }     
-
-    }else if(today.getDay() == 6) {
-      console.log("Sábado");
-      this.queue[0].number = today.setMilliseconds(today.getMilliseconds()-8.64e+7*5);
-      this.queue[0].number = today.getDate();    
-      for (let i = 1; i < this.queue.length; i++) {
-        this.queue[i].number = today.setMilliseconds(today.getMilliseconds()+8.64e+7);
-        this.queue[i].number = today.getDate();
-      }      
-    }
-  }  
- */
-
-@action changeArray(day, number){
-  this.isMarked = !this.isMarked;
-  let positionObject = this.queue.findIndex(x=> x.number == number)
-  this.queue.splice(positionObject, //Posicion del objeto
-                    1,              //Número de items a borrar
-                    {
-                    "dayOfWeek": day,
-                    "number": number,                                      
-                    "weekend": true,
-                    "marked": this.isMarked
-                    }
-                    );
-  let newArray = this.queue
-  this.queue = newArray;
-  console.log(this.queue);
-  let dateFormatted = new Date(currentYear, currentMonth, number);                
-  this.args.updateArray(newArray, dateFormatted.toDateString(), !this.isMarked);
-}
+  @action changeArray(day, number){
+    console.log("En el change array");
+    
+    this.isMarked = !this.isMarked;
+    let positionObject = this.queue.findIndex(x=> x.number == number)
+    this.queue.splice(positionObject, //Posicion del objeto
+                      1,              //Número de items a borrar
+                      {
+                      "dayOfWeek": day,
+                      "number": number,                                      
+                      "weekend": true,
+                      "month": months[currentMonth],
+                      "marked": this.isMarked,
+                      }
+                      );
+    let newArray = this.queue;
+    this.queue = newArray;
+    let dateFormatted = new Date(currentYear, currentMonth, number);                
+    this.args.updateArray(newArray, dateFormatted, months[currentMonth], !this.isMarked);
+  }
 
 
   @action next() {
@@ -186,7 +134,7 @@ export default class appointmentsComponent extends Component {
       currentMonth = (currentMonth + 1) % 12;
       this.monthYear = months[currentMonth] + ' ' + currentYear;
     }
-    console.log(months[currentMonth]);
+
   }
 
 
@@ -202,30 +150,37 @@ export default class appointmentsComponent extends Component {
       this.queue = [
         { dayOfWeek: 'Mon',
           number: nextMonday,
+          month: currentMonth,
           weekend: false,
         },
         { dayOfWeek: 'Tue',
           number: otherDays[0],
+          month: currentMonth,
           weekend: false,
         },
         { dayOfWeek: 'Wed',
           number: otherDays[1],
+          month: currentMonth,
           weekend: false,
         },
         { dayOfWeek: 'Thu',
           number: otherDays[2],
+          month: currentMonth,
           weekend: false,
         },
         { dayOfWeek: 'Fri',
           number: otherDays[3],
+          month: currentMonth,
           weekend: false,
         },    
         { dayOfWeek: 'Sat',
           number: otherDays[4],
+          month: currentMonth,
           weekend: true,
         },       
         { dayOfWeek: 'Sun',
           number: otherDays[5],
+          month: currentMonth,
           weekend: true,
         },           
         ];       
@@ -246,25 +201,37 @@ export default class appointmentsComponent extends Component {
       this.queue = [
         { dayOfWeek: 'Mon',
           number: nextMonday,
+          month: currentMonth,
+          weekend: false,
         },
         { dayOfWeek: 'Tue',
           number: otherDays[0],
+          month: currentMonth,
+          weekend: false,
         },
         { dayOfWeek: 'Wed',
           number: otherDays[1],
+          month: currentMonth,
+          weekend: false,
         },
         { dayOfWeek: 'Thu',
           number: otherDays[2],
+          month: currentMonth,
+          weekend: false,
         },
         { dayOfWeek: 'Fri',
           number: otherDays[3],
+          month: currentMonth,
+          weekend: false,
         },
         { dayOfWeek: 'Sat',
           number: otherDays[4],
+          month: currentMonth,
           weekend: true,
         },       
         { dayOfWeek: 'Sun',
           number: otherDays[5],
+          month: currentMonth,
           weekend: true,
         },         
         ];       
