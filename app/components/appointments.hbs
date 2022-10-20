@@ -19,7 +19,7 @@
                             type="button" 
                             class=                                               
                                 {{if buttonDay.marked "rup-btn rup-btn--sm rup-btn--contained" "rup-btn rup-btn--sm"}}
-                                {{on "click" (fn this.changeArray buttonDay.dayOfWeek buttonDay.number)}}
+                                {{on "click" (fn this.changeMarker buttonDay.dayOfWeek buttonDay.number)}}
                             >
                             {{buttonDay.dayOfWeek}}
                             {{buttonDay.number}}
