@@ -7,12 +7,12 @@ let today = new Date();
 let currentMonth = today.getMonth();
 let currentYear = today.getFullYear(); 
 let months = [  'January',  'February',  'March',  'April',  'May',  'June',  'July',  'August',  'September',  'October',  'November',  'December'];
-let daysMarkeds = [];
+let newArray=[];
 export default class appointmentsComponent extends Component {
   @service login;
   @tracked monthYear;
   @tracked currentWeek;
-  @tracked isMarked;
+  @tracked isMarked = false;
   @tracked Usuario;
   @tracked queue = [
     { dayOfWeek: 'Mon',
@@ -93,12 +93,8 @@ export default class appointmentsComponent extends Component {
       }
   }  
 
-  @action changeMarker(day, number){    
+  @action changeArray(day, number){    
     this.isMarked = !this.isMarked;
-    this.changeArray(day, number, this.isMarked)
-  }
-
-  changeArray(day, number, marked){
     let positionObject = this.queue.findIndex(x=> x.number == number)
     this.queue.splice(positionObject, //Posicion del objeto
                       1,              //Número de items a borrar
@@ -107,16 +103,15 @@ export default class appointmentsComponent extends Component {
                       "number": number,                                      
                       "weekend": true,
                       "month": months[currentMonth],
-                      "marked": marked,
+                      "marked": this.isMarked,
                       }
                       );
     let newArray = this.queue;
     this.queue = newArray;
-    let nuevaVariable = this.queue.filter(estado => estado.marked == true);
-    Array.prototype.push.apply(daysMarkeds, nuevaVariable);
     let dateFormatted = new Date(currentYear, currentMonth, number);                
-    this.args.updateArray(daysMarkeds, dateFormatted, months[currentMonth], !this.isMarked);
+    this.args.updateArray(newArray, dateFormatted, months[currentMonth], !this.isMarked);
   }
+
 
   @action next() {
     if (this.currentWeek == 1) {
@@ -267,4 +262,3 @@ export default class appointmentsComponent extends Component {
 
   }  
 }
-
