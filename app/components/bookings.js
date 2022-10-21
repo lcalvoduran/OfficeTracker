@@ -10,7 +10,6 @@ export default class bookingsComponent extends Component {
   @tracked selectedDay ="";
 
   @action updateArray(daysMarkeds, dateFormatted, month, marked) {
-
     this.arrayDays.push(daysMarkeds);
     this.arrayDays = this.arrayDays.flat(1);
     this.selectedDay = this.arrayDays.filter(estado => estado.marked == true);
@@ -32,7 +31,7 @@ export default class bookingsComponent extends Component {
       }
       return newDeduplicatedArray;
     }
-
+    console.log(this.selectedDay);
     this.selectedDay = remueveObjetosDuplicados(this.selectedDay);
   }
 
