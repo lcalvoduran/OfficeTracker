@@ -16,46 +16,53 @@ export default class appointmentsComponent extends Component {
   @tracked Usuario;
   @tracked queue = [
     { dayOfWeek: 'Mon',
+      marked: false,
       number: 0,
       month: currentMonth,
       weekend: false,
-      marked: false,
+
     },
     { dayOfWeek: 'Tue',
+      marked: false,
       number: 0,
       month: currentMonth,
       weekend: false,
-      marked: false,
+
     },
     { dayOfWeek: 'Wed',
+      marked: false,
       number: 0,
       month: currentMonth,
       weekend: false,
-      marked: false,
+
     },
     { dayOfWeek: 'Thu',
+      marked: false,
       number: 0,
       month: currentMonth,
       weekend: false,
-      marked: false,
+
     },
     { dayOfWeek: 'Fri',
+      marked: false,
       number: 0,
       month: currentMonth,
       weekend: false,
-      marked: false,
+
     },
     { dayOfWeek: 'Sat',
+      marked: false,
       number: 0,
       month: currentMonth,
       weekend: true,
-      marked: false,
+
     },
     { dayOfWeek: 'Sun',
+      marked: false,
       number: 0,
       month: currentMonth,
       weekend: true,
-      marked: false,
+
     },     
   ];
 
@@ -103,10 +110,10 @@ export default class appointmentsComponent extends Component {
                       1,              //Número de items a borrar
                       {
                       "dayOfWeek": day,
+                      "marked": this.isMarked,                      
                       "number": number,                                      
                       "weekend": true,
                       "month": months[currentMonth],
-                      "marked": this.isMarked,
                       }
                       );
     let newArray = this.queue;
