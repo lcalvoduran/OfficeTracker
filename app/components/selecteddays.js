@@ -7,7 +7,6 @@ export default class selecteddaysComponent extends Component {
     @tracked selectedDay;
     constructor(){
         super(...arguments);
-        console.log(this.args.selectedDay);
     }
 
     @action saveDates(){
@@ -16,12 +15,13 @@ export default class selecteddaysComponent extends Component {
         window.location.reload();
     }    
     @action clearDates(number, month){
-        console.log(this.args.selectedDay + " " + number + " " + month);
-        let selectedDay = this.args.selectedDay.filter(element => element.number == number && element.month == month);
-        let findArray = this.args.selectedDay.findIndex(element => element.number == number && element.month == month);
-        this.args.selectedDay.pop(findArray);
-        let selectedFinal = this.args.selectedDay;
-        console.log(this.args.selectedDay);
-    }        
+        let findArray = this.selectedDay.findIndex(element => element.number == number && element.month == month);
+        this.selectedDay = this.selectedDay.pop(findArray);
+    }
+
+    get totalSelected(){
+        this.selectedDay = this.args.selectedDay;
+        return this.selectedDay;
+    }
 }
 
