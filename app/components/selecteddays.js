@@ -20,6 +20,7 @@ export default class selecteddaysComponent extends Component {
     }
 
     get totalSelected(){
+        //"Estado popeado" no está cogiendo cuando se POPea 
         this.selectedDay = this.args.selectedDay;
         return this.selectedDay;
     }
