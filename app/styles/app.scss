@@ -226,11 +226,28 @@ p {
   width: 100%;
 }
 
+.rup-select{
+  position: absolute !important;
+}
+
+.rup-toast{
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 64px;
+  width: 110px;
+}
+
 .appointments-header{
   color: white;
   background-color: #016aba;
   border-radius: 3px;
   
+}
+
+#saveButton{
+margin-top: 6rem;
+
+
 }
 
 #back {

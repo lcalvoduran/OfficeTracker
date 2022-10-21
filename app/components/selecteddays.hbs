@@ -3,7 +3,7 @@
       <p></p>
 
       <div class="rup-select">
-      <div class="rup-toast" role="alert" aria-live="polite" aria-atomic="true">
+        <div class="rup-toast" style="overflow-y: scroll" role="alert" aria-live="polite" aria-atomic="true">
           {{#each @selectedDay as | day index|}}
           {{day.number}} {{day.month}}
           <button class="rup-icon-btn rup-icon-btn--xs rup-toast__clear-btn" type="button">
@@ -15,14 +15,16 @@
           <p></p>
           {{/each}} 
 
-      </div>  
+        </div>      
+      </div>            
+      <p></p>
+      <button id="saveButton" {{on "click" this.saveDates}} class="rup-btn rup-btn--contained" type="button">Save</button>
+    </div>
+
+
 {{!--         <select>
           <option value="">Check your days</option> 
         {{#each @selectedDay as | day index|}}
           <option value={{day.dayOfWeek}}>{{day.dayOfWeek}} {{day.number}} {{day.month}}</option>
         {{/each}}          
         </select>    --}}       
-      </div>            
-      <p></p>
-      <button {{on "click" this.saveDates}} class="rup-btn rup-btn--contained" type="button">Save</button>
-    </div>
