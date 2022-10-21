@@ -93,7 +93,10 @@ export default class appointmentsComponent extends Component {
       }
   }  
 
-  @action changeArray(day, number){    
+  @action changeArray(day, number){ 
+    if (day == "Sat" || day == "Sun")  {
+      window.alert("Saturday and Sunday are not allowed"); 
+    } else {        
     this.isMarked = !this.isMarked;
     let positionObject = this.queue.findIndex(x=> x.number == number)
     this.queue.splice(positionObject, //Posicion del objeto
@@ -110,6 +113,7 @@ export default class appointmentsComponent extends Component {
     this.queue = newArray;
     let dateFormatted = new Date(currentYear, currentMonth, number);                
     this.args.updateArray(newArray, dateFormatted, months[currentMonth], !this.isMarked);
+  } 
   }
 
 
