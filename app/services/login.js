@@ -17,6 +17,18 @@ export default class LoginService extends Service {
     }
   }
 
+  leaveSession() {
+    let estadoList = JSON.parse(localStorage.getItem('currentUser'));
+    let modificaArray = this.userArray.findIndex(element => element.estado == true);
+    this.userArray.splice(modificaArray, 1);
+    console.log(this.userArray);
+    localStorage.setItem('currentUser', JSON.stringify(this.userArray));
+    /* 
+   localStorage.clear();
+   location.reload(); 
+   */
+  }
+
   retrieveSessionStorage() {
     let varLocal = localStorage.getItem('currentUser');
     if (varLocal == null) {
@@ -37,11 +49,5 @@ export default class LoginService extends Service {
     }
   }
 
-  leaveSession() {
-/*     this.userArray[0].estado = false;
-    console.log("Hola");
-    console.log(this.userArray); */
-    localStorage.clear();
-    location.reload();
-  }
+
 }
