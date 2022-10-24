@@ -101,26 +101,31 @@ export default class appointmentsComponent extends Component {
   }  
 
   @action changeArray(day, number){ 
-    if (day == "Sat" || day == "Sun")  {
-      window.alert("Saturday and Sunday are not allowed"); 
-    } else {        
-    this.isMarked = !this.isMarked;
-    let positionObject = this.queue.findIndex(x=> x.number == number)
-    this.queue.splice(positionObject, //Posicion del objeto
-                      1,              //Número de items a borrar
-                      {
-                      "dayOfWeek": day,
-                      "marked": this.isMarked,                      
-                      "number": number,                                      
-                      "weekend": true,
-                      "month": months[currentMonth],
-                      }
-                      );
-    let newArray = this.queue;
-    this.queue = newArray;
-    let dateFormatted = new Date(currentYear, currentMonth, number);                
-    this.args.updateArray(newArray, dateFormatted, months[currentMonth], !this.isMarked);
-  } 
+    let exceptionDate = new Date(today.getFullYear(), currentMonth, number+1);
+    if (exceptionDate < today) {
+      window.alert("You cannot select days older than your current date");
+      }else{
+        if (day == "Sat" || day == "Sun")  {
+          window.alert("Saturday and Sunday are not allowed"); 
+        } else {        
+        this.isMarked = !this.isMarked;
+        let positionObject = this.queue.findIndex(x=> x.number == number)
+        this.queue.splice(positionObject, //Posicion del objeto
+                          1,              //Número de items a borrar
+                          {
+                          "dayOfWeek": day,
+                          "marked": this.isMarked,                      
+                          "number": number,                                      
+                          "weekend": true,
+                          "month": months[currentMonth],
+                          }
+                          );
+        let newArray = this.queue;
+        this.queue = newArray;
+        let dateFormatted = new Date(currentYear, currentMonth, number);                
+        this.args.updateArray(newArray, dateFormatted, months[currentMonth], !this.isMarked);
+      }
+    } 
   }
 
 

@@ -16,12 +16,13 @@ export default class selecteddaysComponent extends Component {
     }    
     @action clearDates(number, month){
         let findArray = this.selectedDay.findIndex(element => element.number == number && element.month == month);
-        this.selectedDay = this.selectedDay.pop(findArray);
+        this.selectedDay = this.selectedDay.splice(findArray, 1);
     }
 
     get totalSelected(){
-        //"Estado popeado" no está cogiendo cuando se POPea 
+
         this.selectedDay = this.args.selectedDay;
+        console.log(this.selectedDay);
         return this.selectedDay;
     }
 }
