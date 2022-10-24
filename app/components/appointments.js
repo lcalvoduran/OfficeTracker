@@ -70,6 +70,7 @@ export default class appointmentsComponent extends Component {
   constructor() {
     super(...arguments);
     this.showMyCalendar(currentMonth, currentYear);
+    this.showUsers();
     
   }
 
@@ -277,4 +278,10 @@ export default class appointmentsComponent extends Component {
     }
 
   }  
+
+  showUsers(){
+    let variable = this.login.retrieveSessionStorage();
+    this.Usuario = variable.replace("@copyright.com", "");
+    console.log(this.Usuario);
+  }
 }
