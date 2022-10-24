@@ -33,14 +33,9 @@
     
             <tbody id="calendar-body">    
                 <tr>
-                    
-                    <td>{{this.Usuario}} col1</td> {{!-- Lunes --}}
-                    <td>{{this.Usuario}} col2</td> {{!-- Martes --}}
-                    <td>{{this.Usuario}} col3</td> {{!-- Miércoles --}}
-                    <td>{{this.Usuario}} col4</td> {{!-- Jueves --}}
-                    <td>{{this.Usuario}} col5</td> {{!-- Viernes --}}
-                    <td>{{this.Usuario}} col6</td> {{!-- Sábado --}}
-                    <td>{{this.Usuario}} col7</td> {{!-- Domingo --}}
+                    {{#each this.queue as | userTD index |}}
+                    <td>{{if userTD.marked this.Usuario}}</td>
+                    {{/each}}
                 </tr>                         
                 
 {{!--                  
