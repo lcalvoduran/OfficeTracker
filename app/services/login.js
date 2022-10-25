@@ -19,9 +19,14 @@ export default class LoginService extends Service {
 
   leaveSession() {
     let filtrado = this.userArray.filter(element => element.estado == true);
+    console.log(filtrado);
+    if (filtrado.length>0){
     filtrado[0].estado = false;
     localStorage.setItem('currentUser', JSON.stringify(filtrado));
     location.reload();  
+    }else{
+      console.log("No hay ningún usuario logeado");
+    }
   }
 
   retrieveSessionStorage() {

@@ -13,7 +13,6 @@ export default class loginComponent extends Component {
   @action submitLogin() {
     let pattern = /^[a-zA-Z0-9._-]+@(copyright.com)$/;
     let validationPattern = pattern.test(this.userEmail);
-    console.log('Validation ' + validationPattern);
     if (validationPattern) {
 
       let users = JSON.parse(localStorage.getItem('currentUser'));
