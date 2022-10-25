@@ -282,6 +282,5 @@ export default class appointmentsComponent extends Component {
   editUsernames(){
     let variable = this.login.retrieveSessionStorage();
     this.Usuario = variable.replace("@copyright.com", "");
-    console.log(this.Usuario);
   }
 }

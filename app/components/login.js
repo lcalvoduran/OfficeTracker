@@ -15,16 +15,30 @@ export default class loginComponent extends Component {
     let validationPattern = pattern.test(this.userEmail);
     console.log('Validation ' + validationPattern);
     if (validationPattern) {
-      if (this.login.saveUser(this.userEmail)) {
+
+      let users = JSON.parse(localStorage.getItem('currentUser'));
+      if (users == null){
+        if (this.login.saveUser(this.userEmail)) {
+          this.validationUser = false;
+          later(() => {
+            return this.router.transitionTo('index');
+          }, 2000);
+        } else {
+          return this.router.transitionTo('login');
+        }
+      }else{
         this.validationUser = false;
+        let filtrado = users.filter(element => element.email == this.userEmail);
+        filtrado[0].estado = true;
+        localStorage.setItem('currentUser', JSON.stringify(filtrado));
         later(() => {
           return this.router.transitionTo('index');
-        }, 2000);
-      } else {
-        return this.router.transitionTo('login');
+        }, 2000);        
       }
     } else {
       window.alert('El email no cumple las condiciones necesarias');
     }
-  }
+  
+}
+
 }

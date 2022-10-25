@@ -21,9 +21,7 @@ export default class selecteddaysComponent extends Component {
     }
 
     get totalSelected(){
-
         this.selectedDay = this.args.selectedDay;
-        console.log(this.selectedDay);
         return this.selectedDay;
     }
 }

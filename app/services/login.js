@@ -18,15 +18,10 @@ export default class LoginService extends Service {
   }
 
   leaveSession() {
-    let estadoList = JSON.parse(localStorage.getItem('currentUser'));
-    let modificaArray = this.userArray.findIndex(element => element.estado == true);
-    this.userArray.splice(modificaArray, 1);
-    console.log(this.userArray);
-    localStorage.setItem('currentUser', JSON.stringify(this.userArray));
-    /* 
-   localStorage.clear();
-   location.reload(); 
-   */
+    let filtrado = this.userArray.filter(element => element.estado == true);
+    filtrado[0].estado = false;
+    localStorage.setItem('currentUser', JSON.stringify(filtrado));
+    location.reload();  
   }
 
   retrieveSessionStorage() {
@@ -38,14 +33,15 @@ export default class LoginService extends Service {
     } else {
       this.userArray = [];
       const arr = JSON.parse(localStorage.getItem('currentUser'));
-      //console.log(arr);
       var foundState = arr.find(estado => estado.estado == true)
       if (foundState) {
         this.userArray = [...this.userArray, ...arr];
         return this.userArray[0].email;        
+      }else{
+      this.userArray = [];
+      this.userArray = [...this.userArray, ...arr];
+      return "Sign In / Register";
       }
-      console.log("Ningún usuario activo");
-
     }
   }
 
