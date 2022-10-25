@@ -30,3 +30,14 @@ https://guides.emberjs.com/release/components/looping-through-lists/
 1. Generar un día y que a partir de ese día me de los demás días de esa semana --> Done
 2. Generar la siguiente semana cambiando con el date.format 
 3. Generar la anterior semana cambiando con el date.format
+
+
+
+
+
+/////////////////////////////////
+
+Para el Leandro del futuro:
+
+Tenemos el servicio "retrieveSessionStorage", vale pues este aunque esté el localStorage con el estado a falso sigue apareciendo "✔️ [Copyright Clearance Center]: Autentificación correcta" 
+la cosa es que detecte que esté lleno y que EL QUE ESTÉ A FALSO no se cuente.
