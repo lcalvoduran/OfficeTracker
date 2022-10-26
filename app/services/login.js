@@ -21,8 +21,17 @@ export default class LoginService extends Service {
     let filtrado = this.userArray.filter(element => element.estado == true);
     console.log(filtrado);
     if (filtrado.length>0){
-    filtrado[0].estado = false;
-    localStorage.setItem('currentUser', JSON.stringify(filtrado));
+    let positionFilter = this.userArray.findIndex(element=> element.email == filtrado[0].email && element.estado == filtrado[0].estado);
+    this.userArray.splice(positionFilter, 
+                          1,
+                          {                           
+                          "email": filtrado[0].email,                          
+                          "password": 1234,
+                          "estado": false,
+                          }
+                          );
+    console.log(this.userArray);
+    localStorage.setItem('currentUser', JSON.stringify(this.userArray));
     location.reload();  
     }else{
       console.log("No hay ningún usuario logeado");
