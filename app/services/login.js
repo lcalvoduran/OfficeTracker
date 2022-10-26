@@ -19,7 +19,6 @@ export default class LoginService extends Service {
 
   leaveSession() {
     let filtrado = this.userArray.filter(element => element.estado == true);
-    console.log(filtrado);
     if (filtrado.length>0){
     let positionFilter = this.userArray.findIndex(element=> element.email == filtrado[0].email && element.estado == filtrado[0].estado);
     this.userArray.splice(positionFilter, 
@@ -30,9 +29,8 @@ export default class LoginService extends Service {
                           "estado": false,
                           }
                           );
-    console.log(this.userArray);
     localStorage.setItem('currentUser', JSON.stringify(this.userArray));
-    location.reload();  
+    //location.reload();  
     }else{
       console.log("No hay ningún usuario logeado");
     }
@@ -50,7 +48,8 @@ export default class LoginService extends Service {
       var foundState = arr.find(estado => estado.estado == true)
       if (foundState) {
         this.userArray = [...this.userArray, ...arr];
-        return this.userArray[0].email;        
+        //return this.userArray[0].email;     
+        return foundState.email;
       }else{
       this.userArray = [];
       this.userArray = [...this.userArray, ...arr];

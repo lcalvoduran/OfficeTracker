@@ -28,19 +28,19 @@ export default class loginComponent extends Component {
       }else{
         this.validationUser = false;
         let filtrado = users.filter(element => element.email == this.userEmail);
-        console.log(filtrado);
         if (filtrado.length==0){
           console.log("User don't found in DDBB");
           this.login.saveUser(this.userEmail);
           later(() => {
             return this.router.transitionTo('index');
-          }, 2000);          
+          }, 2000);     
         }else{        
+        // EL PROBLEMA ESTA AQUI!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
+        console.log(users);
         filtrado[0].estado = true;
-        localStorage.setItem('currentUser', JSON.stringify(filtrado));
-        later(() => {
-          return this.router.transitionTo('index');
-        }, 2000);    
+        console.log(filtrado);
+        console.log(users);
+        localStorage.setItem('currentUser', JSON.stringify(users));
       }    
       }
     } else {
