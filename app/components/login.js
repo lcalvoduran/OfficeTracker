@@ -34,13 +34,12 @@ export default class loginComponent extends Component {
           later(() => {
             return this.router.transitionTo('index');
           }, 2000);     
-        }else{        
-        // EL PROBLEMA ESTA AQUI!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! 
-        console.log(users);
+        }else{         
         filtrado[0].estado = true;
-        console.log(filtrado);
-        console.log(users);
         localStorage.setItem('currentUser', JSON.stringify(users));
+        later(() => {
+          return this.router.transitionTo('index');
+        }, 2000);        
       }    
       }
     } else {

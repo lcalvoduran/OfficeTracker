@@ -30,7 +30,7 @@ export default class LoginService extends Service {
                           }
                           );
     localStorage.setItem('currentUser', JSON.stringify(this.userArray));
-    //location.reload();  
+    location.reload();  
     }else{
       console.log("No hay ningún usuario logeado");
     }
@@ -53,7 +53,9 @@ export default class LoginService extends Service {
       }else{
       this.userArray = [];
       this.userArray = [...this.userArray, ...arr];
-      return "Sign In / Register";
+      if(foundState == null){
+        return "Sign In / Register";
+      }
       }
     }
   }
