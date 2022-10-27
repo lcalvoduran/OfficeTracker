@@ -30,3 +30,12 @@ https://guides.emberjs.com/release/components/looping-through-lists/
 1. Generar un día y que a partir de ese día me de los demás días de esa semana --> Done
 2. Generar la siguiente semana cambiando con el date.format 
 3. Generar la anterior semana cambiando con el date.format
+
+//////////////////////////////////////////////////////////
+
+Reminder: 
+
+Nos encontramos en app > components > bookings 
+
+Tenemos que hacer la función refreshingWithMarkeds() que me recoge los días que se encuentran en el localStorage y tiene que pushearlos al this.selectedDays.
+Una vez estén pusheados se marcarán en el appointments con la casilla de color.
