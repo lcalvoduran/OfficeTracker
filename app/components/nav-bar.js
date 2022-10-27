@@ -19,6 +19,9 @@ export default class navbarComponent extends Component {
     if (this.currentUser.length == 0) {
       console.log('❌ [Copyright Clearance Center]: Necesitas estar autentificado para entrar en el sistema');
       this.router.transitionTo('login');
+    }else if(this.login.retrieveSessionStorage() == "Sign In / Register"){
+      console.log('❌ [Copyright Clearance Center]: Necesitas estar autentificado para entrar en el sistema');
+      this.router.transitionTo('login');    
     } else {
       console.log('✔️ [Copyright Clearance Center]: Autentificación correcta');
     }
