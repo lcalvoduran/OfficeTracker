@@ -283,4 +283,6 @@ export default class appointmentsComponent extends Component {
     let variable = this.login.retrieveSessionStorage();
     this.Usuario = variable.replace("@copyright.com", "");
   }
+
+  
 }

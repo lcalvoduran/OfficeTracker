@@ -6,6 +6,7 @@ import { action } from '@ember/object';
 
 export default class selecteddaysComponent extends Component {
     @tracked selectedDay;
+    @service login;
     constructor(){
         super(...arguments);
     }
