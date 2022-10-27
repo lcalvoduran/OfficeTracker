@@ -69,9 +69,7 @@ export default class appointmentsComponent extends Component {
 
   constructor() {
     super(...arguments);
-    this.showMyCalendar(currentMonth, currentYear);
-    this.editUsernames();
-    
+    this.showMyCalendar(currentMonth, currentYear);    
   }
 
   currentMonday(d){
@@ -102,6 +100,7 @@ export default class appointmentsComponent extends Component {
   }  
 
   @action changeArray(day, number){ 
+    this.editUsernames();
     let exceptionDate = new Date(today.getFullYear(), currentMonth, number+1);
     if (exceptionDate < today) {
       window.alert("You cannot select days older than your current date");
@@ -282,7 +281,5 @@ export default class appointmentsComponent extends Component {
   editUsernames(){
     let variable = this.login.retrieveSessionStorage();
     this.Usuario = variable.replace("@copyright.com", "");
-  }
-
-  
+  } 
 }

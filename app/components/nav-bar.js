@@ -15,7 +15,6 @@ export default class navbarComponent extends Component {
 
   anySessionStored() {
     this.currentUser = this.login.retrieveSessionStorage();
-    console.log(this.login.retrieveSessionStorage());
     if (this.currentUser.length == 0) {
       console.log('❌ [Copyright Clearance Center]: Necesitas estar autentificado para entrar en el sistema');
       this.router.transitionTo('login');

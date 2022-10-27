@@ -12,9 +12,10 @@ export default class selecteddaysComponent extends Component {
     }
 
     @action saveDates(){
-        localStorage.setItem("myDates", JSON.stringify(this.args.selectedDay)); 
+        let keyUser = this.login.retrieveSessionStorage();
+        localStorage.setItem(keyUser, JSON.stringify(this.args.selectedDay)); 
         window.alert("The changes will be stored in the local Database"); 
-        window.location.reload();
+        //window.location.reload();
     }    
     @action clearDates(number, month){
         let findArray = this.selectedDay.findIndex(element => element.number == number && element.month == month);
@@ -26,4 +27,6 @@ export default class selecteddaysComponent extends Component {
         return this.selectedDay;
     }
 }
+
+
 

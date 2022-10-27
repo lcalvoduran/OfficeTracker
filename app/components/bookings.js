@@ -4,7 +4,7 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
 export default class bookingsComponent extends Component {
-
+  @service login;
   @tracked arrayDays = [];
 
   @tracked selectedDay ="";
@@ -32,12 +32,20 @@ export default class bookingsComponent extends Component {
       }
       return newDeduplicatedArray;
     }
-
     this.selectedDay = remueveObjetosDuplicados(this.selectedDay);
   }
 
 
-
-    
-  
+  refreshingWithMarkeds(){
+    let variable = this.login.retrieveSessionStorage();
+    let daysLocal = JSON.parse(localStorage.getItem(variable));
+    if (daysLocal.length == 0) {
+      console.log("no");
+    }
+/*     this.selectedDay.push(daysLocal); */
+    console.log(this.selectedDay);
+/*     daysLocal.reduce((a, v) => ({ ...a, [v]: v}), {});
+    let daysBonito = daysLocal.pop(); */
+    return daysLocal;
+  }
 }
