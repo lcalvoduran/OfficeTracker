@@ -33,6 +33,7 @@ export default class bookingsComponent extends Component {
       return newDeduplicatedArray;
     }
     this.selectedDay = remueveObjetosDuplicados(this.selectedDay);
+    this.selectedDay 
   }
 
 
