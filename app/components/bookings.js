@@ -32,13 +32,13 @@ export default class bookingsComponent extends Component {
       }
       return newDeduplicatedArray;
     }
-    this.selectedDay = this.retrieveFromLocalStorage();
+    this.selectedDay = this.retrieveDaysFromLocalStorage();
     this.selectedDay = remueveObjetosDuplicados(this.selectedDay);
     
   }
 
 
-  retrieveFromLocalStorage(){
+  retrieveDaysFromLocalStorage(){
     let variable = this.login.retrieveSessionStorage();
     let daysLocal = JSON.parse(localStorage.getItem(variable));
     if (daysLocal.length >= 1) {
