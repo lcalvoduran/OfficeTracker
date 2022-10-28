@@ -32,21 +32,21 @@ export default class bookingsComponent extends Component {
       }
       return newDeduplicatedArray;
     }
+    this.selectedDay = this.retrieveFromLocalStorage();
     this.selectedDay = remueveObjetosDuplicados(this.selectedDay);
-    this.selectedDay 
+    
   }
 
 
-  refreshingWithMarkeds(){
+  retrieveFromLocalStorage(){
     let variable = this.login.retrieveSessionStorage();
     let daysLocal = JSON.parse(localStorage.getItem(variable));
-    if (daysLocal.length == 0) {
-      console.log("no");
+    if (daysLocal.length >= 1) {
+      daysLocal.reduce((a, v) => ({ ...a, [v]: v}), {}); 
+      let merged = [...daysLocal, ...this.selectedDay];
+      console.log(merged);
+      return merged;
     }
-/*     this.selectedDay.push(daysLocal); */
-    console.log(this.selectedDay);
-/*     daysLocal.reduce((a, v) => ({ ...a, [v]: v}), {});
-    let daysBonito = daysLocal.pop(); */
-    return daysLocal;
+    
   }
 }
