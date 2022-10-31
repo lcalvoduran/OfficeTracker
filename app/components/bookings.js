@@ -38,8 +38,10 @@ export default class bookingsComponent extends Component {
       return newDeduplicatedArray;
     }
     this.selectedDay = remueveObjetosDuplicados(this.selectedDay);
+    if(salvaGuarda != null){
     this.selectedDay = [...this.selectedDay, ...salvaGuarda];
     this.selectedDay = remueveObjetosDuplicados(this.selectedDay);
+  }
   }
 
 
@@ -47,27 +49,12 @@ export default class bookingsComponent extends Component {
     let variable = this.login.retrieveSessionStorage();
     let daysLocal = JSON.parse(localStorage.getItem(variable));
     if (variable){
-      console.log("Hay un usuario logeado");
       if(daysLocal){
-        console.log("Hay datos almacenados del usuario");
         daysLocal.reduce((a, v) => ({ ...a, [v]: v}), {});
         return daysLocal;
       }else{
-        console.log("No hay datos almacenados del usuario");
       }
     }else{
-      console.log("No hay ningun usuario con datos guardados");
     }
   }
-
-/*   retrieveDaysFromLocalStorage(){
-    let variable = this.login.retrieveSessionStorage();
-    let daysLocal = JSON.parse(localStorage.getItem(variable));
-    if (daysLocal.length >= 1) {
-      daysLocal.reduce((a, v) => ({ ...a, [v]: v}), {}); 
-      let merged = [...daysLocal, ...this.selectedDay];
-      console.log(merged);
-      return merged;
-    }    
-  } */
 }

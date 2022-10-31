@@ -282,4 +282,21 @@ export default class appointmentsComponent extends Component {
     let variable = this.login.retrieveSessionStorage();
     this.Usuario = variable.replace("@copyright.com", "");
   } 
+
+  retrieveData(){
+      let variable = this.login.retrieveSessionStorage();
+      let daysLocal = JSON.parse(localStorage.getItem(variable));
+      if (variable){
+        console.log("Hay un usuario logeado");
+        if(daysLocal){
+          console.log("Hay datos almacenados del usuario");
+          daysLocal.reduce((a, v) => ({ ...a, [v]: v}), {});
+          console.log(daysLocal);
+        }else{
+          console.log("No hay datos almacenados del usuario");
+        }
+      }else{
+        console.log("No hay ningun usuario con datos guardados");
+      }
+  }
 }
