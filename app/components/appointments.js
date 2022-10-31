@@ -70,6 +70,7 @@ export default class appointmentsComponent extends Component {
   constructor() {
     super(...arguments);
     this.showMyCalendar(currentMonth, currentYear);    
+    this.retrieveData();
   }
 
   currentMonday(d){
@@ -157,58 +158,71 @@ export default class appointmentsComponent extends Component {
     let lastDate = new Date(currentYear, currentMonth - varMonth, lastDay);
     lastDate.setDate(lastDate.getDate() + (((1 + 7 - lastDate.getDay()) % 7) || 7));
     let nextMonday = lastDate.getDate();  
-    let otherDays = []; 
+    let otherDays = [];
+    let markedBoolean = false;
     for (let i = 0; i < this.queue.length-1; i++) {
       lastDate.setMilliseconds(lastDate.getMilliseconds() + 8.64e+7);
       otherDays.push(lastDate.getDate());
       this.queue = [
         { dayOfWeek: 'Mon',
           number: nextMonday,
+          marked: markedBoolean,
           month: currentMonth,
           weekend: false,
         },
         { dayOfWeek: 'Tue',
           number: otherDays[0],
+          marked: markedBoolean,
           month: currentMonth,
           weekend: false,
         },
         { dayOfWeek: 'Wed',
           number: otherDays[1],
+          marked: markedBoolean,
           month: currentMonth,
           weekend: false,
         },
         { dayOfWeek: 'Thu',
           number: otherDays[2],
+          marked: markedBoolean,
           month: currentMonth,
           weekend: false,
         },
         { dayOfWeek: 'Fri',
           number: otherDays[3],
+          marked: markedBoolean,
           month: currentMonth,
           weekend: false,
         },    
         { dayOfWeek: 'Sat',
           number: otherDays[4],
+          marked: markedBoolean,
           month: currentMonth,
           weekend: true,
         },       
         { dayOfWeek: 'Sun',
           number: otherDays[5],
+          marked: markedBoolean,
           month: currentMonth,
           weekend: true,
         },           
-        ];       
+        ];      
     }  
-  }
+    let markedVariable = this.retrieveData();    
+    this.queue.forEach((element, index) => {
+      if(element.dayOfWeek == markedVariable[0].dayOfWeek && element.number == markedVariable[0].number){
+        this.queue[index].marked = true;
+      }    
+    });
 
+  }
 
   getPreviousMonday(varMonth){
     let lastDay = this.queue[0].number;
     let lastDate = new Date(currentYear, currentMonth - varMonth, lastDay);
     lastDate.setDate(lastDate.getDate() - (((1 + 7 - lastDate.getDay()) % 7) || 7));
     let nextMonday = lastDate.getDate();
-
-    let otherDays = []; 
+    let otherDays = [];
     for (let i = 0; i < this.queue.length-1; i++) {
       lastDate.setMilliseconds(lastDate.getMilliseconds() + 8.64e+7);
       otherDays.push(lastDate.getDate());
@@ -286,17 +300,12 @@ export default class appointmentsComponent extends Component {
   retrieveData(){
       let variable = this.login.retrieveSessionStorage();
       let daysLocal = JSON.parse(localStorage.getItem(variable));
-      if (variable){
-        console.log("Hay un usuario logeado");
-        if(daysLocal){
-          console.log("Hay datos almacenados del usuario");
-          daysLocal.reduce((a, v) => ({ ...a, [v]: v}), {});
-          console.log(daysLocal);
-        }else{
-          console.log("No hay datos almacenados del usuario");
-        }
-      }else{
-        console.log("No hay ningun usuario con datos guardados");
-      }
+      (variable && daysLocal) ?  daysLocal.reduce((a, v) => ({ ...a, [v]: v}), {}): false;
+        daysLocal.forEach((element, index) => {
+        let string = daysLocal[index].month;
+        let number = months.indexOf(string);
+        daysLocal[index].month = number; //Tratamiento para coger el numerito
+      });
+      return daysLocal;
   }
 }
