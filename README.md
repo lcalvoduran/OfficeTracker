@@ -35,7 +35,7 @@ https://guides.emberjs.com/release/components/looping-through-lists/
 
 Reminder: 
 
-Nos encontramos en app > components > bookings 
+Nos encontramos en app > components > appointments.js 
 
-Tenemos que hacer la función refreshingWithMarkeds() que me recoge los días que se encuentran en el localStorage y tiene que pushearlos al this.selectedDays.
-Una vez estén pusheados se marcarán en el appointments con la casilla de color.
+En la línea 211 tenemos que la función retrieveData() nos devuelve los días que se encuentran almacenados en la BBDD, por ello tenemos que hacer
+que se updaten con un marked = true para saber que fueron seleccionados.
