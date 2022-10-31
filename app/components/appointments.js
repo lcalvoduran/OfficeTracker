@@ -208,13 +208,13 @@ export default class appointmentsComponent extends Component {
         },           
         ];      
     }  
-    let markedVariable = this.retrieveData();    
-    this.queue.forEach((element, index) => {
-      if(element.dayOfWeek == markedVariable[0].dayOfWeek && element.number == markedVariable[0].number){
-        this.queue[index].marked = true;
-      }    
-    });
+    let markedVariable = this.retrieveData();
 
+    this.queue.forEach((element, index) => {
+      if(element.dayOfWeek == markedVariable[index].dayOfWeek && element.number == markedVariable[index].number){
+        this.queue[index].marked = true;
+      }     
+    });
   }
 
   getPreviousMonday(varMonth){
