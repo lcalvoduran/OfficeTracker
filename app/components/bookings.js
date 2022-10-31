@@ -6,11 +6,16 @@ import { action } from '@ember/object';
 export default class bookingsComponent extends Component {
   @service login;
   @tracked arrayDays = [];
+  @tracked selectedDay ;
 
-  @tracked selectedDay ="";
+  constructor() {
+    super(...arguments);
+    this.selectedDay = this.retrieveDaysFromLocalStorage();
+  }  
 
   @action updateArray(daysMarkeds, dateFormatted, month, marked) {
-
+    let salvaGuarda = this.selectedDay;
+    console.log(salvaGuarda);
     this.arrayDays.push(daysMarkeds);
     this.arrayDays = this.arrayDays.flat(1);
     this.selectedDay = this.arrayDays.filter(estado => estado.marked == true);
@@ -32,13 +37,30 @@ export default class bookingsComponent extends Component {
       }
       return newDeduplicatedArray;
     }
-    this.selectedDay = this.retrieveDaysFromLocalStorage();
     this.selectedDay = remueveObjetosDuplicados(this.selectedDay);
-    
+    this.selectedDay = [...this.selectedDay, ...salvaGuarda];
+    this.selectedDay = remueveObjetosDuplicados(this.selectedDay);
   }
 
 
   retrieveDaysFromLocalStorage(){
+    let variable = this.login.retrieveSessionStorage();
+    let daysLocal = JSON.parse(localStorage.getItem(variable));
+    if (variable){
+      console.log("Hay un usuario logeado");
+      if(daysLocal){
+        console.log("Hay datos almacenados del usuario");
+        daysLocal.reduce((a, v) => ({ ...a, [v]: v}), {});
+        return daysLocal;
+      }else{
+        console.log("No hay datos almacenados del usuario");
+      }
+    }else{
+      console.log("No hay ningun usuario con datos guardados");
+    }
+  }
+
+/*   retrieveDaysFromLocalStorage(){
     let variable = this.login.retrieveSessionStorage();
     let daysLocal = JSON.parse(localStorage.getItem(variable));
     if (daysLocal.length >= 1) {
@@ -46,7 +68,6 @@ export default class bookingsComponent extends Component {
       let merged = [...daysLocal, ...this.selectedDay];
       console.log(merged);
       return merged;
-    }
-    
-  }
+    }    
+  } */
 }
