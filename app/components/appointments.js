@@ -209,12 +209,19 @@ export default class appointmentsComponent extends Component {
         ];      
     }  
     let markedVariable = this.retrieveData();
+    (markedVariable != null) ? markedVariable : 0;
+    if(markedVariable){
+      this.queue.forEach((element, index) => {
+        console.log(element.number)
+        console.log(markedVariable[index].number);
+      });
+    }
 
-    this.queue.forEach((element, index) => {
+/*     this.queue.forEach((element, index) => {
       if(element.dayOfWeek == markedVariable[index].dayOfWeek && element.number == markedVariable[index].number){
         this.queue[index].marked = true;
       }     
-    });
+    }); */
   }
 
   getPreviousMonday(varMonth){
@@ -298,14 +305,17 @@ export default class appointmentsComponent extends Component {
   } 
 
   retrieveData(){
-      let variable = this.login.retrieveSessionStorage();
-      let daysLocal = JSON.parse(localStorage.getItem(variable));
-      (variable && daysLocal) ?  daysLocal.reduce((a, v) => ({ ...a, [v]: v}), {}): false;
-        daysLocal.forEach((element, index) => {
-        let string = daysLocal[index].month;
-        let number = months.indexOf(string);
-        daysLocal[index].month = number; //Tratamiento para coger el numerito
-      });
-      return daysLocal;
-  }
+    let variable = this.login.retrieveSessionStorage();
+    let daysLocal = JSON.parse(localStorage.getItem(variable));
+    if (variable){
+      if(daysLocal){
+        daysLocal.reduce((a, v) => ({ ...a, [v]: v}), {});
+        return daysLocal;
+      }else{
+        return null;
+      }
+    }else{
+      return null;
+    }
+}
 }
