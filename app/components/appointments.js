@@ -69,8 +69,9 @@ export default class appointmentsComponent extends Component {
 
   constructor() {
     super(...arguments);
-    this.showMyCalendar(currentMonth, currentYear);    
-    this.retrieveData();
+    this.showMyCalendar(currentMonth, currentYear);
+    this.displayMarkedDays();  
+
   }
 
   currentMonday(d){
@@ -214,7 +215,7 @@ export default class appointmentsComponent extends Component {
     for (let i = 0; i < this.queue.length; i++) {       
       var match = false;
       for (let j = 0; j < markedVariable.length; j++) {
-        if (this.queue[i].number == markedVariable[j].number) {
+        if (this.queue[i].number == markedVariable[j].number && this.queue[i].dayOfWeek == markedVariable[j].dayOfWeek) {
           match = true;
           this.queue[i].marked = true;
           break;
@@ -269,7 +270,20 @@ export default class appointmentsComponent extends Component {
           weekend: true,
         },         
         ];       
-    } 
+    }
+    let markedVariable = this.retrieveData();
+    (markedVariable != null) ? markedVariable : 0;
+
+    for (let i = 0; i < this.queue.length; i++) {       
+      var match = false;
+      for (let j = 0; j < markedVariable.length; j++) {
+        if (this.queue[i].number == markedVariable[j].number && this.queue[i].dayOfWeek == markedVariable[j].dayOfWeek) {
+          match = true;
+          this.queue[i].marked = true;
+          break;
+        }        
+      }
+    }    
 
   }
 
@@ -316,5 +330,21 @@ export default class appointmentsComponent extends Component {
     }else{
       return null;
     }
-}
+  }
+
+  displayMarkedDays(){
+    let markedVariable = this.retrieveData();
+    (markedVariable != null) ? markedVariable : 0;
+
+    for (let i = 0; i < this.queue.length; i++) {       
+      var match = false;
+      for (let j = 0; j < markedVariable.length; j++) {
+        if (this.queue[i].number == markedVariable[j].number && this.queue[i].dayOfWeek == markedVariable[j].dayOfWeek) {
+          match = true;
+          this.queue[i].marked = true;
+          break;
+        }        
+      }
+    }    
+  }
 }
