@@ -9,7 +9,7 @@
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="icon-chevron-right"><path class="primary" fill-rule="evenodd" clip-rule="evenodd" d="M8.293 5.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L13.586 12 8.293 6.707a1 1 0 010-1.414z"/></svg>            
         </button>
         <p></p>
-        <table  align="center" cellspacing="21" cellpadding="21">
+        <table id="myTab"  align="center" cellspacing="21" cellpadding="21">
         
             <thead>
                 <tr>
@@ -29,13 +29,22 @@
                 </tr>
             </thead>
 
-            <tbody id="calendar-body">    
-                <tr>
-                    {{#each this.queue as | userTD index |}}
-                    <td>{{if userTD.marked this.Usuario}}</td>
-                    {{/each}}
-                </tr>                         
-                
+                {{!--La tag "tr" corresponde a la fila
+                La tag "td" corresponde a la columna --}}
+            <tbody id="calendar-body">                
+                {{#each this.queue as | userTD index |}}
+                    {{!-- Creame tantas columnas como dias haya --}}
+                    <td>
+                        {{#if userTD.marked }}                        
+                        {{#each this.userList as | userTD index |}}
+                        {{!-- Creame tantas filas como usuarios haya --}}
+                        <tr>{{this.Usuario}}</tr> 
+                        {{/each}}
+                        {{/if}}
+
+                    </td>        
+                {{/each}}
+
 {{!--                  
                 <tr>
                     <td>usercol1</td>           

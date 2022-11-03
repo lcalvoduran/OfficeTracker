@@ -13,6 +13,7 @@ export default class appointmentsComponent extends Component {
   @tracked monthYear;
   @tracked currentWeek;
   @tracked isMarked = false;
+  @tracked userList = [1,2,3,4];
   @tracked Usuario;
   @tracked queue = [
     { dayOfWeek: 'Mon',
@@ -70,8 +71,8 @@ export default class appointmentsComponent extends Component {
   constructor() {
     super(...arguments);
     this.showMyCalendar(currentMonth, currentYear);
-    this.displayMarkedDays();  
-
+    this.displayMarkedDays();
+    this.editUsernames();
   }
 
   currentMonday(d){
@@ -315,7 +316,8 @@ export default class appointmentsComponent extends Component {
   editUsernames(){
     let variable = this.login.retrieveSessionStorage();
     this.Usuario = variable.replace("@copyright.com", "");
-  } 
+  }
+
 
   retrieveData(){
     let variable = this.login.retrieveSessionStorage();
@@ -334,8 +336,7 @@ export default class appointmentsComponent extends Component {
 
   displayMarkedDays(){
     let markedVariable = this.retrieveData();
-    (markedVariable != null) ? markedVariable : 0;
-
+    if(markedVariable != null){
     for (let i = 0; i < this.queue.length; i++) {       
       var match = false;
       for (let j = 0; j < markedVariable.length; j++) {
@@ -346,5 +347,8 @@ export default class appointmentsComponent extends Component {
         }        
       }
     }    
+    }else{
+      return 0;
+    }
   }
 }
