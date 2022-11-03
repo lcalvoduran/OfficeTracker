@@ -13,7 +13,7 @@ export default class appointmentsComponent extends Component {
   @tracked monthYear;
   @tracked currentWeek;
   @tracked isMarked = false;
-  @tracked userList = [1,2,3,4];
+  @tracked userList=[];
   @tracked Usuario;
   @tracked queue = [
     { dayOfWeek: 'Mon',
@@ -73,6 +73,7 @@ export default class appointmentsComponent extends Component {
     this.showMyCalendar(currentMonth, currentYear);
     this.displayMarkedDays();
     this.editUsernames();
+    this.displayedSavedDays();
   }
 
   currentMonday(d){
@@ -350,5 +351,21 @@ export default class appointmentsComponent extends Component {
     }else{
       return 0;
     }
+  }
+
+  displayedSavedDays(){
+    var daysStored;
+    for (var key in localStorage){
+      if (key.includes('@')) {
+        this.userList.push({'user': key, 'daysStored' : daysStored});
+      }
+   }
+   for (let i = 0; i < this.userList.length; i++) {
+    daysStored = JSON.parse(localStorage.getItem(this.userList[i].user));
+    //Hay que hacer un segundo for (for anidado)
+   }
+   console.log(daysStored);
+   console.log(this.userList); 
+   this.userList.push(daysStored);  
   }
 }
