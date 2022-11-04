@@ -354,18 +354,21 @@ export default class appointmentsComponent extends Component {
   }
 
   displayedSavedDays(){
-    var daysStored;
     for (var key in localStorage){
       if (key.includes('@')) {
-        this.userList.push({'user': key, 'daysStored' : daysStored});
+        this.userList.push({'user': key});
       }
-   }
-   for (let i = 0; i < this.userList.length; i++) {
-    daysStored = JSON.parse(localStorage.getItem(this.userList[i].user));
-    //Hay que hacer un segundo for (for anidado)
-   }
-   console.log(daysStored);
-   console.log(this.userList); 
-   this.userList.push(daysStored);  
+    }
+    for (let i = 0; i < this.userList.length; i++) {
+    var daysStored = JSON.parse(localStorage.getItem(this.userList[i].user));
+    this.userList[i].days = daysStored;
+    }
+    console.log(this.userList);
+    //CON ESTO QUE HEMOS HECHO > Nos hemos traido todo del localStorage y TENEMOS LA LISTA DE USUARIOS CON SUS CORRESPONDIENTES DÍAS
+
+    //Recorremos todos los DIAS de CADA USUARIO 
+    //Si son coincidentes los añadimos a la lista
+    
+
   }
 }
