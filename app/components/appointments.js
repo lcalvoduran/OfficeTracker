@@ -363,12 +363,14 @@ export default class appointmentsComponent extends Component {
     var daysStored = JSON.parse(localStorage.getItem(this.userList[i].user));
     this.userList[i].days = daysStored;
     }
-    console.log(this.userList);
     //CON ESTO QUE HEMOS HECHO > Nos hemos traido todo del localStorage y TENEMOS LA LISTA DE USUARIOS CON SUS CORRESPONDIENTES DÍAS
 
     //Recorremos todos los DIAS de CADA USUARIO 
     //Si son coincidentes los añadimos a la lista
-    
+  }
 
+  get comprobationDates(){
+    console.log(this.userList);
+    return true;
   }
 }
