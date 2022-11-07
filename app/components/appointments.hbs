@@ -36,9 +36,9 @@
                     {{!-- Creame tantas columnas como dias haya --}}
                     <td>
                         {{#if this.comprobationDates}}
-                        {{#if userTD.marked }}                        
+                        {{#if userTD.weekend }}                        
                         {{#each this.userList as | userList index |}}
-                        {{!-- Creame tantas filas como usuarios haya --}}
+                        {{!-- Creame tantas filas como usuarios haya --}}                        
                         <tr>{{userList.user}}</tr> 
                         {{/each}}
                         {{/if}}

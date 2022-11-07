@@ -213,13 +213,11 @@ td{
 .bookings {
   display: flex;
   text-align: center;
-  flex-direction: row;
   align-content: stretch;
   justify-content: space-evenly;
   align-items: center;
-  gap: 0rem;
-  max-width: 700px;
-  margin: 2rem auto;
+  max-width: 1285px;
+  margin-left: 0rem;
   padding: 1rem;
 
   @media (min-width: 700px) {
@@ -282,7 +280,7 @@ td:hover{
 }
 
 .selecteddays{
-  margin-left: 5%;
+  margin-left: 5rem;
   
 }
 
