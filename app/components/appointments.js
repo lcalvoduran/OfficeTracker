@@ -21,7 +21,8 @@ export default class appointmentsComponent extends Component {
       number: 0,
       month: currentMonth,
       weekend: true,
-      // users
+      user: [],
+      // users de strings + un inner join entre el usuario y los dias
 
     },
     { dayOfWeek: 'Tue',
@@ -29,6 +30,7 @@ export default class appointmentsComponent extends Component {
       number: 0,
       month: currentMonth,
       weekend: true,
+      user: [],
 
     },
     { dayOfWeek: 'Wed',
@@ -36,6 +38,7 @@ export default class appointmentsComponent extends Component {
       number: 0,
       month: currentMonth,
       weekend: true,
+      user: [],
 
     },
     { dayOfWeek: 'Thu',
@@ -43,6 +46,7 @@ export default class appointmentsComponent extends Component {
       number: 0,
       month: currentMonth,
       weekend: true,
+      user: [],
 
     },
     { dayOfWeek: 'Fri',
@@ -50,6 +54,7 @@ export default class appointmentsComponent extends Component {
       number: 0,
       month: currentMonth,
       weekend: true,
+      user: [],
 
     },
     { dayOfWeek: 'Sat',
@@ -57,6 +62,7 @@ export default class appointmentsComponent extends Component {
       number: 0,
       month: currentMonth,
       weekend: false,
+      user: [],
 
     },
     { dayOfWeek: 'Sun',
@@ -64,6 +70,7 @@ export default class appointmentsComponent extends Component {
       number: 0,
       month: currentMonth,
       weekend: false,
+      user: [],
 
     },     
   ];
@@ -366,6 +373,7 @@ export default class appointmentsComponent extends Component {
     this.userList[i].days = daysStored;
     }
     console.log(this.userList);
+
     //CON ESTO QUE HEMOS HECHO > Nos hemos traido todo del localStorage y TENEMOS LA LISTA DE USUARIOS CON SUS CORRESPONDIENTES DÍAS
 
     //Recorremos todos los DIAS de CADA USUARIO 
