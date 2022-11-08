@@ -36,8 +36,10 @@
                     {{!-- Creame tantas columnas como dias haya --}}
                     <td>
                         {{#if userTD.weekend }}                        
-                        {{!-- Creame tantas filas como usuarios haya --}}                        
-                        <tr>Usuario</tr>
+                        {{!-- Creame tantas filas como usuarios haya --}}
+                        {{#if userTD.user}}                       
+                        <tr>{{userTD.user}}</tr>
+                        {{/if}}
                         {{/if}}
                     </td>        
                 {{/each}}
