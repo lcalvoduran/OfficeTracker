@@ -334,7 +334,6 @@ export default class appointmentsComponent extends Component {
     if (variable){
       if(daysLocal){
         daysLocal.reduce((a, v) => ({ ...a, [v]: v}), {});
-        console.log(daysLocal);
         return daysLocal;
       }else{
         return null;
@@ -372,7 +371,16 @@ export default class appointmentsComponent extends Component {
     var daysStored = JSON.parse(localStorage.getItem(this.userList[i].user));
     this.userList[i].days = daysStored;
     }
-    console.log(this.userList);
+    console.log("Userlist");
+    var arrayU;
+    var arrayX;
+    for (let i = 0; i < this.userList.length; i++) {      
+      arrayU = this.userList[i];
+
+    }
+    console.log("- - - - - - - - - - - -")
+    console.log("QUEUE");
+    console.log(this.queue);
 
     //CON ESTO QUE HEMOS HECHO > Nos hemos traido todo del localStorage y TENEMOS LA LISTA DE USUARIOS CON SUS CORRESPONDIENTES DÍAS
 
