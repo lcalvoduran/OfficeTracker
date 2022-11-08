@@ -379,21 +379,14 @@ export default class appointmentsComponent extends Component {
     for (let i = 0; i < this.userList.length; i++) {      
       objectU = this.userList[i].user.replace("@copyright.com", "");
       objectX = this.userList[i].days;
-      //console.log(objectX);
       for (let i = 0; i < objectX.length; i++) {        
         var numerito = objectX[i].number;
         var finder = this.queue.findIndex(o => o.number == numerito);
         if(finder>=0){
-          this.queue[finder].user.push(objectU);
-          //console.log(this.queue[finder]);
+          this.queue[finder].user.push(objectU);          
         }
       }
     }
-
-    //CON ESTO QUE HEMOS HECHO > Nos hemos traido todo del localStorage y TENEMOS LA LISTA DE USUARIOS CON SUS CORRESPONDIENTES DÍAS
-
-    //Recorremos todos los DIAS de CADA USUARIO 
-    //Si son coincidentes los añadimos a la lista
   }
 
 }
