@@ -374,22 +374,20 @@ export default class appointmentsComponent extends Component {
 
     //Si el día, el mes y el number coinciden con algunos de los dias de la semana le colocas a esa posicion del this.queue el usuario correspondiente a ese día.
     //Funciona para un usuario y para el último dia de ese usuario
-    var objectD;
     var objectU;
+    let objectX;
     for (let i = 0; i < this.userList.length; i++) {      
-      objectD = this.userList[i].days[i];
       objectU = this.userList[i].user.replace("@copyright.com", "");
-      console.log("Numero: "+objectD.number);
-      var finder = this.queue.findIndex(o => o.number == objectD.number);
-      console.log(finder);
-      if (finder) {
-        console.log("encontrado");
-        this.queue[finder].user =objectU;
-        console.log(this.queue[finder]);
-        
+      objectX = this.userList[i].days;
+      //console.log(objectX);
+      for (let i = 0; i < objectX.length; i++) {        
+        var numerito = objectX[i].number;
+        var finder = this.queue.findIndex(o => o.number == numerito);
+        if(finder>=0){
+          this.queue[finder].user.push(objectU);
+          //console.log(this.queue[finder]);
+        }
       }
-      
-      
     }
 
     //CON ESTO QUE HEMOS HECHO > Nos hemos traido todo del localStorage y TENEMOS LA LISTA DE USUARIOS CON SUS CORRESPONDIENTES DÍAS
