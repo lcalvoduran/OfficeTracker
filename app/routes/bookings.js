@@ -1,5 +1,8 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
+import { tracked } from '@glimmer/tracking';
+
+
 export default class BookingsRoute extends Route {
   @service router;
   @service login;
@@ -9,6 +12,8 @@ export default class BookingsRoute extends Route {
       this.router.transitionTo('bookings'); //Passed
     } else {
       this.router.transitionTo('login'); //Abort
+
     }
   }
+
 }
