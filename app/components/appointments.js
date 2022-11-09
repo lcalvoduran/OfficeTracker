@@ -240,9 +240,6 @@ export default class appointmentsComponent extends Component {
       }
     }
     this.displayedSavedDays();
-    // tenemos que eliminar los duplicates
-
-
   }
 
   getPreviousMonday(varMonth){
@@ -259,36 +256,43 @@ export default class appointmentsComponent extends Component {
           number: nextMonday,
           month: currentMonth,
           weekend: true,
+          user: [],
         },
         { dayOfWeek: 'Tue',
           number: otherDays[0],
           month: currentMonth,
           weekend: true,
+          user: [],
         },
         { dayOfWeek: 'Wed',
           number: otherDays[1],
           month: currentMonth,
           weekend: true,
+          user: [],
         },
         { dayOfWeek: 'Thu',
           number: otherDays[2],
           month: currentMonth,
           weekend: true,
+          user: [],
         },
         { dayOfWeek: 'Fri',
           number: otherDays[3],
           month: currentMonth,
           weekend: true,
+          user: [],
         },
         { dayOfWeek: 'Sat',
           number: otherDays[4],
           month: currentMonth,
           weekend: false,
+          user: [],
         },       
         { dayOfWeek: 'Sun',
           number: otherDays[5],
           month: currentMonth,
           weekend: false,
+          user: [],
         },         
         ];       
     }
@@ -304,8 +308,9 @@ export default class appointmentsComponent extends Component {
           break;
         }        
       }
-    }    
-
+    }
+    console.log("entra");
+    this.displayedSavedDays();
   }
 
   @action back() {
