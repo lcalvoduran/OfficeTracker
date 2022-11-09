@@ -228,7 +228,7 @@ export default class appointmentsComponent extends Component {
     }  
     let markedVariable = this.retrieveData();
     (markedVariable != null) ? markedVariable : 0;
-
+    if(markedVariable == null){return 0}
     for (let i = 0; i < this.queue.length; i++) {       
       var match = false;
       for (let j = 0; j < markedVariable.length; j++) {
@@ -301,6 +301,7 @@ export default class appointmentsComponent extends Component {
 
     for (let i = 0; i < this.queue.length; i++) {       
       var match = false;
+      if(markedVariable == null){return 0}
       for (let j = 0; j < markedVariable.length; j++) {
         if (this.queue[i].number == markedVariable[j].number && this.queue[i].dayOfWeek == markedVariable[j].dayOfWeek) {
           match = true;
@@ -309,7 +310,6 @@ export default class appointmentsComponent extends Component {
         }        
       }
     }
-    console.log("entra");
     this.displayedSavedDays();
   }
 
@@ -364,6 +364,7 @@ export default class appointmentsComponent extends Component {
     if(markedVariable != null){
     for (let i = 0; i < this.queue.length; i++) {       
       var match = false;
+      
       for (let j = 0; j < markedVariable.length; j++) {
         if (this.queue[i].number == markedVariable[j].number && this.queue[i].dayOfWeek == markedVariable[j].dayOfWeek) {
           match = true;
