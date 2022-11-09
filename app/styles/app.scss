@@ -56,9 +56,15 @@ p {
   margin-bottom: 15px;
 }
 
-td{
-  font-size: 0.6rem;
+td {
+  font-size: 0.7rem;
   text-align: -webkit-center;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+tbody{
+  height: 1px;
 }
 
 /**

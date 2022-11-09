@@ -180,42 +180,49 @@ export default class appointmentsComponent extends Component {
           marked: markedBoolean,
           month: currentMonth,
           weekend: true,
+          user: [],
         },
         { dayOfWeek: 'Tue',
           number: otherDays[0],
           marked: markedBoolean,
           month: currentMonth,
           weekend: true,
+          user: [],
         },
         { dayOfWeek: 'Wed',
           number: otherDays[1],
           marked: markedBoolean,
           month: currentMonth,
           weekend: true,
+          user: [],
         },
         { dayOfWeek: 'Thu',
           number: otherDays[2],
           marked: markedBoolean,
           month: currentMonth,
           weekend: true,
+          user: [],
         },
         { dayOfWeek: 'Fri',
           number: otherDays[3],
           marked: markedBoolean,
           month: currentMonth,
           weekend: true,
+          user: [],
         },    
         { dayOfWeek: 'Sat',
           number: otherDays[4],
           marked: markedBoolean,
           month: currentMonth,
           weekend: false,
+          user: [],
         },       
         { dayOfWeek: 'Sun',
           number: otherDays[5],
           marked: markedBoolean,
           month: currentMonth,
           weekend: false,
+          user: [],
         },           
         ];      
     }  
@@ -232,6 +239,10 @@ export default class appointmentsComponent extends Component {
         }        
       }
     }
+    this.displayedSavedDays();
+    // tenemos que eliminar los duplicates
+
+
   }
 
   getPreviousMonday(varMonth){
@@ -383,7 +394,8 @@ export default class appointmentsComponent extends Component {
         var numerito = objectX[i].number;
         var finder = this.queue.findIndex(o => o.number == numerito);
         if(finder>=0){
-          this.queue[finder].user.push(objectU);          
+          this.queue[finder].user.push(objectU);
+          this.queue[finder].user = [... new Set(this.queue[finder].user)]; //Eliminando duplicados           
         }
       }
     }
