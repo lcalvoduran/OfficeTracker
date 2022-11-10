@@ -33,9 +33,8 @@ https://guides.emberjs.com/release/components/looping-through-lists/
 
 //////////////////////////////////////////////////////////
 
-Reminder: 
+Example:
+![ccc](https://user-images.githubusercontent.com/107927592/201075731-1de71eb8-cefd-430d-8d3c-9b76ae25b2b0.png)
 
-Nos encontramos en app > components > appointments.js 
 
-En la línea 211 tenemos que la función retrieveData() nos devuelve los días que se encuentran almacenados en la BBDD, por ello tenemos que hacer
-que se updaten con un marked = true para saber que fueron seleccionados.
+
