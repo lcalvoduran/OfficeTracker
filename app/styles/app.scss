@@ -260,8 +260,8 @@ p#alert_desc-5 {
 .rup-toast{
   overflow-y: scroll;
   overflow-x: hidden;
-  height: 64px;
-  width: 120px;
+  height: 70px;
+  width: 125px;
 }
 
 button#tabnav_3-2 {
@@ -272,9 +272,20 @@ button#tabnav_3-2 {
 .eachDay{
   margin-bottom: 0.7rem;
   padding-bottom: 2px;
-  border: 1px solid black;
   border-radius: 3px;
-  background-color: #c4c4c4;
+
+}
+
+.rup-tag {
+  font-size: 0.7rem;
+  font-weight: normal;
+  line-height: 1.25rem;
+  display: inline-flex;
+  padding: 0.25rem 0.3rem;
+  background: rgb(241, 241, 241) !important;
+  color: hsl(210deg, 29%, 11%);
+  border-radius: 0.5rem;
+  align-items: center;
 }
 
 .appointments-header{
